@@ -21,8 +21,8 @@ def flipper_post_install(installer)
   end
 end
 
-target 'temp' do
-  # Pods for temp
+target 'CVD19ZA' do
+  # Pods for CVD19ZA
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -54,7 +54,7 @@ target 'temp' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'tempTests' do
+  target 'CVD19ZATests' do
     inherit! :complete
     # Pods for testing
   end
@@ -71,10 +71,10 @@ target 'temp' do
   end
 end
 
-target 'temp-tvOS' do
-  # Pods for temp-tvOS
+target 'CVD19ZA-tvOS' do
+  # Pods for CVD19ZA-tvOS
 
-  target 'temp-tvOSTests' do
+  target 'CVD19ZA-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

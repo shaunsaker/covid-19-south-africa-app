@@ -1,4 +1,4 @@
-package com.temp;
+package co.za.shaunsaker.cvd19za;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "temp";
+    return "CVD19ZA";
   }
 }
