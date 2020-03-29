@@ -1,13 +1,14 @@
 import React from 'react';
-import {View} from 'react-native';
 
-import styles from './styles';
+import {Container} from './styles';
+
+import HeaderBar from '../../../components/HeaderBar';
 
 const Home = () => {
   return (
-    <View>
-      <View />
-    </View>
+    <Container>
+      <HeaderBar />
+    </Container>
   );
 };
 

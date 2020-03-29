@@ -5,7 +5,7 @@ import {
   rhythm,
   getTextShadow,
   getMobileTextShadow,
-} from '../../../src/styleConstants';
+} from '../../styleConstants';
 
 const PADDING = `${rhythm.vt}px ${rhythm.hz}px`;
 
