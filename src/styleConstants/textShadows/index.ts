@@ -1,18 +1,23 @@
 const constants = {
-  y: 4,
-  x: 0,
+  y: 2,
+  x: 2,
   radius: 2,
-  color: 'rgba(0, 0, 0, 0.25)',
+  color: {
+    dark: 'rgba(0, 0, 0, 0.25)',
+    light: 'rgba(255, 255, 255, 0.25)',
+  },
 };
 
-export const getMobileTextShadow = (): object => {
+type Color = 'dark' | 'light';
+
+export const getMobileTextShadow = (color: Color): object => {
   return {
-    textShadowColor: constants.color,
+    textShadowColor: constants.color[color],
     textShadowOffset: {width: constants.x, height: constants.y},
     textShadowRadius: constants.radius,
   };
 };
 
-export const getTextShadow = (): string => {
-  return `${constants.y}px ${constants.x}px ${constants.radius}px ${constants.color}`;
+export const getTextShadow = (color: Color): string => {
+  return `${constants.y}px ${constants.x}px ${constants.radius}px ${constants.color[color]}`;
 };

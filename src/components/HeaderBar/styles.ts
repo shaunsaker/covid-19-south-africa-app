@@ -34,7 +34,7 @@ export const Text = styled.Text`
   font-family: 'Roboto-Bold';
   font-size: 16px;
   color: ${colors.whiteText};
-  text-shadow: ${getTextShadow()};
+  text-shadow: ${getTextShadow('dark')};
   padding: 4px; /* for shadow to show through */
 `;
 
@@ -51,6 +51,6 @@ export default {
   icon: {
     fontSize: 24,
     color: colors.whiteText,
-    ...getMobileTextShadow(),
+    ...getMobileTextShadow('dark'),
   },
 };

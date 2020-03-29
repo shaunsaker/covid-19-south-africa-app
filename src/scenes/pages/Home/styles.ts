@@ -6,3 +6,7 @@ export const Container = styled.View`
   flex: 1;
   background-color: ${colors.primary};
 `;
+
+export const ContentContainer = styled.View`
+  padding: ${rhythm.vt}px ${rhythm.hz}px;
+`;

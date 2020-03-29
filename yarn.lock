@@ -2947,6 +2947,11 @@ domutils@^1.7.0:
     dom-serializer "0"
     domelementtype "1"
 
+eases@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/eases/-/eases-1.0.8.tgz#f1f5069a6b6ed2ea510f9c6110398d63efe9aee6"
+  integrity sha1-8fUGmmtu0upRD5xhEDmNY+/pruY=
+
 ecc-jsbn@~0.1.1:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.2.tgz#3a83a904e54353287874c564b7549386849a98c9"
@@ -6341,6 +6346,12 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+"react-native-counter@git+https://github.com/Kerumen/react-native-counter#8d25ef92488b03e1276e102f81cf5a8051d34157":
+  version "0.2.0"
+  resolved "git+https://github.com/Kerumen/react-native-counter#8d25ef92488b03e1276e102f81cf5a8051d34157"
+  dependencies:
+    eases "^1.0.8"
+
 react-native-firebase@^5.6.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.6.0.tgz#6f6123f53cb73477915dd55c55f3e1de91db38d2"
@@ -6353,6 +6364,11 @@ react-native-neomorph-shadows@^0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/react-native-neomorph-shadows/-/react-native-neomorph-shadows-0.0.8.tgz#75b865610abe2edeba1afb07cfd1855656cee560"
   integrity sha512-dslhj0ge1jRruXvQimnUczgor30btk/5o1VhuV++ZtRn01snR1j/AC5LYI9o7a5JabPiAAc7egary66Y5Tpeww==
+
+react-native-responsive-screen@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/react-native-responsive-screen/-/react-native-responsive-screen-1.4.1.tgz#0270bc8f03a208b578299c1594495db69aff506b"
+  integrity sha512-WuMkVyCPeepzKQaT3N+mbUAvQLL0jGsBnGf6yDtA7vyA/sp1imXYVPYjCNMRaKV+PSM5GzEMXxl4Bj+tUpD2Tw==
 
 react-native-router-flux@^4.2.0:
   version "4.2.0"
