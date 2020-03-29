@@ -39,12 +39,22 @@ export const FooterText = styled.Text`
   text-shadow: ${getTextShadow('dark')};
 `;
 
+export const SourceButton = styled.TouchableOpacity``;
+
+export const SourceText = styled.Text`
+  font-family: 'Roboto-Bold';
+  font-size: 16px;
+  color: ${colors.secondary};
+  text-shadow: ${getTextShadow('dark')};
+`;
+
 export default {
   contentContainer: {
     backgroundColor: 'rgba(255, 255, 255, 0.9)',
     width: wp('100%') - 2 * rhythm.hz,
-    height: 234,
+    height: 234, // TODO:
     ...shadows,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
