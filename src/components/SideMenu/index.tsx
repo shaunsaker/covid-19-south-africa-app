@@ -1,10 +1,13 @@
 import React, {ReactNode} from 'react';
-import {Linking} from 'react-native';
+import {Linking, Animated} from 'react-native';
 import Snackbar from 'react-native-snackbar';
 import SideMenu from 'react-native-side-menu';
+import {useSelector, useDispatch} from 'react-redux';
 
 import pkg from '../../../package.json';
 import {build, email, snackbar} from '../../config';
+import {sideMenuIsOpenSelector} from '../../store/selectors';
+import {setSideMenu} from '../../store/actions';
 
 import SideMenuComponent from './SideMenu';
 
@@ -13,7 +16,9 @@ interface Props {
 }
 
 const SideMenuContainer = ({children}: Props) => {
+  const isOpen = useSelector(sideMenuIsOpenSelector);
   const version = `${pkg.version} (${build})`;
+  const dispatch = useDispatch();
 
   const onGetInTouchPress = () => {
     const url = `mailto:${email}`;
@@ -30,7 +35,11 @@ const SideMenuContainer = ({children}: Props) => {
       });
   };
 
-  const onSideMenuChange = () => {};
+  const onSideMenuChange = (nextIsOpen: boolean) => {
+    if (nextIsOpen !== isOpen) {
+      dispatch(setSideMenu(nextIsOpen));
+    }
+  };
 
   return (
     <SideMenu
@@ -40,10 +49,17 @@ const SideMenuContainer = ({children}: Props) => {
           handleGetInTouchPress={onGetInTouchPress}
         />
       }
-      isOpen
+      isOpen={isOpen}
       onChange={onSideMenuChange}
       openMenuOffset={300}
-      bounceBackOnOverdraw={false}>
+      bounceBackOnOverdraw={false}
+      animationFunction={(prop: any, value: any) =>
+        Animated.spring(prop, {
+          toValue: value,
+          friction: 20,
+          useNativeDriver: true,
+        })
+      }>
       {children}
     </SideMenu>
   );
