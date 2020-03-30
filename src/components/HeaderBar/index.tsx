@@ -1,11 +1,19 @@
 import React from 'react';
 
-import HeaderBar from './HeaderBar';
+import HeaderBar, {ContainerProps} from './HeaderBar';
 
-const HeaderBarContainer = () => {
+const HeaderBarContainer = ({...props}: ContainerProps) => {
   const onMenuPress = () => {};
 
-  return <HeaderBar handleMenuPress={onMenuPress} />;
+  const onClosePress = () => {};
+
+  return (
+    <HeaderBar
+      {...props}
+      handleMenuPress={onMenuPress}
+      handleClosePress={onClosePress}
+    />
+  );
 };
 
 export default HeaderBarContainer;

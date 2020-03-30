@@ -4,7 +4,13 @@ import {rhythm, colors, getTextShadow} from '../../styleConstants';
 
 export const Container = styled.View`
   flex: 1;
-  padding: ${rhythm.vt + 64}px ${rhythm.hz}px ${rhythm.vt * 2}px; /* header height */
+  border-right-width: 1px;
+  border-right-color: ${colors.primaryLight};
+`;
+
+export const ContentContainer = styled.View`
+  flex: 1;
+  padding: ${rhythm.vt}px ${rhythm.hz}px ${rhythm.vt * 2}px; /* header height */
   justify-content: space-between;
   align-items: center;
 `;

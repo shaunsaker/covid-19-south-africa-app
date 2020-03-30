@@ -1,36 +1,44 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import {NeomorphBox} from 'react-native-neomorph-shadows';
 import {StatusBar} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
-import styles, {Container, Text, IconContainer, IconButton} from './styles';
+import {Container, Text, LeftIconContainer, RightIconContainer} from './styles';
 import {colors} from '../../styleConstants';
 
-interface Props {
-  handleMenuPress: () => void;
+import IconButton from '../../components/IconButton/IconButton';
+
+export interface ContainerProps {
+  showMenuIcon?: boolean;
+  showCloseIcon?: boolean;
 }
 
-const HeaderBar = ({handleMenuPress}: Props) => {
+interface Props extends ContainerProps {
+  handleMenuPress: () => void;
+  handleClosePress: () => void;
+}
+
+const HeaderBar = ({
+  showMenuIcon = true,
+  showCloseIcon,
+  handleMenuPress,
+  handleClosePress,
+}: Props) => {
   return (
     <Container>
-      <IconContainer>
-        <NeomorphBox style={styles.iconButton}>
-          <LinearGradient
-            colors={[colors.primaryLight, colors.primaryMedium]}
-            start={{x: 0.2, y: 0.2}}
-            end={{x: 1, y: 1}}
-            style={styles.iconContainer}>
-            <IconButton onPress={handleMenuPress}>
-              <Icon name="menu" style={styles.icon} />
-            </IconButton>
-          </LinearGradient>
-        </NeomorphBox>
-      </IconContainer>
+      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
+
+      {showMenuIcon ? (
+        <LeftIconContainer>
+          <IconButton iconName="menu" handlePress={handleMenuPress} />
+        </LeftIconContainer>
+      ) : null}
 
       <Text>CVD19ZA</Text>
 
-      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
+      {showCloseIcon ? (
+        <RightIconContainer>
+          <IconButton iconName="close" handlePress={handleClosePress} />
+        </RightIconContainer>
+      ) : null}
     </Container>
   );
 };

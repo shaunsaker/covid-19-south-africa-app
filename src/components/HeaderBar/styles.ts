@@ -1,13 +1,8 @@
-import styled from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
 import {getStatusBarHeight} from 'react-native-iphone-x-helper';
 import {Platform} from 'react-native';
 
-import {
-  colors,
-  rhythm,
-  getTextShadow,
-  getMobileTextShadow,
-} from '../../styleConstants';
+import {colors, rhythm, getTextShadow} from '../../styleConstants';
 
 const PADDING_TOP = rhythm.vt;
 const PADDING = `${PADDING_TOP}px ${rhythm.hz}px`;
@@ -20,7 +15,7 @@ export const Container = styled.View`
   height: 64px;
 `;
 
-export const IconContainer = styled.View`
+export const LeftIconContainer = styled.View`
   position: absolute;
   top: 0;
   bottom: 0;
@@ -29,9 +24,14 @@ export const IconContainer = styled.View`
   padding: ${PADDING};
 `;
 
-const ICON_BUTTON_SIZE = 40;
-
-export const IconButton = styled.TouchableOpacity``;
+export const RightIconContainer = styled.View`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  justify-content: center;
+  padding: ${PADDING};
+`;
 
 export const Text = styled.Text`
   font-family: 'Roboto-Bold';
@@ -41,28 +41,4 @@ export const Text = styled.Text`
   padding: 4px; /* for shadow to show through */
 `;
 
-export default {
-  iconButton: {
-    width: ICON_BUTTON_SIZE,
-    height: ICON_BUTTON_SIZE,
-    borderRadius: ICON_BUTTON_SIZE / 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.primaryLight,
-    shadowOffset: {width: 2, height: 2},
-    shadowOpacity: 0.15,
-    shadowRadius: 2,
-  },
-  iconContainer: {
-    width: ICON_BUTTON_SIZE - 2,
-    height: ICON_BUTTON_SIZE - 2,
-    borderRadius: ICON_BUTTON_SIZE / 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  icon: {
-    fontSize: 24,
-    color: colors.secondaryText,
-    ...getMobileTextShadow('dark'),
-  },
-};
+export default {};
