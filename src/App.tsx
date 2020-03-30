@@ -7,6 +7,7 @@ import {store, persistor} from './store';
 
 import Home from './pages/Home';
 import SideMenu from './components/SideMenu';
+import NotificationsHandler from './components/NotificationsHandler';
 
 // Helper to clear local storage during development
 // persistor.purge();
@@ -24,6 +25,8 @@ const App = () => {
             </Lightbox>
           </Router>
         </SideMenu>
+
+        <NotificationsHandler />
       </PersistGate>
     </Provider>
   );
