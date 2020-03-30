@@ -1,19 +1,9 @@
 import styled from 'styled-components/native';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
 
-import {
-  colors,
-  rhythm,
-  getTextShadow,
-  shadows,
-} from '../../../../../styleConstants';
+import {colors, rhythm, getTextShadow} from '../../../../../styleConstants';
 
 export const Container = styled.View`
   flex: 1; /* needed for height calculation of contentContainer */
-  background-color: ${colors.primary};
   align-items: center;
   padding: ${rhythm.vt * 2}px 0;
 `;
@@ -21,7 +11,7 @@ export const Container = styled.View`
 export const Text = styled.Text`
   font-family: 'Roboto-Bold';
   font-size: 24px;
-  color: ${colors.whiteText};
+  color: ${colors.secondaryText};
   margin-bottom: ${rhythm.vt * 2}px;
   text-shadow: ${getTextShadow('dark')};
 `;
@@ -32,8 +22,10 @@ export default {
     width: '100%',
   },
   contentContainer: {
-    backgroundColor: colors.primary,
-    ...shadows,
+    backgroundColor: 'transparent',
+    shadowOffset: {width: 4, height: 4},
+    shadowOpacity: 0.4,
+    shadowRadius: 1,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',

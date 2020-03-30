@@ -1,6 +1,8 @@
 import React from 'react';
+import LinearGradient from 'react-native-linear-gradient';
 
-import {Container, ContentContainer} from './styles';
+import styles, {ContentContainer} from './styles';
+import {colors} from '../../../styleConstants';
 
 import HeaderBar from '../../../components/HeaderBar';
 import ConfirmedCases from './components/ConfirmedCases';
@@ -8,7 +10,9 @@ import Timeline from './components/Timeline';
 
 const Home = () => {
   return (
-    <Container>
+    <LinearGradient
+      colors={[colors.primaryLight, colors.primary]}
+      style={styles.container}>
       <HeaderBar />
 
       <ContentContainer>
@@ -16,7 +20,7 @@ const Home = () => {
 
         <Timeline />
       </ContentContainer>
-    </Container>
+    </LinearGradient>
   );
 };
 

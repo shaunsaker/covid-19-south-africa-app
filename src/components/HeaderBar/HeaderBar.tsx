@@ -2,6 +2,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {NeomorphBox} from 'react-native-neomorph-shadows';
 import {StatusBar} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import styles, {Container, Text, IconContainer, IconButton} from './styles';
 import {colors} from '../../styleConstants';
@@ -16,7 +17,13 @@ const HeaderBar = ({handleMenuPress}: Props) => {
       <IconContainer>
         <IconButton onPress={handleMenuPress}>
           <NeomorphBox style={styles.iconButton}>
-            <Icon name="menu" style={styles.icon} />
+            <LinearGradient
+              colors={[colors.primaryLight, colors.primaryMedium]}
+              start={{x: 0.2, y: 0.2}}
+              end={{x: 1, y: 1}}
+              style={styles.iconContainer}>
+              <Icon name="menu" style={styles.icon} />
+            </LinearGradient>
           </NeomorphBox>
         </IconButton>
       </IconContainer>

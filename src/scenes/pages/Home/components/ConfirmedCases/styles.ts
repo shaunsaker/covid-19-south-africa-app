@@ -5,14 +5,13 @@ import {
   colors,
   rhythm,
   getTextShadow,
-  shadows,
   getMobileTextShadow,
 } from '../../../../../styleConstants';
 
 export const Container = styled.View`
-  background-color: ${colors.primary};
+  padding: ${rhythm.vt * 2}px 0 ${rhythm.vt * 4}px;
+  justify-content: center;
   align-items: center;
-  padding: ${rhythm.vt * 2}px 0;
 `;
 
 export const TitleText = styled.Text`
@@ -49,15 +48,6 @@ export const SourceText = styled.Text`
 `;
 
 export default {
-  contentContainer: {
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    width: wp('100%') - 2 * rhythm.hz,
-    height: 234,
-    ...shadows,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   counter: {
     fontFamily: 'Roboto-Bold',
     fontSize: 64,

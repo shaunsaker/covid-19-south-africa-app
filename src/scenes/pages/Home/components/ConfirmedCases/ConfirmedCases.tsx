@@ -1,5 +1,4 @@
 import React from 'react';
-import {NeomorphBox} from 'react-native-neomorph-shadows';
 import Counter from 'react-native-counter';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -26,25 +25,23 @@ const ConfirmedCases = ({
 }: Props) => {
   return (
     <Container>
-      <NeomorphBox inner style={styles.contentContainer}>
-        <TitleText>Confirmed Cases</TitleText>
+      <TitleText>Confirmed Cases</TitleText>
 
-        <Counter
-          start={start}
-          end={end}
-          time={3000}
-          easing="cubicOut"
-          style={styles.counter}
-        />
+      <Counter
+        start={start}
+        end={end}
+        time={3000}
+        easing="cubicOut"
+        style={styles.counter}
+      />
 
-        <FooterText>Last Updated: {lastUpdated}</FooterText>
+      <FooterText>Last Updated: {lastUpdated}</FooterText>
 
-        <SourceButton onPress={handleSourcePress}>
-          <SourceText>
-            Source <Icon name="open-in-new" />
-          </SourceText>
-        </SourceButton>
-      </NeomorphBox>
+      <SourceButton onPress={handleSourcePress}>
+        <SourceText>
+          Source <Icon name="open-in-new" />
+        </SourceText>
+      </SourceButton>
     </Container>
   );
 };

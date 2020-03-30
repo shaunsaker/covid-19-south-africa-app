@@ -5,6 +5,7 @@ import {
   rhythm,
   getTextShadow,
   getMobileTextShadow,
+  shadows,
 } from '../../styleConstants';
 
 const PADDING = `${rhythm.vt}px ${rhythm.hz}px`;
@@ -13,7 +14,6 @@ export const Container = styled.View`
   padding: ${PADDING};
   justify-content: center;
   align-items: center;
-  background-color: ${colors.primary};
   height: 64px;
 `;
 
@@ -33,7 +33,7 @@ export const IconButton = styled.TouchableOpacity``;
 export const Text = styled.Text`
   font-family: 'Roboto-Bold';
   font-size: 16px;
-  color: ${colors.whiteText};
+  color: ${colors.primaryText};
   text-shadow: ${getTextShadow('dark')};
   padding: 4px; /* for shadow to show through */
 `;
@@ -45,12 +45,21 @@ export default {
     borderRadius: ICON_BUTTON_SIZE / 2,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowRadius: 4,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.primaryLight,
+    shadowOffset: {width: 2, height: 2},
+    shadowOpacity: 0.15,
+    shadowRadius: 2,
+  },
+  iconContainer: {
+    width: ICON_BUTTON_SIZE - 2,
+    height: ICON_BUTTON_SIZE - 2,
+    borderRadius: ICON_BUTTON_SIZE / 2,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   icon: {
     fontSize: 24,
-    color: colors.whiteText,
+    color: colors.primaryText,
     ...getMobileTextShadow('dark'),
   },
 };
