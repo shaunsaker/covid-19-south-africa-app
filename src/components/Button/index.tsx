@@ -1,8 +1,6 @@
 import React from 'react';
 
-import Button from './Button';
-
-interface Props {}
+import Button, {Props} from './Button';
 
 const ButtonContainer = ({...props}: Props) => {
   return <Button {...props} />;

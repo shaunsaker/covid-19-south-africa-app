@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import styles, {Button as StyledButton, Text} from './styles';
 import {colors} from '../../styleConstants';
 
-interface Props {
+export interface Props {
   children: ReactNode;
   handlePress: () => void;
 }
