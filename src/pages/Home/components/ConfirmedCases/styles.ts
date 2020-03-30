@@ -8,7 +8,7 @@ import {
 } from '../../../../styleConstants';
 
 export const Container = styled.View`
-  padding: ${rhythm.vt}px 0;
+  padding: 0 0 ${rhythm.vt}px;
   justify-content: center;
   align-items: center;
 `;
