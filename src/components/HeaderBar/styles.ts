@@ -59,7 +59,7 @@ export default {
   },
   icon: {
     fontSize: 24,
-    color: colors.primaryText,
+    color: colors.secondaryText,
     ...getMobileTextShadow('dark'),
   },
 };

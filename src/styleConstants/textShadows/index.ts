@@ -1,7 +1,7 @@
 const constants = {
-  y: 1,
-  x: 1,
-  radius: 2,
+  y: 2,
+  x: 2,
+  radius: 4,
   color: {
     dark: 'rgba(0, 0, 0, 0.25)',
     light: 'rgba(255, 255, 255, 0.25)',

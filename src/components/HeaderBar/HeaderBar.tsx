@@ -15,17 +15,17 @@ const HeaderBar = ({handleMenuPress}: Props) => {
   return (
     <Container>
       <IconContainer>
-        <IconButton onPress={handleMenuPress}>
-          <NeomorphBox style={styles.iconButton}>
-            <LinearGradient
-              colors={[colors.primaryLight, colors.primaryMedium]}
-              start={{x: 0.2, y: 0.2}}
-              end={{x: 1, y: 1}}
-              style={styles.iconContainer}>
+        <NeomorphBox style={styles.iconButton}>
+          <LinearGradient
+            colors={[colors.primaryLight, colors.primaryMedium]}
+            start={{x: 0.2, y: 0.2}}
+            end={{x: 1, y: 1}}
+            style={styles.iconContainer}>
+            <IconButton onPress={handleMenuPress}>
               <Icon name="menu" style={styles.icon} />
-            </LinearGradient>
-          </NeomorphBox>
-        </IconButton>
+            </IconButton>
+          </LinearGradient>
+        </NeomorphBox>
       </IconContainer>
 
       <Text>CVD19ZA</Text>

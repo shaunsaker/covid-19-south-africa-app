@@ -12,6 +12,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "moment": "^2.24.0",
     "react": "16.11.0",
     "react-native": "0.62.0",
     "react-native-counter": "git+https://github.com/Kerumen/react-native-counter#8d25ef92488b03e1276e102f81cf5a8051d34157",
