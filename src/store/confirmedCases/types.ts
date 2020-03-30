@@ -4,7 +4,12 @@ export enum ConfirmedCasesActionTypes {
 }
 
 export interface ConfirmedCase {
-  // TODO:
+  dateAdded: string;
+  confirmedCases: number;
+  dateCreated: string;
+  title: string;
+  href: string;
+  id: string;
 }
 
 export type ConfirmedCasesState = ConfirmedCase[];

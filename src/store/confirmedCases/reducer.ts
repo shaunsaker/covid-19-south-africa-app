@@ -9,7 +9,7 @@ const reducer: Reducer<ConfirmedCasesState> = (
 ) => {
   switch (action.type) {
     case ConfirmedCasesActionTypes.SET_CONFIRMED_CASES: {
-      return [...state, action.payload];
+      return action.payload.confirmedCases;
     }
     default: {
       return state;

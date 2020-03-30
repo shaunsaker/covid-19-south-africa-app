@@ -12,9 +12,6 @@ import SideMenu from './components/SideMenu';
 // persistor.purge();
 
 const App = () => {
-  // console.disableYellowBox = true;
-  // console.ignoredYellowBox = ['react-native BugReporting extraData:'];
-
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
