@@ -14,6 +14,7 @@ interface Props {
   start: Number;
   end: Number;
   lastUpdated: string;
+  handleCountComplete: () => void;
   handleSourcePress: () => void;
 }
 
@@ -21,6 +22,7 @@ const ConfirmedCases = ({
   start,
   end,
   lastUpdated,
+  handleCountComplete,
   handleSourcePress,
 }: Props) => {
   return (
@@ -33,6 +35,7 @@ const ConfirmedCases = ({
         time={3000}
         easing="cubicOut"
         style={styles.counter}
+        onComplete={handleCountComplete}
       />
 
       <FooterText>Last Updated: {lastUpdated}</FooterText>
