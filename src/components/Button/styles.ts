@@ -12,16 +12,16 @@ export const Text = styled.Text`
   padding: 4px; /* for shadow to show through */
 `;
 
-const WIDTH = 200;
-const HEIGHT = 40;
-const BORDER_RADIUS = 20;
+const WIDTH = 240;
+const HEIGHT = 64;
+const BORDER_RADIUS = 10;
 
 export default {
   buttonWrapper: {
     width: WIDTH,
     height: HEIGHT,
     borderRadius: BORDER_RADIUS,
-    backgroundColor: colors.primaryLight,
+    backgroundColor: colors.secondaryDark,
     shadowOffset: {width: 2, height: 2},
     shadowOpacity: 0.15,
     shadowRadius: 2,

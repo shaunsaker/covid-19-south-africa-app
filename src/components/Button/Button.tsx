@@ -13,15 +13,15 @@ interface Props {
 const Button = ({children, handlePress}: Props) => {
   return (
     <NeomorphBox style={styles.buttonWrapper}>
-      <LinearGradient
-        colors={[colors.primaryLight, colors.primaryMedium]}
-        start={{x: 0.2, y: 0.2}}
-        end={{x: 1, y: 1}}
-        style={styles.buttonContainer}>
-        <StyledButton onPress={handlePress}>
+      <StyledButton onPress={handlePress}>
+        <LinearGradient
+          colors={[colors.secondary, colors.secondaryDark]}
+          start={{x: 0.2, y: 0.2}}
+          end={{x: 1, y: 1}}
+          style={styles.buttonContainer}>
           <Text>{children}</Text>
-        </StyledButton>
-      </LinearGradient>
+        </LinearGradient>
+      </StyledButton>
     </NeomorphBox>
   );
 };
