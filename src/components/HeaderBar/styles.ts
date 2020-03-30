@@ -42,7 +42,7 @@ export default {
   iconButton: {
     width: ICON_BUTTON_SIZE,
     height: ICON_BUTTON_SIZE,
-    borderRadius: 4,
+    borderRadius: ICON_BUTTON_SIZE / 2,
     justifyContent: 'center',
     alignItems: 'center',
     shadowRadius: 4,

@@ -1,5 +1,8 @@
 import styled from 'styled-components/native';
-import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 import {
   colors,
@@ -9,6 +12,7 @@ import {
 } from '../../../../../styleConstants';
 
 export const Container = styled.View`
+  flex: 1; /* needed for height calculation of contentContainer */
   background-color: ${colors.primary};
   align-items: center;
   padding: ${rhythm.vt * 2}px 0;
@@ -23,13 +27,21 @@ export const Text = styled.Text`
 `;
 
 export default {
+  contentContainerWrapper: {
+    flex: 1 /* needed for height calculation of contentContainer */,
+    width: '100%',
+  },
   contentContainer: {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    width: wp('100%') - 2 * rhythm.hz,
-    height: 234, // TODO:
+    backgroundColor: colors.primary,
     ...shadows,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row',
+  },
+  lineChart: {},
+  lineChartSvg: {
+    stroke: colors.secondary,
+    strokeWidth: 4,
   },
 };

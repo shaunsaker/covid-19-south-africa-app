@@ -8,5 +8,6 @@ export const Container = styled.View`
 `;
 
 export const ContentContainer = styled.View`
+  flex: 1;
   padding: ${rhythm.vt}px ${rhythm.hz}px;
 `;
