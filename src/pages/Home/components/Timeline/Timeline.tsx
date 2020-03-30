@@ -61,6 +61,7 @@ const Timeline = ({width, height, data = [], handleLayout}: Props) => {
                 data={data}
                 yAccessor={({item}) => item.value}
                 contentInset={contentInset}
+                animate
                 style={{
                   ...styles.lineChart,
                   width,
