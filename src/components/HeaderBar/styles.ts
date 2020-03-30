@@ -1,17 +1,20 @@
 import styled from 'styled-components/native';
+import {getStatusBarHeight} from 'react-native-iphone-x-helper';
+import {Platform} from 'react-native';
 
 import {
   colors,
   rhythm,
   getTextShadow,
   getMobileTextShadow,
-  shadows,
 } from '../../styleConstants';
 
-const PADDING = `${rhythm.vt}px ${rhythm.hz}px`;
+const PADDING_TOP = rhythm.vt;
+const PADDING = `${PADDING_TOP}px ${rhythm.hz}px`;
 
 export const Container = styled.View`
   padding: ${PADDING};
+  margin-top: ${Platform.OS === 'ios' ? getStatusBarHeight() + 3 : 0}px;
   justify-content: center;
   align-items: center;
   height: 64px;
