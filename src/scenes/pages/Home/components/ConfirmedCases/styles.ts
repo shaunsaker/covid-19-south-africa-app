@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import {
   colors,
@@ -9,7 +8,7 @@ import {
 } from '../../../../../styleConstants';
 
 export const Container = styled.View`
-  padding: ${rhythm.vt * 2}px 0;
+  padding: ${rhythm.vt}px 0;
   justify-content: center;
   align-items: center;
 `;
