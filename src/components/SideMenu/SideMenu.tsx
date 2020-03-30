@@ -27,7 +27,7 @@ const SideMenu = ({version, handleGetInTouchPress}: Props) => {
             colors={[colors.primary, colors.primaryMedium]}
             style={styles.versionWrapper}>
             <NeomorphBox inner style={styles.versionContainer}>
-              <VersionText>{version}</VersionText>
+              <VersionText>Version: {version}</VersionText>
             </NeomorphBox>
           </LinearGradient>
         </ContentContainer>
