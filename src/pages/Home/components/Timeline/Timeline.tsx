@@ -76,11 +76,11 @@ const Timeline = ({width, height, data = [], handleLayout}: Props) => {
         <XAxis
           data={data}
           xAccessor={({item}) => item.date}
-          formatLabel={(value: Date) => moment(value).format('MMM Do')}
+          formatLabel={(value: Date) => moment(value).format('MMM D')}
           numberOfTicks={6}
           scale={scale.scaleTime}
           contentInset={{
-            left: 13 + contentInset.left + rhythm.hz / 2,
+            left: 13 + contentInset.left + rhythm.hz,
             right: contentInset.right,
           }}
           svg={styles.xAxisSvg}

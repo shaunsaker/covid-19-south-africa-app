@@ -4,10 +4,25 @@ import {ApplicationState} from '../reducers';
 
 import {sortArrayOfObjectsByKey} from '../../utils';
 
-const getConfirmedCasesSelector = (state: ApplicationState) =>
+export const getConfirmedCasesSelector = (state: ApplicationState) =>
   state.confirmedCases;
 
-const getSortedConfirmedCasesSelector = createSelector(
+export const getChronoSortedConfirmedCasesSelector = createSelector(
+  getConfirmedCasesSelector,
+  (confirmedCases) => {
+    /*
+     * Sort by oldest to latest
+     */
+    const sortedConfirmedCases = sortArrayOfObjectsByKey(
+      confirmedCases,
+      'dateCreated',
+    );
+
+    return sortedConfirmedCases;
+  },
+);
+
+export const getSortedConfirmedCasesSelector = createSelector(
   getConfirmedCasesSelector,
   (confirmedCases) => {
     /*
@@ -15,7 +30,7 @@ const getSortedConfirmedCasesSelector = createSelector(
      */
     const sortedConfirmedCases = sortArrayOfObjectsByKey(
       confirmedCases,
-      'dateAdded',
+      'dateCreated',
       true,
     );
 
