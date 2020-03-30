@@ -62,12 +62,14 @@ export default {
     fill: colors.secondaryText,
     fontSize: LABEL_FONT_SIZE,
   },
-  xAxis: {},
+  xAxis: {
+    marginTop: rhythm.vt,
+  },
   xAxisSvg: {
     fill: colors.secondaryText,
     fontSize: LABEL_FONT_SIZE,
-    rotation: -90,
-    originY: 20,
-    y: 20,
+  },
+  gridSvg: {
+    stroke: colors.primaryLight,
   },
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import {NeomorphBox} from 'react-native-neomorph-shadows';
 import {LayoutChangeEvent} from 'react-native';
-import {LineChart, YAxis, XAxis} from 'react-native-svg-charts';
+import {LineChart, YAxis, XAxis, Grid} from 'react-native-svg-charts';
 import LinearGradient from 'react-native-linear-gradient';
 import * as scale from 'd3-scale';
 import moment from 'moment';
@@ -66,8 +66,9 @@ const Timeline = ({width, height, data = [], handleLayout}: Props) => {
                   width,
                   height,
                 }}
-                svg={styles.lineChartSvg}
-              />
+                svg={styles.lineChartSvg}>
+                <Grid direction="BOTH" svg={styles.gridSvg} />
+              </LineChart>
             </NeomorphBox>
           </LinearGradient>
         </LineChartRowContainer>
@@ -79,7 +80,7 @@ const Timeline = ({width, height, data = [], handleLayout}: Props) => {
           numberOfTicks={6}
           scale={scale.scaleTime}
           contentInset={{
-            left: 13 + rhythm.hz / 4 + contentInset.left,
+            left: 13 + contentInset.left + rhythm.hz / 2,
             right: contentInset.right,
           }}
           svg={styles.xAxisSvg}
