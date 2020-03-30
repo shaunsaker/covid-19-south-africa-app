@@ -27,9 +27,11 @@ export default {
     shadowRadius: 2,
   },
   buttonContainer: {
+    borderRadius: BORDER_RADIUS,
+  },
+  button: {
     width: WIDTH - 2,
     height: HEIGHT - 2,
-    borderRadius: BORDER_RADIUS,
     justifyContent: 'center',
     alignItems: 'center',
   },
