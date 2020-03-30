@@ -13,7 +13,7 @@ import styles, {
   LineChartRowContainer,
   YAxisLabelText,
 } from './styles';
-import {rhythm, colors} from '../../../../../styleConstants';
+import {rhythm, colors} from '../../../../styleConstants';
 
 interface Datum {
   date: Date;

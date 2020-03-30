@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-import {colors, rhythm, getTextShadow} from '../../../../../styleConstants';
+import {colors, rhythm, getTextShadow} from '../../../../styleConstants';
 
 export const Container = styled.View`
   align-items: center;

@@ -5,7 +5,7 @@ import {
   rhythm,
   getTextShadow,
   getMobileTextShadow,
-} from '../../../../../styleConstants';
+} from '../../../../styleConstants';
 
 export const Container = styled.View`
   padding: ${rhythm.vt}px 0;
