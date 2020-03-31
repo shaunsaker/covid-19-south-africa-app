@@ -15,7 +15,7 @@ export const Container = styled.View`
 
 export const TitleText = styled.Text`
   font-family: 'Roboto-Bold';
-  font-size: 24px;
+  font-size: 20px;
   color: ${colors.secondaryText};
   margin-bottom: ${rhythm.vt}px;
   text-shadow: ${getTextShadow('dark')};

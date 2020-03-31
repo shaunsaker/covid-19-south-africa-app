@@ -10,7 +10,7 @@ export const Container = styled.View`
 
 export const Text = styled.Text`
   font-family: 'Roboto-Bold';
-  font-size: 24px;
+  font-size: 20px;
   color: ${colors.secondaryText};
   margin-bottom: ${rhythm.vt * 2}px;
   text-shadow: ${getTextShadow('dark')};
