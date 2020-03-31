@@ -1,7 +1,10 @@
 import {AppRegistry} from 'react-native';
-import {getStorybookUI, configure} from '@storybook/react-native';
+import {getStorybookUI, configure, addDecorator} from '@storybook/react-native';
 
 import {loadStories} from './storyLoader';
+import withProvider from './decorators/withProvider';
+
+addDecorator(withProvider);
 
 // import stories
 configure(() => {
