@@ -13,7 +13,7 @@ export const Text = styled.Text`
 `;
 
 const WIDTH = 240;
-const HEIGHT = 64;
+const HEIGHT = 48;
 const BORDER_RADIUS = 10;
 
 export default {

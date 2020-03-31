@@ -26,7 +26,7 @@ export default {
   versionWrapper: {},
   versionContainer: {
     width: 240,
-    height: 64,
+    height: 48,
     backgroundColor: 'transparent',
     shadowOffset: {width: 4, height: 4},
     shadowOpacity: 0.4,
