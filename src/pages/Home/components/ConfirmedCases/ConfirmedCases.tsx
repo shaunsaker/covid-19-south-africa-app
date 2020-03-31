@@ -30,10 +30,11 @@ const ConfirmedCases = ({
       <TitleText>Confirmed Cases</TitleText>
 
       <Counter
+        key={end} // mount new if end changes
         start={start}
         end={end}
-        time={3000}
-        easing="cubicOut"
+        time={2000}
+        easing="linear"
         style={styles.counter}
         onComplete={handleCountComplete}
       />

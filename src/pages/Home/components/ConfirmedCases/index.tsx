@@ -30,7 +30,7 @@ const ConfirmedCasesContainer = () => {
     : '-';
 
   const onCountComplete = () => {
-    if (latestConfirmedCase) {
+    if (latestConfirmedCase && latestConfirmedCase.confirmedCases) {
       dispatch(setLatestViewedConfirmedCase(latestConfirmedCase));
     }
   };

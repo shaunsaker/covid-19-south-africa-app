@@ -24,7 +24,10 @@ const HeaderBar = ({
 }: Props) => {
   return (
     <Container>
-      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
+      <StatusBar
+        backgroundColor={colors.primaryLight}
+        barStyle="light-content"
+      />
 
       {showMenuIcon ? (
         <LeftIconContainer>
