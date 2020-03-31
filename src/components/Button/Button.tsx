@@ -15,7 +15,7 @@ const Button = ({children, handlePress}: Props) => {
     <NeomorphBox style={styles.buttonWrapper}>
       <LinearGradient
         colors={[colors.secondary, colors.secondaryDark]}
-        start={{x: 0.2, y: 0.2}}
+        start={{x: 0.7, y: 0}}
         end={{x: 1, y: 1}}
         style={styles.buttonContainer}>
         <StyledButton onPress={handlePress} style={styles.button}>
