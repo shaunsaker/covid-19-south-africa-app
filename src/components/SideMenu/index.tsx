@@ -5,7 +5,7 @@ import SideMenu from 'react-native-side-menu';
 import {useSelector, useDispatch} from 'react-redux';
 
 import pkg from '../../../package.json';
-import {build, email, snackbar} from '../../config';
+import {build, email, snackbar, code} from '../../config';
 import {sideMenuIsOpenSelector} from '../../store/selectors';
 import {setSideMenu} from '../../store/actions';
 
@@ -17,7 +17,7 @@ interface Props {
 
 const SideMenuContainer = ({children}: Props) => {
   const isOpen = useSelector(sideMenuIsOpenSelector);
-  const version = `${pkg.version} (${build})`;
+  const version = `${pkg.version} (${build}) | ${code}`;
   const dispatch = useDispatch();
 
   const onGetInTouchPress = () => {
