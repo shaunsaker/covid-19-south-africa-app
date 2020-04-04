@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CVD19ZA</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">***REMOVED***</string>
 </resources>
