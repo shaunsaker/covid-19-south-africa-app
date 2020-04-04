@@ -10,7 +10,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "code-push": "code-push release-react CVD19ZA-ios ios && code-push release-react CVD19ZA-android android"
+    "code-push": "code-push release-react CVD19ZA-ios ios -d Production && code-push release-react CVD19ZA-android android -d Production"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.8.1",
