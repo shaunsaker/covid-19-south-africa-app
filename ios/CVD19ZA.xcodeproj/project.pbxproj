@@ -320,6 +320,7 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = A8W93XCW3S;
 						LastSwiftMigration = 1120;
+						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -708,6 +709,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CVD19ZA/CVD19ZA.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = A8W93XCW3S;
 				ENABLE_BITCODE = NO;
@@ -726,6 +729,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.za.shaunsaker.cvd19za;
 				PRODUCT_NAME = CVD19ZA;
+				PROVISIONING_PROFILE_SPECIFIER = "Shaun Saker Provisioning Profile Ad Hoc Distributi";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -740,6 +744,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CVD19ZA/CVD19ZA.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = A8W93XCW3S;
 				INFOPLIST_FILE = CVD19ZA/Info.plist;
@@ -753,6 +759,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.za.shaunsaker.cvd19za;
 				PRODUCT_NAME = CVD19ZA;
+				PROVISIONING_PROFILE_SPECIFIER = "Shaun Saker Provisioning Profile Ad Hoc Distributi";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
