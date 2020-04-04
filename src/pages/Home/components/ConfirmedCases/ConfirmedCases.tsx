@@ -1,6 +1,8 @@
 import React from 'react';
 import Counter from 'react-native-counter';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {View} from 'react-native';
+import Animator from 'react-native-simple-animators';
 
 import styles, {
   Container,
@@ -8,12 +10,14 @@ import styles, {
   FooterText,
   SourceText,
   SourceButton,
+  LoadingContainer,
 } from './styles';
 
 interface Props {
   start: Number;
   end: Number;
   lastUpdated: string;
+  loading?: boolean;
   handleCountComplete: () => void;
   handleSourcePress: () => void;
 }
@@ -22,6 +26,7 @@ const ConfirmedCases = ({
   start,
   end,
   lastUpdated,
+  loading,
   handleCountComplete,
   handleSourcePress,
 }: Props) => {
@@ -29,23 +34,43 @@ const ConfirmedCases = ({
     <Container>
       <TitleText>Confirmed Cases</TitleText>
 
-      <Counter
-        key={end} // mount new if end changes
-        start={start}
-        end={end}
-        time={2000}
-        easing="linear"
-        style={styles.counter}
-        onComplete={handleCountComplete}
-      />
+      {loading ? (
+        <Animator
+          type="opacity"
+          initialValue={0.33}
+          finalValue={1}
+          shouldAnimateIn
+          shouldRepeat
+          duration={750}>
+          <LoadingContainer />
+        </Animator>
+      ) : (
+        <Counter
+          key={end} // mount new if end changes
+          start={start}
+          end={end}
+          time={2000}
+          easing="linear"
+          style={styles.counter}
+          onComplete={handleCountComplete}
+        />
+      )}
 
-      <FooterText>Last Updated: {lastUpdated}</FooterText>
+      <FooterText>
+        {!loading
+          ? `Last Updated: ${lastUpdated}`
+          : 'Fetching the latest data...'}
+      </FooterText>
 
-      <SourceButton onPress={handleSourcePress}>
-        <SourceText>
-          Source <Icon name="open-in-new" />
-        </SourceText>
-      </SourceButton>
+      {!loading ? (
+        <SourceButton onPress={handleSourcePress}>
+          <SourceText>
+            Source <Icon name="open-in-new" />
+          </SourceText>
+        </SourceButton>
+      ) : (
+        <View style={styles.sourceButtonPlaceholder} />
+      )}
     </Container>
   );
 };

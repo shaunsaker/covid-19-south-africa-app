@@ -27,7 +27,7 @@ const ConfirmedCasesContainer = () => {
   const end = latestConfirmedCase ? latestConfirmedCase.confirmedCases : 0;
   const lastUpdated = latestConfirmedCase
     ? moment(latestConfirmedCase.dateAdded).calendar()
-    : '-';
+    : '';
 
   const onCountComplete = () => {
     if (latestConfirmedCase && latestConfirmedCase.confirmedCases) {

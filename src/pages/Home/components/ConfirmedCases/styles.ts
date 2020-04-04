@@ -46,6 +46,14 @@ export const SourceText = styled.Text`
   text-shadow: ${getTextShadow('dark')};
 `;
 
+export const LoadingContainer = styled.View`
+  width: 148px;
+  height: 75.5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  margin-bottom: ${rhythm.vt}px;
+`;
+
 export default {
   counter: {
     fontFamily: 'Roboto-Bold',
@@ -53,5 +61,8 @@ export default {
     color: colors.primaryText,
     marginBottom: rhythm.vt,
     ...getMobileTextShadow('dark'),
+  },
+  sourceButtonPlaceholder: {
+    height: 19.5,
   },
 };
