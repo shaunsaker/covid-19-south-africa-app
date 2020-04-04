@@ -28,9 +28,6 @@ const CodePushHandler = () => {
 
   const codePushStatusDidChange = (status: CodePush.SyncStatus) => {
     switch (status) {
-      case CodePush.SyncStatus.CHECKING_FOR_UPDATE:
-        showSnackbar('Checking for updates...');
-        break;
       case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
         showSnackbar('Downloading update...');
         break;
@@ -38,9 +35,6 @@ const CodePushHandler = () => {
         showSnackbar(
           'An update is ready to be installed. Close and reopen the app to install.',
         );
-        break;
-      case CodePush.SyncStatus.UP_TO_DATE:
-        showSnackbar('App is up to date.');
         break;
 
       default:
