@@ -1,10 +1,24 @@
 import {useEffect} from 'react';
 import CodePush from 'react-native-code-push';
 import Snackbar from 'react-native-snackbar';
+import {AppState, AppStateStatus} from 'react-native';
 
 import {snackbar} from '../../config';
 
 const CodePushHandler = () => {
+  const syncCodePush = () => {
+    CodePush.sync(
+      {installMode: CodePush.InstallMode.ON_NEXT_RESTART, updateDialog: {}},
+      codePushStatusDidChange,
+    );
+  };
+
+  const onAppStateChange = (appState: AppStateStatus) => {
+    if (appState === 'active') {
+      syncCodePush();
+    }
+  };
+
   const showSnackbar = (text: string) => {
     Snackbar.show({
       ...snackbar,
@@ -35,13 +49,13 @@ const CodePushHandler = () => {
   };
 
   useEffect(() => {
-    /*
-     * On mount, sync code push
-     */
-    CodePush.sync(
-      {installMode: CodePush.InstallMode.ON_NEXT_RESTART, updateDialog: {}},
-      codePushStatusDidChange,
-    );
+    syncCodePush();
+
+    AppState.addEventListener('change', onAppStateChange);
+
+    return () => {
+      AppState.removeEventListener('change', onAppStateChange);
+    };
   }, []);
 
   return null;
