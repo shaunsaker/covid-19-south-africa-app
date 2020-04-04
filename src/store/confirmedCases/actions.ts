@@ -7,3 +7,6 @@ export const getConfirmedCases = () =>
 
 export const setConfirmedCases = (confirmedCases: ConfirmedCase[]) =>
   action(ConfirmedCasesActionTypes.SET_CONFIRMED_CASES, {confirmedCases});
+
+export const setConfirmedCasesLoading = (loading: boolean) =>
+  action(ConfirmedCasesActionTypes.SET_CONFIRMED_CASES_LOADING, {loading});

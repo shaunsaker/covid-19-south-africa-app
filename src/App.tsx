@@ -11,7 +11,7 @@ import NotificationsHandler from './components/NotificationsHandler';
 import CodePushHandler from './components/CodePushHandler';
 
 // Helper to clear local storage during development
-// persistor.purge();
+persistor.purge();
 
 const App = () => {
   return (

@@ -1,7 +1,10 @@
 import {Reducer} from 'redux';
 import {ConfirmedCasesActionTypes, ConfirmedCasesState} from './types';
 
-export const initialState: ConfirmedCasesState = [];
+export const initialState: ConfirmedCasesState = {
+  data: [],
+  loading: false,
+};
 
 const reducer: Reducer<ConfirmedCasesState> = (
   state = initialState,
@@ -9,7 +12,10 @@ const reducer: Reducer<ConfirmedCasesState> = (
 ) => {
   switch (action.type) {
     case ConfirmedCasesActionTypes.SET_CONFIRMED_CASES: {
-      return action.payload.confirmedCases;
+      return {...state, data: action.payload.confirmedCases};
+    }
+    case ConfirmedCasesActionTypes.SET_CONFIRMED_CASES_LOADING: {
+      return {...state, loading: action.payload.loading};
     }
     default: {
       return state;

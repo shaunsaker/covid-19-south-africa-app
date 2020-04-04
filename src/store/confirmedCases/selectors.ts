@@ -5,7 +5,10 @@ import {ApplicationState} from '../reducers';
 import {sortArrayOfObjectsByKey} from '../../utils';
 
 export const getConfirmedCasesSelector = (state: ApplicationState) =>
-  state.confirmedCases;
+  state.confirmedCases.data;
+
+export const getConfirmedCasesLoadingSelector = (state: ApplicationState) =>
+  state.confirmedCases.loading;
 
 export const getChronoSortedConfirmedCasesSelector = createSelector(
   getConfirmedCasesSelector,

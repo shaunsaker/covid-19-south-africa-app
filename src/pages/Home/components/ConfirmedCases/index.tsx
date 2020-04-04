@@ -8,6 +8,7 @@ import ConfirmedCases from './ConfirmedCases';
 import {
   getLatestConfirmedCaseSelector,
   getLatestViewedConfirmedCase,
+  getConfirmedCasesLoadingSelector,
 } from '../../../../store/selectors';
 import {ConfirmedCase} from '../../../../store/types';
 import {setLatestViewedConfirmedCase} from '../../../../store/actions';
@@ -15,6 +16,7 @@ import {snackbar} from '../../../../config';
 
 const ConfirmedCasesContainer = () => {
   const dispatch = useDispatch();
+  const loading: boolean = useSelector(getConfirmedCasesLoadingSelector);
   const latestConfirmedCase: ConfirmedCase = useSelector(
     getLatestConfirmedCaseSelector,
   );
@@ -55,6 +57,7 @@ const ConfirmedCasesContainer = () => {
       start={start}
       end={end}
       lastUpdated={lastUpdated}
+      loading={loading}
       handleCountComplete={onCountComplete}
       handleSourcePress={onSourcePress}
     />
