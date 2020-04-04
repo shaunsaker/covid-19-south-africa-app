@@ -57,7 +57,7 @@ const ConfirmedCasesContainer = () => {
       start={start}
       end={end}
       lastUpdated={lastUpdated}
-      loading={loading}
+      loading={start === 0 && loading}
       handleCountComplete={onCountComplete}
       handleSourcePress={onSourcePress}
     />
