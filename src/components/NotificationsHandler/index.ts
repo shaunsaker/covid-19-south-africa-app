@@ -29,7 +29,9 @@ const NotificationsHandler = () => {
   };
 
   useEffect(() => {
-    handleNotifications();
+    if (!__DEV__) {
+      handleNotifications();
+    }
   }, []);
 
   return null;
