@@ -2,13 +2,13 @@ import React from 'react';
 
 import {ContentContainer} from './styles';
 
-import Background from '../../components/Background/Background';
-import HeaderBar from '../../components/HeaderBar';
+import Background from '../../../components/Background/Background';
+import HeaderBar from '../../../components/HeaderBar';
 import CounterView from './CounterView';
 import Timeline from './Timeline';
-import TabBar from '../../components/TabBar';
+import TabBar from '../../../components/TabBar';
 
-const ConfirmedCases = () => {
+const DeathCases = () => {
   return (
     <Background>
       <HeaderBar />
@@ -24,4 +24,4 @@ const ConfirmedCases = () => {
   );
 };
 
-export default ConfirmedCases;
+export default DeathCases;

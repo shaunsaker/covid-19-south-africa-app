@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 
-import {getConfirmedCases} from '../../store/actions';
+import {getConfirmedCases} from '../../../store/actions';
 
 import ConfirmedCases from './ConfirmedCases';
 

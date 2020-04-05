@@ -10,6 +10,8 @@ import deathCases from './deathCases/reducer';
 import {DeathCasesState} from './deathCases/types';
 import latestViewedDeathCase from './latestViewedDeathCase/reducer';
 import {LatestViewedDeathCaseState} from './latestViewedDeathCase/types';
+import navigation from './navigation/reducer';
+import {NavigationState} from './navigation/types';
 
 export interface ApplicationState {
   confirmedCases: ConfirmedCasesState;
@@ -17,6 +19,7 @@ export interface ApplicationState {
   sideMenu: SideMenuState;
   deathCases: DeathCasesState;
   latestViewedDeathCase: LatestViewedDeathCaseState;
+  navigation: NavigationState;
 }
 
 const rootReducer = combineReducers({
@@ -25,6 +28,7 @@ const rootReducer = combineReducers({
   sideMenu,
   deathCases,
   latestViewedDeathCase,
+  navigation,
 });
 
 export default rootReducer;

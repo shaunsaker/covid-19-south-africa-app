@@ -18,7 +18,7 @@ export const TabContainer = styled.TouchableOpacity<TabContainerProps>`
   padding: ${rhythm.vt}px ${rhythm.hz / 2}px;
   border-top-width: 4px;
   border-top-color: ${({isActive}) =>
-    isActive ? colors.whiteText : colors.primaryLight};
+    isActive ? colors.primaryText : colors.primaryLight};
 `;
 
 interface TabTextProps {
@@ -29,7 +29,7 @@ export const TabText = styled.Text<TabTextProps>`
   font-family: ${({isActive}) => (isActive ? 'Roboto-Bold' : 'Roboto')};
   font-size: 16px;
   color: ${({isActive}) =>
-    isActive ? colors.whiteText : colors.secondaryText};
+    isActive ? colors.primaryText : colors.secondaryText};
   text-shadow: ${getTextShadow('dark')};
 `;
 

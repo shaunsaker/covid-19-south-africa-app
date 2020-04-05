@@ -1,11 +1,10 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
-import {Router, Scene, Lightbox} from 'react-native-router-flux';
 
 import {store, persistor} from './store';
 
-import ConfirmedCases from './pages/ConfirmedCases';
+import Router from './Router';
 import SideMenu from './components/SideMenu';
 import NotificationsHandler from './components/NotificationsHandler';
 import CodePushHandler from './components/CodePushHandler';
@@ -20,13 +19,7 @@ const App = () => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <SideMenu>
-          <Router>
-            <Lightbox>
-              <Scene key="root" hideNavBar panHandlers={null}>
-                <Scene key="confirmedCases" component={ConfirmedCases} />
-              </Scene>
-            </Lightbox>
-          </Router>
+          <Router />
         </SideMenu>
 
         <NotificationsHandler />

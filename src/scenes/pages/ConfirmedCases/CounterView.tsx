@@ -4,15 +4,15 @@ import moment from 'moment';
 import {Linking} from 'react-native';
 import Snackbar from 'react-native-snackbar';
 
-import CounterView from '../../components/CounterView';
+import CounterView from '../../../components/CounterView';
 import {
   getLatestConfirmedCaseSelector,
   getLatestViewedConfirmedCase,
   getConfirmedCasesLoadingSelector,
-} from '../../store/selectors';
-import {ConfirmedCase} from '../../store/types';
-import {setLatestViewedConfirmedCase} from '../../store/actions';
-import {snackbar} from '../../config';
+} from '../../../store/selectors';
+import {ConfirmedCase} from '../../../store/types';
+import {setLatestViewedConfirmedCase} from '../../../store/actions';
+import {snackbar} from '../../../config';
 
 const ConfirmedCasesContainer = () => {
   const dispatch = useDispatch();

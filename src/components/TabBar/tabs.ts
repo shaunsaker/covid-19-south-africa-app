@@ -1,11 +1,11 @@
 const tabs = [
   {
     label: 'Cases',
-    sceneKey: 'confirmedCases',
+    sceneKey: '_confirmedCases',
   },
   {
     label: 'Deaths',
-    sceneKey: 'deathCases',
+    sceneKey: '_deathCases',
   },
 ];
 
