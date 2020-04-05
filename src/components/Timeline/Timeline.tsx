@@ -5,6 +5,11 @@ import {LineChart, YAxis, XAxis, Grid} from 'react-native-svg-charts';
 import LinearGradient from 'react-native-linear-gradient';
 import * as scale from 'd3-scale';
 import moment from 'moment';
+import {
+  Defs,
+  LinearGradient as LinearGradientSvg,
+  Stop,
+} from 'react-native-svg';
 
 import styles, {
   Container,
@@ -29,6 +34,15 @@ const Timeline = ({width, height, data = [], handleLayout}: Props) => {
     left: rhythm.hz,
     right: rhythm.hz * 2,
   };
+
+  const Gradient = () => (
+    <Defs key="gradient">
+      <LinearGradientSvg id="gradient">
+        <Stop offset="0%" stopColor={colors.secondaryDark} />
+        <Stop offset="100%" stopColor={colors.secondary} />
+      </LinearGradientSvg>
+    </Defs>
+  );
 
   return (
     <Container>
@@ -63,8 +77,9 @@ const Timeline = ({width, height, data = [], handleLayout}: Props) => {
                   width,
                   height,
                 }}
-                svg={styles.lineChartSvg}>
+                svg={{...styles.lineChartSvg, stroke: 'url(#gradient)'}}>
                 <Grid direction="BOTH" svg={styles.gridSvg} />
+                <Gradient />
               </LineChart>
             </NeomorphBox>
           </LinearGradient>
