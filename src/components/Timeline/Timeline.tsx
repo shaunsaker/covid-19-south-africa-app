@@ -27,7 +27,7 @@ const Timeline = ({width, height, data = [], handleLayout}: Props) => {
     top: rhythm.vt * 2,
     bottom: rhythm.vt * 2,
     left: rhythm.hz,
-    right: rhythm.hz,
+    right: rhythm.hz * 2,
   };
 
   return (
@@ -43,6 +43,7 @@ const Timeline = ({width, height, data = [], handleLayout}: Props) => {
             contentInset={contentInset}
             style={styles.yAxis}
             svg={styles.yAxisSvg}
+            numberOfTicks={6}
           />
 
           <LinearGradient
@@ -73,7 +74,7 @@ const Timeline = ({width, height, data = [], handleLayout}: Props) => {
           data={data}
           xAccessor={({item}) => item.date}
           formatLabel={(value: Date) => moment(value).format('MMM D')}
-          numberOfTicks={6}
+          numberOfTicks={4}
           scale={scale.scaleTime}
           contentInset={{
             left: 13 + contentInset.left + rhythm.hz,
