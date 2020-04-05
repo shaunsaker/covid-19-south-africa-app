@@ -28,6 +28,7 @@ export default {
   },
   buttonContainer: {
     borderRadius: BORDER_RADIUS,
+    backgroundColor: colors.secondary,
   },
   button: {
     width: WIDTH - 2,

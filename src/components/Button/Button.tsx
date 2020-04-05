@@ -1,9 +1,8 @@
 import React, {ReactNode} from 'react';
 import {NeomorphBox} from 'react-native-neomorph-shadows';
-import LinearGradient from 'react-native-linear-gradient';
+import {View} from 'react-native';
 
 import styles, {Button as StyledButton, Text} from './styles';
-import {colors} from '../../styleConstants';
 
 export interface Props {
   children: ReactNode;
@@ -13,15 +12,11 @@ export interface Props {
 const Button = ({children, handlePress}: Props) => {
   return (
     <NeomorphBox style={styles.buttonWrapper}>
-      <LinearGradient
-        colors={[colors.secondary, colors.secondaryDark]}
-        start={{x: 0.67, y: 0.67}}
-        end={{x: 1, y: 1}}
-        style={styles.buttonContainer}>
+      <View style={styles.buttonContainer}>
         <StyledButton onPress={handlePress} style={styles.button}>
           <Text>{children}</Text>
         </StyledButton>
-      </LinearGradient>
+      </View>
     </NeomorphBox>
   );
 };
