@@ -4,17 +4,17 @@ import {ContentContainer} from './styles';
 
 import Background from '../../components/Background/Background';
 import HeaderBar from '../../components/HeaderBar';
-import ConfirmedCases from './ConfirmedCases';
+import CounterView from './CounterView';
 import Timeline from './Timeline';
 import TabBar from '../../components/TabBar';
 
-const Home = () => {
+const ConfirmedCases = () => {
   return (
     <Background>
       <HeaderBar />
 
       <ContentContainer>
-        <ConfirmedCases />
+        <CounterView />
 
         <Timeline />
       </ContentContainer>
@@ -24,4 +24,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default ConfirmedCases;

@@ -3,9 +3,9 @@ import {useDispatch} from 'react-redux';
 
 import {getConfirmedCases} from '../../store/actions';
 
-import Home from './Home';
+import ConfirmedCases from './ConfirmedCases';
 
-const HomeContainer = () => {
+const ConfirmedCasesContainer = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const HomeContainer = () => {
     dispatch(getConfirmedCases());
   }, [dispatch]);
 
-  return <Home />;
+  return <ConfirmedCases />;
 };
 
-export default HomeContainer;
+export default ConfirmedCasesContainer;

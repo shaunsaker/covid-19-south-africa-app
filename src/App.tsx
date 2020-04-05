@@ -5,7 +5,7 @@ import {Router, Scene, Lightbox} from 'react-native-router-flux';
 
 import {store, persistor} from './store';
 
-import Home from './pages/Home';
+import ConfirmedCases from './pages/ConfirmedCases';
 import SideMenu from './components/SideMenu';
 import NotificationsHandler from './components/NotificationsHandler';
 import CodePushHandler from './components/CodePushHandler';
@@ -23,7 +23,7 @@ const App = () => {
           <Router>
             <Lightbox>
               <Scene key="root" hideNavBar panHandlers={null}>
-                <Scene key="home" component={Home} />
+                <Scene key="confirmedCases" component={ConfirmedCases} />
               </Scene>
             </Lightbox>
           </Router>
