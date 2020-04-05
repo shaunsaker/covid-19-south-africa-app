@@ -43,13 +43,15 @@ const CodePushHandler = () => {
   };
 
   useEffect(() => {
-    syncCodePush();
+    if (!__DEV__) {
+      syncCodePush();
 
-    AppState.addEventListener('change', onAppStateChange);
+      AppState.addEventListener('change', onAppStateChange);
 
-    return () => {
-      AppState.removeEventListener('change', onAppStateChange);
-    };
+      return () => {
+        AppState.removeEventListener('change', onAppStateChange);
+      };
+    }
   }, []);
 
   return null;
