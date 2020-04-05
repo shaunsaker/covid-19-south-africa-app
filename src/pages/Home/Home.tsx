@@ -4,8 +4,8 @@ import {ContentContainer} from './styles';
 
 import Background from '../../components/Background/Background';
 import HeaderBar from '../../components/HeaderBar';
-import ConfirmedCases from './components/ConfirmedCases';
-import Timeline from './components/Timeline';
+import ConfirmedCases from './ConfirmedCases';
+import Timeline from './Timeline';
 
 const Home = () => {
   return (
