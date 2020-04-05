@@ -23,7 +23,7 @@ const App = () => {
           <Router>
             <Lightbox>
               <Scene key="root" hideNavBar panHandlers={null}>
-                <Scene key="login" component={Home} />
+                <Scene key="home" component={Home} />
               </Scene>
             </Lightbox>
           </Router>

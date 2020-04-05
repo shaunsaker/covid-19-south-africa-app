@@ -6,6 +6,7 @@ import Background from '../../components/Background/Background';
 import HeaderBar from '../../components/HeaderBar';
 import ConfirmedCases from './ConfirmedCases';
 import Timeline from './Timeline';
+import TabBar from '../../components/TabBar';
 
 const Home = () => {
   return (
@@ -17,6 +18,8 @@ const Home = () => {
 
         <Timeline />
       </ContentContainer>
+
+      <TabBar />
     </Background>
   );
 };
