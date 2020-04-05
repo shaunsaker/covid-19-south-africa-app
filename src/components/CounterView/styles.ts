@@ -42,7 +42,7 @@ export const SourceButton = styled.TouchableOpacity``;
 export const SourceText = styled.Text`
   font-family: 'Roboto-Bold';
   font-size: 16px;
-  color: ${colors.secondaryLight};
+  color: ${colors.secondary};
   text-shadow: ${getTextShadow('dark')};
 `;
 
