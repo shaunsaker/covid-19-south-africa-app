@@ -42,6 +42,7 @@ export default {
   contentContainerWrapper: {
     flex: 1,
     borderRadius: 10,
+    overflow: 'hidden',
   },
   contentContainer: {
     flex: 1,

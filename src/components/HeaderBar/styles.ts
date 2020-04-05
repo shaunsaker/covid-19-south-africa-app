@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components/native';
+import styled from 'styled-components/native';
 import {getStatusBarHeight} from 'react-native-iphone-x-helper';
 import {Platform} from 'react-native';
 
