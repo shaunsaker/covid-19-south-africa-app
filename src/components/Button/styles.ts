@@ -21,7 +21,7 @@ export default {
     width: WIDTH,
     height: HEIGHT,
     borderRadius: BORDER_RADIUS,
-    backgroundColor: colors.secondaryDark,
+    backgroundColor: colors.secondaryLight,
     shadowOffset: {width: 2, height: 2},
     shadowOpacity: 0.15,
     shadowRadius: 2,

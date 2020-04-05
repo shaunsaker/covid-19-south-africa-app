@@ -38,7 +38,7 @@ const Timeline = ({width, height, data = [], handleLayout}: Props) => {
   const Gradient = () => (
     <Defs key="gradient">
       <LinearGradientSvg id="gradient">
-        <Stop offset="0%" stopColor={colors.secondaryDark} />
+        <Stop offset="0%" stopColor={colors.secondaryLight} />
         <Stop offset="100%" stopColor={colors.secondary} />
       </LinearGradientSvg>
     </Defs>
