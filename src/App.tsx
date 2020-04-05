@@ -14,6 +14,8 @@ import CodePushHandler from './components/CodePushHandler';
 // persistor.purge();
 // }
 
+console.disableYellowBox = true;
+
 const App = () => {
   return (
     <Provider store={store}>
