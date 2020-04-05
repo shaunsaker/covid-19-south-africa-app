@@ -732,6 +732,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "Shaun Saker Provisioning Profile Ad Hoc Distributi";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -746,7 +747,7 @@
 				CODE_SIGN_ENTITLEMENTS = CVD19ZA/CVD19ZA.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = A8W93XCW3S;
 				INFOPLIST_FILE = CVD19ZA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -761,6 +762,7 @@
 				PRODUCT_NAME = CVD19ZA;
 				PROVISIONING_PROFILE_SPECIFIER = "Shaun Saker Provisioning Profile Ad Hoc Distributi";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
