@@ -58,6 +58,7 @@ export default {
   },
   yAxis: {
     marginRight: rhythm.hz / 4,
+    width: 28,
   },
   yAxisSvg: {
     fill: colors.secondaryText,

@@ -1,7 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {LayoutChangeEvent} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 
 import Timeline from './Timeline';
+import {setTimelineLayout} from '../../store/actions';
+import {timelineLayoutSelector} from '../../store/selectors';
 
 interface Datum {
   date: Date;
@@ -13,21 +16,19 @@ export interface Props {
 }
 
 const TimelineContainer = ({...props}: Props) => {
-  const [layout, setLayout] = useState({
-    width: 0,
-    height: 0,
-  });
+  const dispatch = useDispatch();
+  const {width, height} = useSelector(timelineLayoutSelector);
 
   const onLayout = (event: LayoutChangeEvent) => {
-    const {layout: newLayout} = event.nativeEvent;
+    const {layout} = event.nativeEvent;
 
-    setLayout(newLayout);
+    dispatch(setTimelineLayout(layout));
   };
 
   return (
     <Timeline
-      width={layout.width}
-      height={layout.height}
+      width={width}
+      height={height}
       handleLayout={onLayout}
       {...props}
     />

@@ -2,7 +2,12 @@ import {Reducer} from 'redux';
 import {TimelineActionTypes, TimelineState} from './types';
 
 export const initialState: TimelineState = {
-  layout: {},
+  layout: {
+    width: 0,
+    height: 0,
+    x: 0,
+    y: 0,
+  },
 };
 
 const reducer: Reducer<TimelineState> = (state = initialState, action) => {
