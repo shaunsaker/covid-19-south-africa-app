@@ -54,6 +54,17 @@ const Timeline = ({width, height, data = [], handleLayout}: Props) => {
 
           <YAxis
             data={data.map(({value}) => value)}
+            formatLabel={(value) => {
+              /*
+               * If any of the data values are above 10000, format all of them to Xk
+               */
+
+              if (data.filter((item) => item.value >= 10000).length) {
+                return `${Math.floor(value / 1000)}k`;
+              }
+
+              return value;
+            }}
             contentInset={contentInset}
             style={styles.yAxis}
             svg={styles.yAxisSvg}
