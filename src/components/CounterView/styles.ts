@@ -61,6 +61,7 @@ export default {
     color: colors.primaryText,
     marginBottom: rhythm.vt,
     ...getMobileTextShadow('dark'),
+    textAlign: 'center',
   },
   sourceButtonPlaceholder: {
     height: 19.5,
