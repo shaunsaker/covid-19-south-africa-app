@@ -42,7 +42,8 @@ const CounterView = ({
         finalValue={loading ? 0.33 : 1}
         shouldAnimateIn={loading}
         shouldRepeat
-        duration={500}>
+        duration={500}
+        style={styles.animator}>
         <Counter
           key={end} // mount new if end changes
           start={start}
@@ -58,17 +59,17 @@ const CounterView = ({
             ? 'Fetching the latest data...'
             : `Last Updated: ${lastUpdated}`}
         </FooterText>
-      </Animator>
 
-      {!loading ? (
-        <SourceButton onPress={handleSourcePress}>
-          <SourceText>
-            Source <Icon name="open-in-new" />
-          </SourceText>
-        </SourceButton>
-      ) : (
-        <View style={styles.sourceButtonPlaceholder} />
-      )}
+        {loading && start === 0 ? (
+          <View style={styles.sourceButtonPlaceholder} />
+        ) : (
+          <SourceButton disabled={loading} onPress={handleSourcePress}>
+            <SourceText>
+              Source <Icon name="open-in-new" />
+            </SourceText>
+          </SourceButton>
+        )}
+      </Animator>
     </Container>
   );
 };

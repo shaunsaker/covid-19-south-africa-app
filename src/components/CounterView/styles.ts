@@ -55,13 +55,15 @@ export const LoadingContainer = styled.View`
 `;
 
 export default {
+  animator: {
+    alignItems: 'center',
+  },
   counter: {
     fontFamily: 'Roboto-Bold',
     fontSize: 64,
     color: colors.primaryText,
     marginBottom: rhythm.vt,
     ...getMobileTextShadow('dark'),
-    textAlign: 'center',
   },
   sourceButtonPlaceholder: {
     height: 19.5,
