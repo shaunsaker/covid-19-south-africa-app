@@ -38,8 +38,8 @@ const CounterView = ({
 
       <Animator
         type="opacity"
-        initialValue={loading ? 0.33 : 1}
-        finalValue={1}
+        initialValue={1}
+        finalValue={loading ? 0.33 : 1}
         shouldAnimateIn={loading}
         shouldRepeat
         duration={500}>
