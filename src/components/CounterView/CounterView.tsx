@@ -35,18 +35,13 @@ const CounterView = ({
   return (
     <Container>
       <TitleText>{title}</TitleText>
-
-      {loading ? (
-        <Animator
-          type="opacity"
-          initialValue={0.33}
-          finalValue={1}
-          shouldAnimateIn
-          shouldRepeat
-          duration={750}>
-          <LoadingContainer />
-        </Animator>
-      ) : (
+      <Animator
+        type="opacity"
+        initialValue={loading ? 0.33 : 1}
+        finalValue={1}
+        shouldAnimateIn={loading}
+        shouldRepeat
+        duration={500}>
         <Counter
           key={end} // mount new if end changes
           start={start}
@@ -56,14 +51,12 @@ const CounterView = ({
           style={styles.counter}
           onComplete={handleCountComplete}
         />
-      )}
-
+      </Animator>
       <FooterText>
         {!loading
           ? `Last Updated: ${lastUpdated}`
           : 'Fetching the latest data...'}
       </FooterText>
-
       {!loading ? (
         <SourceButton onPress={handleSourcePress}>
           <SourceText>
