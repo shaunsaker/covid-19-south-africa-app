@@ -23,8 +23,13 @@ export const TitleText = styled.Text`
 
 const SUBTITLE_SIZE = 96;
 
-export const CounterContainer = styled.View`
-  padding: 0 ${SUBTITLE_SIZE + rhythm.hz / 2}px;
+interface CounterContainerProps {
+  subtitle: string;
+}
+
+export const CounterContainer = styled.View<CounterContainerProps>`
+  padding: ${({subtitle}) =>
+    subtitle ? `0 ${SUBTITLE_SIZE + rhythm.hz / 2}px;` : '0'};
 `;
 
 export const SubtitleText = styled.Text`

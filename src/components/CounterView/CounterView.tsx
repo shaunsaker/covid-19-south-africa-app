@@ -48,7 +48,7 @@ const CounterView = ({
         shouldRepeat
         duration={500}
         style={styles.animator}>
-        <CounterContainer>
+        <CounterContainer subtitle={subtitle}>
           <Counter
             key={end} // mount new if end changes
             start={start}
