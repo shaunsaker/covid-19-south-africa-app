@@ -3,20 +3,22 @@ import Counter from 'react-native-counter';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {View} from 'react-native';
 import Animator from 'react-native-simple-animators';
+import {NeomorphBox} from 'react-native-neomorph-shadows';
 
 import styles, {
   Container,
   TitleText,
+  SubtitleText,
   FooterText,
   SourceText,
   SourceButton,
-  LoadingContainer,
 } from './styles';
 
 export interface Props {
   title: string;
   start: Number;
   end: Number;
+  subtitle?: string;
   lastUpdated: string;
   loading?: boolean;
   handleCountComplete: () => void;
@@ -27,6 +29,7 @@ const CounterView = ({
   title,
   start,
   end,
+  subtitle,
   lastUpdated,
   loading,
   handleCountComplete,
@@ -53,6 +56,12 @@ const CounterView = ({
           style={styles.counter}
           onComplete={handleCountComplete}
         />
+
+        {subtitle ? (
+          <NeomorphBox inner style={styles.subtitleContainer}>
+            <SubtitleText>{subtitle}</SubtitleText>
+          </NeomorphBox>
+        ) : null}
 
         <FooterText>
           {loading && start === 0

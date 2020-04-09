@@ -8,6 +8,7 @@ import {colors} from '../../../styleConstants';
 const title = 'Confirmed Cases';
 const start = 0;
 const end = 1170;
+const subtitle = '9%';
 const lastUpdated = '27 March 2020, 20h14';
 const handleSourcePress = () => console.log('Source pressed');
 const handleCountComplete = () => console.log('Count complete');
@@ -15,6 +16,7 @@ const defaultProps = {
   title,
   start,
   end,
+  subtitle,
   lastUpdated,
   handleSourcePress,
   handleCountComplete,

@@ -21,11 +21,10 @@ export const TitleText = styled.Text`
   text-shadow: ${getTextShadow('dark')};
 `;
 
-export const NumberText = styled.Text`
-  font-family: 'Roboto-Bold';
-  font-size: 48px;
+export const SubtitleText = styled.Text`
+  font-family: 'Roboto-Regular';
+  font-size: 12px;
   color: ${colors.primaryText};
-  margin-bottom: ${rhythm.vt}px;
   text-shadow: ${getTextShadow('dark')};
 `;
 
@@ -62,8 +61,23 @@ export default {
     fontFamily: 'Roboto-Bold',
     fontSize: 64,
     color: colors.primaryText,
-    marginBottom: rhythm.vt,
+    marginBottom: rhythm.vt / 2,
     ...getMobileTextShadow('dark'),
+  },
+  subtitleContainer: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    width: 30,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 15,
+    backgroundColor: colors.primaryLight,
+    shadowOffset: {width: 2, height: 2},
+    shadowOpacity: 0.4,
+    shadowRadius: 1,
+    paddingLeft: 2,
   },
   sourceButtonPlaceholder: {
     height: 19.5,
