@@ -21,7 +21,7 @@ export const TabContainer = styled.TouchableOpacity<TabContainerProps>`
   justify-content: center;
   align-items: center;
   height: ${TAB_HEIGHT}px;
-  padding: 0 ${rhythm.hz / 2}px;
+  padding: 0 ${rhythm.hz / 4}px;
   border-top-width: 1px;
   border-top-color: ${({isActive}) =>
     isActive ? colors.primaryText : colors.primaryLight};

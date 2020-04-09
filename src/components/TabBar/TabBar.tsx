@@ -12,14 +12,16 @@ export interface TabProps extends TabContainerProps {
 }
 
 export interface TabBarProps {
-  tabs: TabContainerProps[];
+  tabs: TabProps[];
   handleTabPress: (tab: TabContainerProps) => void;
 }
 
 const Tab = ({label, isActive, handlePress}: TabProps) => {
   return (
     <TabContainer isActive={isActive} onPress={handlePress}>
-      <TabText isActive={isActive}>{label}</TabText>
+      <TabText isActive={isActive} numberOfLines={1}>
+        {label}
+      </TabText>
     </TabContainer>
   );
 };
