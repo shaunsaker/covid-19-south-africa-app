@@ -13,7 +13,7 @@ const createChannel = (collection: string) => {
   });
 };
 
-function* onGetConfirmedCases() {
+function* onGetDeathCases() {
   yield put(setDeathCasesLoading(true));
   const channel = yield call(createChannel, 'deathCases');
 
@@ -24,7 +24,7 @@ function* onGetConfirmedCases() {
 }
 
 function* watchGetDeathCases() {
-  yield takeEvery(DeathCasesActionTypes.GET_DEATH_CASES, onGetConfirmedCases);
+  yield takeEvery(DeathCasesActionTypes.GET_DEATH_CASES, onGetDeathCases);
 }
 
 function* deathCasesSaga() {

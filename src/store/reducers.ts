@@ -14,6 +14,14 @@ import navigation from './navigation/reducer';
 import {NavigationState} from './navigation/types';
 import timeline from './timeline/reducer';
 import {TimelineState} from './timeline/types';
+import recoveredCases from './recoveredCases/reducer';
+import {RecoveredCasesState} from './recoveredCases/types';
+import latestViewedRecoveredCase from './latestViewedRecoveredCase/reducer';
+import {LatestViewedRecoveredCaseState} from './latestViewedRecoveredCase/types';
+import testCases from './testCases/reducer';
+import {TestCasesState} from './testCases/types';
+import latestViewedTestCase from './latestViewedTestCase/reducer';
+import {LatestViewedTestCaseState} from './latestViewedTestCase/types';
 
 export interface ApplicationState {
   confirmedCases: ConfirmedCasesState;
@@ -23,6 +31,10 @@ export interface ApplicationState {
   latestViewedDeathCase: LatestViewedDeathCaseState;
   navigation: NavigationState;
   timeline: TimelineState;
+  recoveredCases: RecoveredCasesState;
+  latestViewedRecoveredCase: LatestViewedRecoveredCaseState;
+  testCases: TestCasesState;
+  latestViewedTestCase: LatestViewedTestCaseState;
 }
 
 const rootReducer = combineReducers({
@@ -33,6 +45,10 @@ const rootReducer = combineReducers({
   latestViewedDeathCase,
   navigation,
   timeline,
+  recoveredCases,
+  latestViewedRecoveredCase,
+  testCases,
+  latestViewedTestCase,
 });
 
 export default rootReducer;

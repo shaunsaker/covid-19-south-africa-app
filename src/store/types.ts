@@ -5,3 +5,7 @@ export * from './deathCases/types';
 export * from './latestViewedDeathCase/types';
 export * from './navigation/types';
 export * from './timeline/types';
+export * from './recoveredCases/types';
+export * from './latestViewedRecoveredCase/types';
+export * from './testCases/types';
+export * from './latestViewedTestCase/types';

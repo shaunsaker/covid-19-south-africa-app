@@ -5,3 +5,7 @@ export * from './deathCases/selectors';
 export * from './latestViewedDeathCase/selectors';
 export * from './navigation/selectors';
 export * from './timeline/selectors';
+export * from './recoveredCases/selectors';
+export * from './latestViewedRecoveredCase/selectors';
+export * from './testCases/selectors';
+export * from './latestViewedTestCase/selectors';
