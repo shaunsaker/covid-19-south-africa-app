@@ -1,7 +1,9 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react-native';
+import {View} from 'react-native';
 
 import Timeline from '../Timeline';
+import {rhythm, colors} from '../../../styleConstants';
 
 const data = Array.from(Array(30)).map((_, index) => {
   return {
@@ -11,10 +13,19 @@ const data = Array.from(Array(30)).map((_, index) => {
 });
 
 storiesOf('Components|Timeline', module).add('default', () => (
-  <Timeline
-    width={200}
-    height={200}
-    data={data}
-    handleLayout={() => console.log('Layout')}
-  />
+  <View
+    style={{
+      flex: 1,
+      paddingHorizontal: rhythm.hz,
+      backgroundColor: colors.primary,
+    }}>
+    <View style={{flex: 1}} />
+
+    <Timeline
+      width={200}
+      height={200}
+      data={data}
+      handleLayout={() => console.log('Layout')}
+    />
+  </View>
 ));

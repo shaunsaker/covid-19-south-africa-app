@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {NeomorphBox} from 'react-native-neomorph-shadows';
 import {LayoutChangeEvent} from 'react-native';
 import {LineChart, YAxis, XAxis, Grid} from 'react-native-svg-charts';
@@ -23,10 +23,17 @@ import {Props as ContainerProps} from '.';
 interface Props extends ContainerProps {
   width: number;
   height: number;
+  children?: ReactNode;
   handleLayout: (event: LayoutChangeEvent) => void;
 }
 
-const Timeline = ({width, height, data = [], handleLayout}: Props) => {
+const Timeline = ({
+  width,
+  height,
+  children,
+  data = [],
+  handleLayout,
+}: Props) => {
   const contentInset = {
     top: rhythm.vt * 2,
     bottom: rhythm.vt * 2,
@@ -46,6 +53,8 @@ const Timeline = ({width, height, data = [], handleLayout}: Props) => {
   return (
     <Container>
       <Text>Timeline</Text>
+
+      {children}
 
       <LineChartContainer>
         <LineChartRowContainer>
