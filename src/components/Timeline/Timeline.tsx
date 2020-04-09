@@ -32,7 +32,7 @@ const Timeline = ({width, height, data = [], handleLayout}: Props) => {
     top: rhythm.vt * 2,
     bottom: rhythm.vt * 2,
     left: rhythm.hz,
-    right: rhythm.hz * 2,
+    right: rhythm.hz,
   };
 
   const Gradient = () => (
