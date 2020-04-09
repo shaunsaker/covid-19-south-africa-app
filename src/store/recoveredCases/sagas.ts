@@ -15,7 +15,7 @@ const createChannel = (collection: string) => {
 
 function* onGetRecoveredCases() {
   yield put(setRecoveredCasesLoading(true));
-  const channel = yield call(createChannel, 'recoveredCases');
+  const channel = yield call(createChannel, 'recoveryCases');
 
   yield takeEvery(channel, function* listen(recoveredCases: RecoveredCase[]) {
     yield put(setRecoveredCases(recoveredCases));
