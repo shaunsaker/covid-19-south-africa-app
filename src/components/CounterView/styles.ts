@@ -21,7 +21,7 @@ export const TitleText = styled.Text`
   text-shadow: ${getTextShadow('dark')};
 `;
 
-const SUBTITLE_SIZE = 30;
+const SUBTITLE_SIZE = 96;
 
 export const CounterContainer = styled.View`
   padding: 0 ${SUBTITLE_SIZE + rhythm.hz / 2}px;
@@ -75,15 +75,16 @@ export default {
     top: 0,
     right: 0,
     width: SUBTITLE_SIZE,
-    height: SUBTITLE_SIZE,
+    height: 40,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: SUBTITLE_SIZE / 2,
+    borderRadius: 10,
     backgroundColor: colors.primaryLight,
-    shadowOffset: {width: 1, height: 1},
+    shadowOffset: {width: 2, height: 2},
     shadowOpacity: 0.2,
     shadowRadius: 1,
-    paddingLeft: 2,
+    paddingVertical: rhythm.vt / 2,
+    paddingHorizontal: rhythm.hz / 2,
   },
   sourceButtonPlaceholder: {
     height: 19.5,

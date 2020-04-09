@@ -3,6 +3,10 @@ import {createSelector} from 'reselect';
 import {ApplicationState} from '../reducers';
 
 import {sortArrayOfObjectsByKey} from '../../utils';
+import {
+  getLatestConfirmedCaseSelector,
+  getLatestDeathCaseSelector,
+} from '../../store/selectors';
 
 export const getRecoveredCasesSelector = (state: ApplicationState) =>
   state.recoveredCases.data;
@@ -65,3 +69,23 @@ export const getPreviousRecoveredCaseSelector = createSelector(
     return previousRecoveredCase;
   },
 );
+
+export const getRecoveredCasesAsPercentageOfClosedCasesSelector = (
+  state: ApplicationState,
+) => {
+  const latestRecoveredCase = getLatestRecoveredCaseSelector(state);
+  const latestDeathCase = getLatestDeathCaseSelector(state);
+  const latestRecoveredCases = latestRecoveredCase
+    ? latestRecoveredCase.recovered
+    : 0;
+  const latestDeathCases = latestDeathCase ? latestDeathCase.deaths : 0;
+  const recoveredCasesAsPercentageOfClosedCases =
+    latestRecoveredCases && latestDeathCases
+      ? Math.round(
+          (100 * latestRecoveredCases) /
+            (latestRecoveredCases + latestDeathCases),
+        )
+      : 0;
+
+  return recoveredCasesAsPercentageOfClosedCases;
+};

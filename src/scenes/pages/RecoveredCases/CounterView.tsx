@@ -9,6 +9,7 @@ import {
   getLatestRecoveredCaseSelector,
   getLatestViewedRecoveredCase,
   getRecoveredCasesLoadingSelector,
+  getRecoveredCasesAsPercentageOfClosedCasesSelector,
 } from '../../../store/selectors';
 import {RecoveredCase} from '../../../store/types';
 import {setLatestViewedRecoveredCase} from '../../../store/actions';
@@ -27,6 +28,12 @@ const RecoveredCasesContainer = () => {
     ? latestViewedRecoveredCase.recovered
     : 0;
   const end = latestRecoveredCase ? latestRecoveredCase.recovered : 0;
+  const recoveredCasesAsPercentageOfClosedCases = useSelector(
+    getRecoveredCasesAsPercentageOfClosedCasesSelector,
+  );
+  const subtitle = recoveredCasesAsPercentageOfClosedCases
+    ? `${recoveredCasesAsPercentageOfClosedCases}% of closed cases`
+    : undefined;
   const lastUpdated = latestRecoveredCase
     ? moment(latestRecoveredCase.dateAdded).calendar()
     : '';
@@ -57,6 +64,7 @@ const RecoveredCasesContainer = () => {
       title="Recoveries"
       start={start}
       end={end}
+      subtitle={subtitle}
       lastUpdated={lastUpdated}
       loading={loading}
       handleCountComplete={onCountComplete}

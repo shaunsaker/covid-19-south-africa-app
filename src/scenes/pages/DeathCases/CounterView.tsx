@@ -9,6 +9,7 @@ import {
   getLatestDeathCaseSelector,
   getLatestViewedDeathCase,
   getDeathCasesLoadingSelector,
+  getDeathCasesAsPercentageOfClosedCasesSelector,
 } from '../../../store/selectors';
 import {DeathCase} from '../../../store/types';
 import {setLatestViewedDeathCase} from '../../../store/actions';
@@ -23,6 +24,12 @@ const ConfirmedCasesContainer = () => {
   );
   const start = latestViewedDeathCase ? latestViewedDeathCase.deaths : 0;
   const end = latestDeathCase ? latestDeathCase.deaths : 0;
+  const deathCasesAsPercentageOfClosedCases = useSelector(
+    getDeathCasesAsPercentageOfClosedCasesSelector,
+  );
+  const subtitle = deathCasesAsPercentageOfClosedCases
+    ? `${deathCasesAsPercentageOfClosedCases}% of closed cases`
+    : undefined;
   const lastUpdated = latestDeathCase
     ? moment(latestDeathCase.dateAdded).calendar()
     : '';
@@ -53,6 +60,7 @@ const ConfirmedCasesContainer = () => {
       title="Deaths"
       start={start}
       end={end}
+      subtitle={subtitle}
       lastUpdated={lastUpdated}
       loading={loading}
       handleCountComplete={onCountComplete}
