@@ -18,11 +18,12 @@ import styles, {
   YAxisLabelText,
 } from './styles';
 import {rhythm, colors} from '../../styleConstants';
-import {Props as ContainerProps} from '.';
+import {Datum} from '.';
 
-interface Props extends ContainerProps {
+interface Props {
   width: number;
   height: number;
+  data: Datum[];
   children?: ReactNode;
   handleLayout: (event: LayoutChangeEvent) => void;
 }

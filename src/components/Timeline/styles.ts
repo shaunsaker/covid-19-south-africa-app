@@ -12,7 +12,7 @@ export const Text = styled.Text`
   font-family: 'Roboto-Bold';
   font-size: 20px;
   color: ${colors.secondaryText};
-  margin-bottom: ${rhythm.vt * 2}px;
+  margin-bottom: ${rhythm.vt}px;
   text-shadow: ${getTextShadow('dark')};
 `;
 

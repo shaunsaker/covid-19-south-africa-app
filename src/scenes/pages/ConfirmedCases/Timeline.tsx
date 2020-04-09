@@ -9,7 +9,7 @@ const TimelineContainer = () => {
   const confirmedCases: ConfirmedCase[] = useSelector(
     getChronoSortedConfirmedCasesSelector,
   );
-  const data = confirmedCases.map((confirmedCase) => {
+  let data = confirmedCases.map((confirmedCase) => {
     const {dateCreated} = confirmedCase;
 
     return {
