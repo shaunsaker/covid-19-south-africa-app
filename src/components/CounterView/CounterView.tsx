@@ -8,6 +8,7 @@ import {NeomorphBox} from 'react-native-neomorph-shadows';
 import styles, {
   Container,
   TitleText,
+  CounterContainer,
   SubtitleText,
   FooterText,
   SourceText,
@@ -47,21 +48,23 @@ const CounterView = ({
         shouldRepeat
         duration={500}
         style={styles.animator}>
-        <Counter
-          key={end} // mount new if end changes
-          start={start}
-          end={end}
-          time={2000}
-          easing="linear"
-          style={styles.counter}
-          onComplete={handleCountComplete}
-        />
+        <CounterContainer>
+          <Counter
+            key={end} // mount new if end changes
+            start={start}
+            end={end}
+            time={2000}
+            easing="linear"
+            style={styles.counter}
+            onComplete={handleCountComplete}
+          />
 
-        {subtitle ? (
-          <NeomorphBox inner style={styles.subtitleContainer}>
-            <SubtitleText>{subtitle}</SubtitleText>
-          </NeomorphBox>
-        ) : null}
+          {subtitle ? (
+            <NeomorphBox inner style={styles.subtitleContainer}>
+              <SubtitleText>{subtitle}</SubtitleText>
+            </NeomorphBox>
+          ) : null}
+        </CounterContainer>
 
         <FooterText>
           {loading && start === 0

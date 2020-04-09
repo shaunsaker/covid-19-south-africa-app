@@ -21,6 +21,12 @@ export const TitleText = styled.Text`
   text-shadow: ${getTextShadow('dark')};
 `;
 
+const SUBTITLE_SIZE = 30;
+
+export const CounterContainer = styled.View`
+  padding: 0 ${SUBTITLE_SIZE + rhythm.hz / 2}px;
+`;
+
 export const SubtitleText = styled.Text`
   font-family: 'Roboto-Regular';
   font-size: 12px;
@@ -68,14 +74,14 @@ export default {
     position: 'absolute',
     top: 0,
     right: 0,
-    width: 30,
-    height: 30,
+    width: SUBTITLE_SIZE,
+    height: SUBTITLE_SIZE,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 15,
+    borderRadius: SUBTITLE_SIZE / 2,
     backgroundColor: colors.primaryLight,
-    shadowOffset: {width: 2, height: 2},
-    shadowOpacity: 0.4,
+    shadowOffset: {width: 1, height: 1},
+    shadowOpacity: 0.2,
     shadowRadius: 1,
     paddingLeft: 2,
   },
