@@ -3,7 +3,6 @@ import {NeomorphBox} from 'react-native-neomorph-shadows';
 import {LayoutChangeEvent} from 'react-native';
 import {LineChart, YAxis, XAxis, Grid} from 'react-native-svg-charts';
 import LinearGradient from 'react-native-linear-gradient';
-import * as scale from 'd3-scale';
 import moment from 'moment';
 import {
   Defs,
@@ -100,8 +99,7 @@ const Timeline = ({width, height, data = [], handleLayout}: Props) => {
           data={data}
           xAccessor={({item}) => item.date}
           formatLabel={(value: Date) => moment(value).format('MMM D')}
-          numberOfTicks={4}
-          scale={scale.scaleTime}
+          numberOfTicks={5}
           contentInset={{
             left: 13 + contentInset.left + rhythm.hz,
             right: contentInset.right,
