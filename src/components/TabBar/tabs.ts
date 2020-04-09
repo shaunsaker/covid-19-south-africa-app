@@ -9,7 +9,7 @@ const tabs = [
   },
   {
     label: 'Tests',
-    sceneKey: '_tests',
+    sceneKey: '_testCases',
   },
   {
     label: 'Deaths',
