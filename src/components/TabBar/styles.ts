@@ -14,12 +14,15 @@ interface TabContainerProps {
   isActive: boolean;
 }
 
+const TAB_HEIGHT = isTablet ? 64 : 44;
+
 export const TabContainer = styled.TouchableOpacity<TabContainerProps>`
   flex: 1;
   justify-content: center;
   align-items: center;
-  padding: ${isTablet ? rhythm.vt * 2 : rhythm.vt}px ${rhythm.hz / 2}px;
-  border-top-width: 4px;
+  height: ${TAB_HEIGHT}px;
+  padding: 0 ${rhythm.hz / 2}px;
+  border-top-width: 1px;
   border-top-color: ${({isActive}) =>
     isActive ? colors.primaryText : colors.primaryLight};
 `;
@@ -37,5 +40,12 @@ export const TabText = styled.Text<TabTextProps>`
 `;
 
 export default {
-  contentContainer: {},
+  wrapper: {},
+  container: {
+    width: Dimensions.get('window').width,
+    height: TAB_HEIGHT,
+    shadowOffset: {width: 4, height: 4},
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+  },
 };
