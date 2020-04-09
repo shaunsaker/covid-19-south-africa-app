@@ -25,6 +25,7 @@ export const VersionText = styled.Text`
 export default {
   versionWrapper: {},
   versionContainer: {
+    borderRadius: 10,
     width: 240,
     height: 48,
     backgroundColor: 'transparent',
