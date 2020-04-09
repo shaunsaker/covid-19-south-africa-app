@@ -3,6 +3,7 @@ import {Actions, Scene, Tabs} from 'react-native-router-flux';
 
 import ConfirmedCases from './pages/ConfirmedCases';
 import DeathCases from './pages/DeathCases';
+import RecoveredCases from './pages/RecoveredCases';
 
 const scenes = Actions.create(
   <Scene key="root" hideNavBar panHandlers={null}>
@@ -23,6 +24,12 @@ const scenes = Actions.create(
       <Scene
         key="deathCases"
         component={DeathCases}
+        type="reset"
+        duration={0}
+      />
+      <Scene
+        key="recoveredCases"
+        component={RecoveredCases}
         type="reset"
         duration={0}
       />
