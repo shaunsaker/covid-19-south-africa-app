@@ -64,3 +64,11 @@ buck-out/
 
 # Storybook
 storyLoader.js
+
+# Private
+passwords.txt
+tools
+ios/keys
+ios/Google-Service-Info.plist
+android/app/google-services.json
+secret-key.json
