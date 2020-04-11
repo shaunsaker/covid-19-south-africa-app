@@ -69,7 +69,7 @@ storyLoader.js
 passwords.txt
 tools
 ios/keys
-ios/Google-Service-Info.plist
-android/app/google-services.json
+GoogleService-Info.plist
+google-services.json
 secret-key.json
 .git.bfg-report/
