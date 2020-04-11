@@ -72,3 +72,4 @@ ios/keys
 ios/Google-Service-Info.plist
 android/app/google-services.json
 secret-key.json
+.git.bfg-report/
