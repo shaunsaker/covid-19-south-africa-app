@@ -8,7 +8,7 @@ import {snackbar} from '../../config';
 const CodePushHandler = () => {
   const syncCodePush = () => {
     CodePush.sync(
-      {installMode: CodePush.InstallMode.ON_NEXT_RESTART, updateDialog: {}},
+      {installMode: CodePush.InstallMode.IMMEDIATE, updateDialog: {}},
       codePushStatusDidChange,
     );
   };
