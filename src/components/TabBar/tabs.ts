@@ -8,12 +8,12 @@ const tabs = [
     sceneKey: '_recoveredCases',
   },
   {
-    label: 'Tests',
-    sceneKey: '_testCases',
-  },
-  {
     label: 'Deaths',
     sceneKey: '_deathCases',
+  },
+  {
+    label: 'Tests',
+    sceneKey: '_testCases',
   },
 ];
 
