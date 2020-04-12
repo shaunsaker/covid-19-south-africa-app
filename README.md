@@ -1,9 +1,11 @@
 # covid-19-south-africa-app
 
+<div>
 <img src="./screenshots/cases.png" width="200">
 <img src="./screenshots/recoveries.png" width="200">
 <img src="./screenshots/deaths.png" width="200">
 <img src="./screenshots/tests.png" width="200">
+</div>
 
 ## Development
 
