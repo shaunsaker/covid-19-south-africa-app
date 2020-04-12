@@ -1,12 +1,19 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
+import HeaderBar, {HeaderBarProps} from './HeaderBar';
 import {setSideMenu} from '../../store/actions';
+import {getPageHasScrolledSelector} from '../../store/selectors';
 
-import HeaderBar, {ContainerProps} from './HeaderBar';
+export interface HeaderBarContainerProps
+  extends Omit<
+    HeaderBarProps,
+    'showShadow' | 'handleMenuPress' | 'handleClosePress'
+  > {}
 
-const HeaderBarContainer = ({...props}: ContainerProps) => {
+const HeaderBarContainer = ({...props}: HeaderBarContainerProps) => {
   const dispatch = useDispatch();
+  const pageHasScrolled = useSelector(getPageHasScrolledSelector);
 
   const onMenuPress = () => {
     dispatch(setSideMenu(true));
@@ -19,6 +26,7 @@ const HeaderBarContainer = ({...props}: ContainerProps) => {
   return (
     <HeaderBar
       {...props}
+      showShadow={pageHasScrolled}
       handleMenuPress={onMenuPress}
       handleClosePress={onClosePress}
     />

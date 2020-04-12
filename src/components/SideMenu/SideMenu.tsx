@@ -5,18 +5,20 @@ import LinearGradient from 'react-native-linear-gradient';
 import styles, {Container, ContentContainer, VersionText} from './styles';
 import {colors} from '../../styleConstants';
 
-import Background from '../Background';
 import HeaderBar from '../HeaderBar';
 import Button from '../Button';
+import PageBg from '../PageBg';
+import {ViewStyle} from 'react-native';
 
 interface Props {
   version: string;
+  style?: ViewStyle;
   handleGetInTouchPress: () => void;
 }
 
-const SideMenu = ({version, handleGetInTouchPress}: Props) => {
+const SideMenu = ({version, style, handleGetInTouchPress}: Props) => {
   return (
-    <Background>
+    <PageBg style={{...styles.container, ...style}}>
       <Container>
         <HeaderBar showMenuIcon={false} showCloseIcon />
 
@@ -32,7 +34,7 @@ const SideMenu = ({version, handleGetInTouchPress}: Props) => {
           </LinearGradient>
         </ContentContainer>
       </Container>
-    </Background>
+    </PageBg>
   );
 };
 

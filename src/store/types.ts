@@ -9,3 +9,4 @@ export * from './recoveredCases/types';
 export * from './latestViewedRecoveredCase/types';
 export * from './testCases/types';
 export * from './latestViewedTestCase/types';
+export * from './page/types';

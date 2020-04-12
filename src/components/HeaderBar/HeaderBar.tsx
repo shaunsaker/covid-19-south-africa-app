@@ -6,12 +6,10 @@ import {colors} from '../../styleConstants';
 
 import IconButton from '../../components/IconButton/IconButton';
 
-export interface ContainerProps {
+export interface HeaderBarProps {
   showMenuIcon?: boolean;
   showCloseIcon?: boolean;
-}
-
-interface Props extends ContainerProps {
+  showShadow?: boolean;
   handleMenuPress: () => void;
   handleClosePress: () => void;
 }
@@ -19,11 +17,12 @@ interface Props extends ContainerProps {
 const HeaderBar = ({
   showMenuIcon = true,
   showCloseIcon,
+  showShadow,
   handleMenuPress,
   handleClosePress,
-}: Props) => {
+}: HeaderBarProps) => {
   return (
-    <Container>
+    <Container showShadow={showShadow}>
       <StatusBar
         backgroundColor={colors.primaryLight}
         barStyle="light-content"

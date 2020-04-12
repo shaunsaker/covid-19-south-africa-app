@@ -28,12 +28,12 @@ const Tab = ({label, isActive, handlePress}: TabProps) => {
 
 const TabBar = ({tabs, handleTabPress}: TabBarProps) => {
   return (
-    <NeomorphBox style={styles.container}>
+    <NeomorphBox style={styles.wrapper}>
       <LinearGradient
         start={{x: 0, y: 0.67}}
         end={{x: 0, y: 1}}
         colors={[colors.primaryMedium, colors.primary]}
-        style={styles.wrapper}>
+        style={styles.container}>
         <Container>
           {tabs &&
             tabs.map((tab) => (

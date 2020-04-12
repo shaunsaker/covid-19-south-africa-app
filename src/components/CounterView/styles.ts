@@ -5,6 +5,7 @@ import {
   rhythm,
   getTextShadow,
   getMobileTextShadow,
+  sizes,
 } from '../../styleConstants';
 
 export const Container = styled.View`
@@ -83,7 +84,7 @@ export default {
     height: 40,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: sizes.borderRadius,
     backgroundColor: colors.primaryLight,
     shadowOffset: {width: 2, height: 2},
     shadowOpacity: 0.2,

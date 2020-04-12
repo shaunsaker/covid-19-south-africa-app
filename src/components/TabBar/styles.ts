@@ -1,9 +1,10 @@
 import styled from 'styled-components/native';
 import {Dimensions} from 'react-native';
 
-import {rhythm, colors, getTextShadow} from '../../styleConstants';
+import {rhythm, colors, getTextShadow, sizes} from '../../styleConstants';
 
 const isTablet = Dimensions.get('window').width >= 768;
+const TAB_HEIGHT = isTablet ? sizes.tabBarHeight * 1.5 : sizes.tabBarHeight;
 
 export const Container = styled.View`
   flex-direction: row;
@@ -13,8 +14,6 @@ export const Container = styled.View`
 interface TabContainerProps {
   isActive: boolean;
 }
-
-const TAB_HEIGHT = isTablet ? 64 : 44;
 
 export const TabContainer = styled.TouchableOpacity<TabContainerProps>`
   flex: 1;
@@ -40,12 +39,12 @@ export const TabText = styled.Text<TabTextProps>`
 `;
 
 export default {
-  wrapper: {},
-  container: {
+  wrapper: {
     width: Dimensions.get('window').width,
     height: TAB_HEIGHT,
     shadowOffset: {width: 4, height: 4},
     shadowOpacity: 0.15,
     shadowRadius: 4,
   },
+  container: {},
 };

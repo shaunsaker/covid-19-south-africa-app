@@ -2,25 +2,19 @@ import React from 'react';
 
 import {ContentContainer} from './styles';
 
-import Background from '../../../components/Background/Background';
-import HeaderBar from '../../../components/HeaderBar';
+import Page from '../../../components/Page';
 import CounterView from './CounterView';
 import Timeline from './Timeline';
-import TabBar from '../../../components/TabBar';
 
 const RecoveredCases = () => {
   return (
-    <Background>
-      <HeaderBar />
-
+    <Page>
       <ContentContainer>
         <CounterView />
 
         <Timeline />
       </ContentContainer>
-
-      <TabBar />
-    </Background>
+    </Page>
   );
 };
 

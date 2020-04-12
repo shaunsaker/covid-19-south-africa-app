@@ -3,13 +3,16 @@ import {Linking, Animated} from 'react-native';
 import Snackbar from 'react-native-snackbar';
 import SideMenu from 'react-native-side-menu';
 import {useSelector, useDispatch} from 'react-redux';
+import {getStatusBarHeight} from 'react-native-iphone-x-helper';
 
 import pkg from '../../../package.json';
 import {build, email, snackbar, code} from '../../config';
 import {sideMenuIsOpenSelector} from '../../store/selectors';
 import {setSideMenu} from '../../store/actions';
+import {isMobile, getPagePadding} from '../../utils';
 
 import SideMenuComponent from './SideMenu';
+import {useOrientation} from '../useOrientation';
 
 interface Props {
   children: ReactNode;
@@ -19,6 +22,7 @@ const SideMenuContainer = ({children}: Props) => {
   const isOpen = useSelector(sideMenuIsOpenSelector);
   const version = `${pkg.version} (${build}) | ${code}`;
   const dispatch = useDispatch();
+  const orientation = useOrientation();
 
   const onGetInTouchPress = () => {
     const url = `mailto:${email}`;
@@ -46,12 +50,19 @@ const SideMenuContainer = ({children}: Props) => {
       menu={
         <SideMenuComponent
           version={version}
+          style={{
+            ...getPagePadding(orientation),
+          }}
           handleGetInTouchPress={onGetInTouchPress}
         />
       }
       isOpen={isOpen}
       onChange={onSideMenuChange}
-      openMenuOffset={300}
+      openMenuOffset={
+        isMobile() && orientation === 'LANDSCAPE'
+          ? 300 + getStatusBarHeight()
+          : 300
+      }
       bounceBackOnOverdraw={false}
       animationFunction={(prop: any, value: any) =>
         Animated.spring(prop, {

@@ -1,10 +1,10 @@
 import styled from 'styled-components/native';
 
-import {colors, getTextShadow, rhythm} from '../../styleConstants';
+import {colors, getTextShadow, rhythm, sizes} from '../../styleConstants';
 
 const OPTION_WIDTH = 120;
 const OPTION_HEIGHT = 30;
-const BORDER_RADIUS = 10;
+const BORDER_RADIUS = sizes.borderRadius;
 
 export const Container = styled.View`
   flex-direction: row;

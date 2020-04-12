@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-import {rhythm, colors, getTextShadow} from '../../styleConstants';
+import {rhythm, colors, getTextShadow, sizes} from '../../styleConstants';
 
 export const Container = styled.View`
   flex: 1;
@@ -23,9 +23,12 @@ export const VersionText = styled.Text`
 `;
 
 export default {
+  container: {
+    flex: 1,
+  },
   versionWrapper: {},
   versionContainer: {
-    borderRadius: 10,
+    borderRadius: sizes.borderRadius,
     width: 240,
     height: 48,
     backgroundColor: 'transparent',

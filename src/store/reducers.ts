@@ -22,6 +22,8 @@ import testCases from './testCases/reducer';
 import {TestCasesState} from './testCases/types';
 import latestViewedTestCase from './latestViewedTestCase/reducer';
 import {LatestViewedTestCaseState} from './latestViewedTestCase/types';
+import page from './page/reducer';
+import {PageState} from './page/types';
 
 export interface ApplicationState {
   confirmedCases: ConfirmedCasesState;
@@ -35,6 +37,7 @@ export interface ApplicationState {
   latestViewedRecoveredCase: LatestViewedRecoveredCaseState;
   testCases: TestCasesState;
   latestViewedTestCase: LatestViewedTestCaseState;
+  page: PageState;
 }
 
 const rootReducer = combineReducers({
@@ -49,6 +52,7 @@ const rootReducer = combineReducers({
   latestViewedRecoveredCase,
   testCases,
   latestViewedTestCase,
+  page,
 });
 
 export default rootReducer;

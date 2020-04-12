@@ -1,6 +1,26 @@
 import styled from 'styled-components/native';
+import {getBottomSpace, getStatusBarHeight} from 'react-native-iphone-x-helper';
+import {Dimensions} from 'react-native';
 
-import {colors, rhythm, getTextShadow} from '../../styleConstants';
+import {colors, rhythm, getTextShadow, sizes} from '../../styleConstants';
+import {isMobile} from '../../utils';
+
+/*
+ * Calculate the minimum timeline height in case of landscape on mobile
+ * Take the smallest side and subtract the height of the elements on the page
+ */
+const {width, height} = Dimensions.get('window');
+const smallestSide = width < height ? width : height;
+const statusBarHeight = getStatusBarHeight();
+const bottomSpace = getBottomSpace();
+const MIN_TIMELINE_HEIGHT = isMobile()
+  ? smallestSide -
+    sizes.headerHeight -
+    sizes.tabBarHeight -
+    statusBarHeight -
+    bottomSpace -
+    sizes.timelineXAxis
+  : 'auto';
 
 export const Container = styled.View`
   align-items: center;
@@ -41,7 +61,7 @@ export const YAxisLabelText = styled.Text`
 export default {
   contentContainerWrapper: {
     flex: 1,
-    borderRadius: 10,
+    borderRadius: sizes.borderRadius,
     overflow: 'hidden',
   },
   contentContainer: {
@@ -50,6 +70,7 @@ export default {
     shadowOffset: {width: 4, height: 4},
     shadowOpacity: 0.4,
     shadowRadius: 2,
+    minHeight: MIN_TIMELINE_HEIGHT, // fix landscape on mobile
   },
   lineChart: {},
   lineChartSvg: {
@@ -67,6 +88,7 @@ export default {
   },
   xAxis: {
     marginTop: rhythm.vt,
+    height: sizes.timelineXAxis,
   },
   xAxisSvg: {
     fill: colors.secondaryText,

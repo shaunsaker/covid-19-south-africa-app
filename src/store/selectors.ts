@@ -9,3 +9,4 @@ export * from './recoveredCases/selectors';
 export * from './latestViewedRecoveredCase/selectors';
 export * from './testCases/selectors';
 export * from './latestViewedTestCase/selectors';
+export * from './page/selectors';

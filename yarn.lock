@@ -6979,11 +6979,6 @@ react-native-reanimated@^1.7.1:
   dependencies:
     fbjs "^1.0.0"
 
-react-native-responsive-screen@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-responsive-screen/-/react-native-responsive-screen-1.4.1.tgz#0270bc8f03a208b578299c1594495db69aff506b"
-  integrity sha512-WuMkVyCPeepzKQaT3N+mbUAvQLL0jGsBnGf6yDtA7vyA/sp1imXYVPYjCNMRaKV+PSM5GzEMXxl4Bj+tUpD2Tw==
-
 react-native-router-flux@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/react-native-router-flux/-/react-native-router-flux-4.2.0.tgz#71c59f6a6250e9ed10d61ade506b9b809f879db0"

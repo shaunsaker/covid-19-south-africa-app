@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-import {colors, getTextShadow} from '../../styleConstants';
+import {colors, getTextShadow, sizes} from '../../styleConstants';
 
 export const Button = styled.TouchableOpacity``;
 
@@ -14,7 +14,7 @@ export const Text = styled.Text`
 
 const WIDTH = 240;
 const HEIGHT = 48;
-const BORDER_RADIUS = 10;
+const BORDER_RADIUS = sizes.borderRadius;
 
 export default {
   buttonWrapper: {
