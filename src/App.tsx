@@ -11,7 +11,7 @@ import CodePushHandler from './components/CodePushHandler';
 
 // Helper to clear local storage during development
 // if (__DEV__) {
-// persistor.purge();
+//   persistor.purge();
 // }
 
 console.disableYellowBox = true;

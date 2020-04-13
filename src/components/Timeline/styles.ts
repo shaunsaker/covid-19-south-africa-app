@@ -52,9 +52,20 @@ export default {
     shadowRadius: 2,
   },
   lineChart: {},
+  trendlineLineChart: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+  },
   lineChartSvg: {
     stroke: colors.secondary,
     strokeWidth: 4,
+  },
+  trendlineSvg: {
+    stroke: colors.primaryText,
+    strokeWidth: 1,
   },
   yAxis: {
     marginRight: rhythm.hz / 4,

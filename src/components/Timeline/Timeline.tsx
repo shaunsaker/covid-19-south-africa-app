@@ -24,6 +24,7 @@ interface Props {
   width: number;
   height: number;
   data: Datum[];
+  trendlineData?: Datum[];
   children?: ReactNode;
   handleLayout: (event: LayoutChangeEvent) => void;
 }
@@ -33,6 +34,7 @@ const Timeline = ({
   height,
   children,
   data = [],
+  trendlineData = [],
   handleLayout,
 }: Props) => {
   const contentInset = {
@@ -101,6 +103,22 @@ const Timeline = ({
                 <Grid direction="BOTH" svg={styles.gridSvg} />
                 <Gradient />
               </LineChart>
+
+              {trendlineData ? (
+                <LineChart
+                  data={trendlineData}
+                  yAccessor={({item}) => item.value}
+                  contentInset={contentInset}
+                  animate
+                  style={{
+                    ...styles.lineChart,
+                    ...styles.trendlineLineChart,
+                    width,
+                    height,
+                  }}
+                  svg={styles.trendlineSvg}
+                />
+              ) : null}
             </NeomorphBox>
           </LinearGradient>
         </LineChartRowContainer>

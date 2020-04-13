@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {LayoutChangeEvent} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -11,14 +11,17 @@ import {
 import RadioSelect from '../RadioSelect';
 import {RadioSelectOption} from '../RadioSelect/RadioSelect';
 import {TimelineDataOptions} from '../../store/types';
+import {getTrendlineData} from './getTrendlineData';
 
 export interface Datum {
   date: Date;
   value: number;
 }
 
+export type Data = Datum[];
+
 export interface Props {
-  data: Datum[];
+  data: Data;
 }
 
 // FIXME: Data options needs work
@@ -72,13 +75,16 @@ const TimelineContainer = ({...props}: Props) => {
     newData = data;
   }
 
+  const trendlineData = getTrendlineData(newData);
+
   return (
     <Timeline
       {...props}
       width={width}
       height={height}
       handleLayout={onLayout}
-      data={newData}>
+      data={newData}
+      trendlineData={trendlineData}>
       <RadioSelect
         options={dataOptions}
         handleSelectOption={onSelectDataOption}
