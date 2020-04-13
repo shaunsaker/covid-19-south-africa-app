@@ -21,7 +21,7 @@ export const TitleText = styled.Text`
   text-shadow: ${getTextShadow('dark')};
 `;
 
-const SUBTITLE_SIZE = 96;
+const SUBTITLE_SIZE = 90;
 
 interface CounterContainerProps {
   subtitle: string;
