@@ -8,6 +8,7 @@ import styles, {
   Container,
   CounterContainer,
   SubtitleContainer,
+  SubtitlePlaceholder,
   SubtitleText,
   FooterText,
   SourceText,
@@ -45,6 +46,14 @@ const CounterView = ({
         duration={500}
         style={styles.animator}>
         <CounterContainer subtitle={subtitle}>
+          {subtitle ? (
+            <SubtitleContainer>
+              <SubtitleText>{subtitle}</SubtitleText>
+            </SubtitleContainer>
+          ) : (
+            <SubtitlePlaceholder />
+          )}
+
           <Counter
             key={end} // mount new if end changes
             start={start}
@@ -54,12 +63,6 @@ const CounterView = ({
             style={styles.counter}
             onComplete={handleCountComplete}
           />
-
-          {subtitle ? (
-            <SubtitleContainer>
-              <SubtitleText>{subtitle}</SubtitleText>
-            </SubtitleContainer>
-          ) : null}
         </CounterContainer>
 
         <FooterText>

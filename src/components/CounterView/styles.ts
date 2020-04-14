@@ -18,18 +18,19 @@ interface CounterContainerProps {
 }
 
 export const CounterContainer = styled.View<CounterContainerProps>`
-  align-self: stretch;
   align-items: center;
-  padding-top: ${rhythm.vt * 2}px; /* add space for subtitle container */
 `;
 
 export const SubtitleContainer = styled.View<CounterContainerProps>`
-  top: 0;
-  right: ${rhythm.hz * -2}px;
   background-color: ${colors.primaryMedium};
   border-radius: 10px;
   padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
-  position: absolute;
+  margin-bottom: ${rhythm.vt}px;
+`;
+
+export const SubtitlePlaceholder = styled.View<CounterContainerProps>`
+  height: 24.5px;
+  margin-bottom: ${rhythm.vt}px;
 `;
 
 export const SubtitleText = styled.Text`
