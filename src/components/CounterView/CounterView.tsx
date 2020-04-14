@@ -3,11 +3,11 @@ import Counter from 'react-native-counter';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {View} from 'react-native';
 import Animator from 'react-native-simple-animators';
-import {NeomorphBox} from 'react-native-neomorph-shadows';
 
 import styles, {
   Container,
   CounterContainer,
+  SubtitleContainer,
   SubtitleText,
   FooterText,
   SourceText,
@@ -56,9 +56,9 @@ const CounterView = ({
           />
 
           {subtitle ? (
-            <NeomorphBox inner style={styles.subtitleContainer}>
+            <SubtitleContainer>
               <SubtitleText>{subtitle}</SubtitleText>
-            </NeomorphBox>
+            </SubtitleContainer>
           ) : null}
         </CounterContainer>
 

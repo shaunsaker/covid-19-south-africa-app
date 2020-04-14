@@ -8,20 +8,28 @@ import {
 } from '../../styleConstants';
 
 export const Container = styled.View`
-  padding: 0 0 ${rhythm.vt}px;
+  padding: 0 ${rhythm.vt}px;
   justify-content: center;
   align-items: center;
 `;
-
-const SUBTITLE_SIZE = 90;
 
 interface CounterContainerProps {
   subtitle?: string;
 }
 
 export const CounterContainer = styled.View<CounterContainerProps>`
-  padding: ${({subtitle}) =>
-    subtitle ? `0 ${SUBTITLE_SIZE + rhythm.hz / 2}px;` : '0'};
+  align-self: stretch;
+  align-items: center;
+  padding-top: ${rhythm.vt * 2}px; /* add space for subtitle container */
+`;
+
+export const SubtitleContainer = styled.View<CounterContainerProps>`
+  top: 0;
+  right: ${rhythm.hz * -2}px;
+  background-color: ${colors.primaryLight};
+  border-radius: 10px;
+  padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
+  position: absolute;
 `;
 
 export const SubtitleText = styled.Text`
@@ -66,22 +74,6 @@ export default {
     color: colors.primaryText,
     marginBottom: rhythm.vt / 2,
     ...getMobileTextShadow('dark'),
-  },
-  subtitleContainer: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    width: SUBTITLE_SIZE,
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-    backgroundColor: colors.primaryLight,
-    shadowOffset: {width: 2, height: 2},
-    shadowOpacity: 0.2,
-    shadowRadius: 1,
-    paddingVertical: rhythm.vt / 2,
-    paddingHorizontal: rhythm.hz / 2,
   },
   sourceButtonPlaceholder: {
     height: 19.5,
