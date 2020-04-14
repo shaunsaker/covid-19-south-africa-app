@@ -64,7 +64,7 @@ export default {
     strokeWidth: 4,
   },
   trendlineSvg: {
-    stroke: colors.primaryText,
+    stroke: colors.secondaryText,
     strokeWidth: 1,
   },
   yAxis: {
