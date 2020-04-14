@@ -26,7 +26,7 @@ export const CounterContainer = styled.View<CounterContainerProps>`
 export const SubtitleContainer = styled.View<CounterContainerProps>`
   top: 0;
   right: ${rhythm.hz * -2}px;
-  background-color: ${colors.primaryLight};
+  background-color: ${colors.primaryMedium};
   border-radius: 10px;
   padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
   position: absolute;
