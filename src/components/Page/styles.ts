@@ -4,7 +4,7 @@ import {rhythm} from '../../styleConstants';
 
 export const ContentContainer = styled.View`
   flex: 1;
-  padding: ${rhythm.vt}px ${rhythm.hz}px;
+  padding: 0 ${rhythm.hz}px ${rhythm.vt}px;
 `;
 
 export default {};

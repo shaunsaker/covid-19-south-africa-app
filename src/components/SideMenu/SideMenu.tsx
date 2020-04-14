@@ -18,7 +18,7 @@ const SideMenu = ({version, handleGetInTouchPress}: Props) => {
   return (
     <Background>
       <Container>
-        <HeaderBar showMenuIcon={false} showCloseIcon />
+        <HeaderBar title="CVD19ZA" showMenuIcon={false} showCloseIcon />
 
         <ContentContainer>
           <Button handlePress={handleGetInTouchPress}>GET IN TOUCH</Button>

@@ -13,18 +13,10 @@ export const Container = styled.View`
   align-items: center;
 `;
 
-export const TitleText = styled.Text`
-  font-family: 'Roboto-Bold';
-  font-size: 20px;
-  color: ${colors.secondaryText};
-  margin-bottom: ${rhythm.vt}px;
-  text-shadow: ${getTextShadow('dark')};
-`;
-
 const SUBTITLE_SIZE = 90;
 
 interface CounterContainerProps {
-  subtitle: string;
+  subtitle?: string;
 }
 
 export const CounterContainer = styled.View<CounterContainerProps>`

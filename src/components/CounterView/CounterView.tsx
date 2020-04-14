@@ -7,7 +7,6 @@ import {NeomorphBox} from 'react-native-neomorph-shadows';
 
 import styles, {
   Container,
-  TitleText,
   CounterContainer,
   SubtitleText,
   FooterText,
@@ -27,7 +26,6 @@ export interface Props {
 }
 
 const CounterView = ({
-  title,
   start,
   end,
   subtitle,
@@ -38,8 +36,6 @@ const CounterView = ({
 }: Props) => {
   return (
     <Container>
-      <TitleText>{title}</TitleText>
-
       <Animator
         type="opacity"
         initialValue={1}
