@@ -1,4 +1,4 @@
-import {colors} from '../../styleConstants';
+import {colors} from '../styleConstants';
 
 const snackbar = {
   textColor: colors.primaryText,

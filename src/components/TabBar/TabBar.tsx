@@ -4,7 +4,7 @@ import {NeomorphBox} from 'react-native-neomorph-shadows';
 
 import styles, {Container, TabContainer, TabText} from './styles';
 import {colors} from '../../styleConstants';
-import {Tab as TabContainerProps} from '.';
+import {TabProps as TabContainerProps} from '../../config';
 
 export interface TabProps extends TabContainerProps {
   isActive: boolean;

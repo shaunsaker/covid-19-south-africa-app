@@ -3,24 +3,19 @@ import {useSelector} from 'react-redux';
 import {Actions} from 'react-native-router-flux';
 
 import TabBar from './TabBar';
-import TABS from './tabs';
+import {tabs as TABS, TabProps} from '../../config';
 
 import {getCurrentScene} from '../../store/selectors';
 
-export interface Tab {
-  label: string;
-  sceneKey: string;
-}
-
 const TabBarContainer = () => {
   const currentScene = useSelector(getCurrentScene);
-  const tabs: Tab[] = TABS.map((item) => {
+  const tabs: TabProps[] = TABS.map((item) => {
     return {
       ...item,
       isActive: item.sceneKey === currentScene,
     };
   });
-  const onTabPress = (tab: Tab) => {
+  const onTabPress = (tab: TabProps) => {
     Actions[tab.sceneKey]();
   };
 
