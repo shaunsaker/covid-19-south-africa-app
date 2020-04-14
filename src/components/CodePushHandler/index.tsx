@@ -32,6 +32,10 @@ const CodePushHandler = () => {
         showSnackbar('Downloading update...');
         break;
 
+      case CodePush.SyncStatus.UPDATE_INSTALLED:
+        Snackbar.dismiss();
+        break;
+
       default:
         break;
     }
