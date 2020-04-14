@@ -1,26 +1,16 @@
 import React from 'react';
 
-import {ContentContainer} from './styles';
-
-import Background from '../../../components/Background/Background';
-import HeaderBar from '../../../components/HeaderBar';
+import Page from '../../../components/Page';
 import CounterView from './CounterView';
 import Timeline from './Timeline';
-import TabBar from '../../../components/TabBar';
 
 const ConfirmedCases = () => {
   return (
-    <Background>
-      <HeaderBar />
+    <Page>
+      <CounterView />
 
-      <ContentContainer>
-        <CounterView />
-
-        <Timeline />
-      </ContentContainer>
-
-      <TabBar />
-    </Background>
+      <Timeline />
+    </Page>
   );
 };
 
