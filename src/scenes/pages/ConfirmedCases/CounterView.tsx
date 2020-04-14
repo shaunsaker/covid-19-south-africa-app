@@ -9,6 +9,7 @@ import {
   getLatestConfirmedCaseSelector,
   getLatestViewedConfirmedCase,
   getConfirmedCasesLoadingSelector,
+  getAvgDailyChangeInLastWeekSelector,
 } from '../../../store/selectors';
 import {ConfirmedCase} from '../../../store/types';
 import {setLatestViewedConfirmedCase} from '../../../store/actions';
@@ -30,6 +31,10 @@ const ConfirmedCasesContainer = () => {
   const lastUpdated = latestConfirmedCase
     ? moment(latestConfirmedCase.dateAdded).calendar()
     : '';
+  const avgDailyChangeInLastWeek = useSelector(
+    getAvgDailyChangeInLastWeekSelector,
+  );
+  const subtitle = `${avgDailyChangeInLastWeek} average daily cases in last 7 days`;
 
   const onCountComplete = () => {
     if (latestConfirmedCase && latestConfirmedCase.confirmedCases) {
@@ -58,6 +63,7 @@ const ConfirmedCasesContainer = () => {
       start={start}
       end={end}
       lastUpdated={lastUpdated}
+      subtitle={subtitle}
       loading={loading}
       handleCountComplete={onCountComplete}
       handleSourcePress={onSourcePress}
