@@ -29,7 +29,10 @@ const RadioSelect = ({options, handleSelectOption}: RadioSelectProps) => {
 
         if (isSelected) {
           return (
-            <NeomorphBox inner style={styles.selectedOptionContainer}>
+            <NeomorphBox
+              key={label}
+              inner
+              style={styles.selectedOptionContainer}>
               {children}
             </NeomorphBox>
           );
