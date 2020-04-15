@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import React, {ReactNode, useCallback} from 'react';
 import {Linking, Animated} from 'react-native';
 import Snackbar from 'react-native-snackbar';
 import SideMenu from 'react-native-side-menu';
@@ -20,7 +20,7 @@ const SideMenuContainer = ({children}: Props) => {
   const version = `${pkg.version} (${build}) | ${code}`;
   const dispatch = useDispatch();
 
-  const onGetInTouchPress = () => {
+  const onGetInTouchPress = useCallback(() => {
     const url = `mailto:${email}`;
 
     Linking.canOpenURL(url)
@@ -33,13 +33,16 @@ const SideMenuContainer = ({children}: Props) => {
           text: error.message,
         });
       });
-  };
+  }, []);
 
-  const onSideMenuChange = (nextIsOpen: boolean) => {
-    if (nextIsOpen !== isOpen) {
-      dispatch(setSideMenu(nextIsOpen));
-    }
-  };
+  const onSideMenuChange = useCallback(
+    (nextIsOpen: boolean) => {
+      if (nextIsOpen !== isOpen) {
+        dispatch(setSideMenu(nextIsOpen));
+      }
+    },
+    [dispatch, isOpen],
+  );
 
   return (
     <SideMenu

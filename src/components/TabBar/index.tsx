@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {useSelector} from 'react-redux';
 import {Actions} from 'react-native-router-flux';
 
@@ -15,9 +15,10 @@ const TabBarContainer = () => {
       isActive: item.sceneKey === currentScene,
     };
   });
-  const onTabPress = (tab: TabUIProps) => {
+
+  const onTabPress = useCallback((tab: TabUIProps) => {
     Actions[tab.sceneKey]();
-  };
+  }, []);
 
   return <TabBar tabs={tabs} handleTabPress={onTabPress} />;
 };

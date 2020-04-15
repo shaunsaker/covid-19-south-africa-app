@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import moment from 'moment';
 import {Linking} from 'react-native';
@@ -38,13 +38,13 @@ const RecoveredCasesContainer = () => {
     ? moment(latestRecoveredCase.dateAdded).calendar()
     : '';
 
-  const onCountComplete = () => {
+  const onCountComplete = useCallback(() => {
     if (latestRecoveredCase && latestRecoveredCase.recovered) {
       dispatch(setLatestViewedRecoveredCase(latestRecoveredCase));
     }
-  };
+  }, [dispatch, latestRecoveredCase]);
 
-  const onSourcePress = () => {
+  const onSourcePress = useCallback(() => {
     const url = latestRecoveredCase.href;
 
     Linking.canOpenURL(url)
@@ -57,7 +57,7 @@ const RecoveredCasesContainer = () => {
           text: error.message,
         });
       });
-  };
+  }, [latestRecoveredCase]);
 
   return (
     <CounterView

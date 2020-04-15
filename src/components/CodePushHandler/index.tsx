@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useCallback} from 'react';
 import CodePush from 'react-native-code-push';
 import Snackbar from 'react-native-snackbar';
 import {AppState, AppStateStatus} from 'react-native';
@@ -6,40 +6,43 @@ import {AppState, AppStateStatus} from 'react-native';
 import {snackbar} from '../../config';
 
 const CodePushHandler = () => {
-  const syncCodePush = () => {
-    CodePush.sync(
-      {installMode: CodePush.InstallMode.IMMEDIATE, updateDialog: {}},
-      codePushStatusDidChange,
-    );
-  };
-
-  const onAppStateChange = (appState: AppStateStatus) => {
-    if (appState === 'active') {
-      syncCodePush();
-    }
-  };
-
-  const showSnackbar = (text: string) => {
+  const showSnackbar = useCallback((text: string) => {
     Snackbar.show({
       ...snackbar,
       text,
     });
-  };
+  }, []);
 
-  const codePushStatusDidChange = (status: CodePush.SyncStatus) => {
-    switch (status) {
-      case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
-        showSnackbar('Downloading update...');
-        break;
+  const syncCodePush = useCallback(() => {
+    const codePushStatusDidChange = (status: CodePush.SyncStatus) => {
+      switch (status) {
+        case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
+          showSnackbar('Downloading update...');
+          break;
 
-      case CodePush.SyncStatus.UPDATE_INSTALLED:
-        Snackbar.dismiss();
-        break;
+        case CodePush.SyncStatus.UPDATE_INSTALLED:
+          Snackbar.dismiss();
+          break;
 
-      default:
-        break;
-    }
-  };
+        default:
+          break;
+      }
+    };
+
+    CodePush.sync(
+      {installMode: CodePush.InstallMode.IMMEDIATE, updateDialog: {}},
+      codePushStatusDidChange,
+    );
+  }, [showSnackbar]);
+
+  const onAppStateChange = useCallback(
+    (appState: AppStateStatus) => {
+      if (appState === 'active') {
+        syncCodePush();
+      }
+    },
+    [syncCodePush],
+  );
 
   useEffect(() => {
     if (!__DEV__) {
@@ -51,7 +54,7 @@ const CodePushHandler = () => {
         AppState.removeEventListener('change', onAppStateChange);
       };
     }
-  }, []);
+  });
 
   return null;
 };

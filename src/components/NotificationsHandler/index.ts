@@ -1,18 +1,18 @@
-import {useEffect} from 'react';
+import {useEffect, useCallback} from 'react';
 import messaging from '@react-native-firebase/messaging';
 import Snackbar from 'react-native-snackbar';
 
 import {snackbar} from '../../config';
 
 const NotificationsHandler = () => {
-  const showSnackbar = (text: string) => {
+  const showSnackbar = useCallback((text: string) => {
     Snackbar.show({
       ...snackbar,
       text,
     });
-  };
+  }, []);
 
-  const handleNotifications = async () => {
+  const handleNotifications = useCallback(async () => {
     try {
       await messaging().registerForRemoteNotifications();
     } catch (error) {
@@ -26,13 +26,13 @@ const NotificationsHandler = () => {
     } else {
       showSnackbar('We need your permission to send you the latest updates.');
     }
-  };
+  }, [showSnackbar]);
 
   useEffect(() => {
     if (!__DEV__) {
       handleNotifications();
     }
-  }, []);
+  });
 
   return null;
 };

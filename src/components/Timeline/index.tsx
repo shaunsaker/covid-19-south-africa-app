@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {LayoutChangeEvent} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -30,23 +30,29 @@ const TimelineContainer = ({...props}: Props) => {
   const {width, height} = useSelector(timelineLayoutSelector);
   const selectedDataOption = useSelector(timelineDataOptionSelector);
 
-  const onLayout = (event: LayoutChangeEvent) => {
-    const {layout} = event.nativeEvent;
+  const onLayout = useCallback(
+    (event: LayoutChangeEvent) => {
+      const {layout} = event.nativeEvent;
 
-    dispatch(setTimelineLayout(layout));
-  };
+      dispatch(setTimelineLayout(layout));
+    },
+    [dispatch],
+  );
 
-  const onSelectDataOption = (option: RadioSelectOption) => {
-    let dataOption;
+  const onSelectDataOption = useCallback(
+    (option: RadioSelectOption) => {
+      let dataOption;
 
-    if (option.label === 'Cumulative') {
-      dataOption = TimelineDataOptions.Cumulative;
-    } else {
-      dataOption = TimelineDataOptions.PerDay;
-    }
+      if (option.label === 'Cumulative') {
+        dataOption = TimelineDataOptions.Cumulative;
+      } else {
+        dataOption = TimelineDataOptions.PerDay;
+      }
 
-    dispatch(setTimelineDataOption(dataOption));
-  };
+      dispatch(setTimelineDataOption(dataOption));
+    },
+    [dispatch],
+  );
 
   const dataOptions = [
     {label: 'Cumulative', isSelected: selectedDataOption === 0},

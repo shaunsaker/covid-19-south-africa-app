@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {setSideMenu} from '../../store/actions';
@@ -12,13 +12,13 @@ const HeaderBarContainer = ({...props}: ContainerProps) => {
   const currentTab = tabs.filter(({sceneKey}) => sceneKey === currentScene)[0];
   const title = currentTab ? currentTab.title : 'CVD19ZA';
 
-  const onMenuPress = () => {
+  const onMenuPress = useCallback(() => {
     dispatch(setSideMenu(true));
-  };
+  }, [dispatch]);
 
-  const onClosePress = () => {
+  const onClosePress = useCallback(() => {
     dispatch(setSideMenu(false));
-  };
+  }, [dispatch]);
 
   return (
     <HeaderBar
