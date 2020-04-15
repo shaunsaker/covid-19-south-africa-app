@@ -12,7 +12,6 @@ import {
 
 import styles, {
   Container,
-  Text,
   LineChartContainer,
   LineChartRowContainer,
   YAxisLabelText,
@@ -55,8 +54,6 @@ const Timeline = ({
 
   return (
     <Container>
-      <Text>Timeline</Text>
-
       {children}
 
       <LineChartContainer>
