@@ -21,15 +21,19 @@ export const CounterContainer = styled.View<CounterContainerProps>`
   align-items: center;
 `;
 
+const SUBTITLE_HEIGHT = 26;
+
 export const SubtitleContainer = styled.View<CounterContainerProps>`
   background-color: ${colors.primaryMedium};
   border-radius: 10px;
   padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
+  justify-content: center;
+  height: ${SUBTITLE_HEIGHT}px;
   margin-bottom: ${rhythm.vt}px;
 `;
 
 export const SubtitlePlaceholder = styled.View<CounterContainerProps>`
-  height: 24.5px;
+  height: ${SUBTITLE_HEIGHT}px;
   margin-bottom: ${rhythm.vt}px;
 `;
 
