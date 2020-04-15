@@ -6,6 +6,7 @@ import {
   getTextShadow,
   getMobileTextShadow,
 } from '../../styleConstants';
+import {Platform} from 'react-native';
 
 export const Container = styled.View`
   padding: 0 ${rhythm.vt}px;
@@ -29,7 +30,9 @@ export const SubtitleContainer = styled.View<CounterContainerProps>`
   padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
   justify-content: center;
   height: ${SUBTITLE_HEIGHT}px;
-  margin-bottom: ${rhythm.vt}px;
+  margin-bottom: ${Platform.OS === 'android'
+    ? 4
+    : rhythm.vt}px; // compensate for line height of title text on android
 `;
 
 export const SubtitlePlaceholder = styled.View<CounterContainerProps>`
