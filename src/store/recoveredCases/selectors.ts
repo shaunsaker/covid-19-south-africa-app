@@ -3,10 +3,8 @@ import {createSelector} from 'reselect';
 import {ApplicationState} from '../reducers';
 
 import {sortArrayOfObjectsByKey} from '../../utils';
-import {
-  getLatestConfirmedCaseSelector,
-  getLatestDeathCaseSelector,
-} from '../../store/selectors';
+import {getLatestDeathCaseSelector} from '../../store/selectors';
+import {RecoveredCase} from './types';
 
 export const getRecoveredCasesSelector = (state: ApplicationState) =>
   state.recoveredCases.data;
@@ -67,6 +65,20 @@ export const getPreviousRecoveredCaseSelector = createSelector(
     const previousRecoveredCase = recoveredCases[1];
 
     return previousRecoveredCase;
+  },
+);
+
+export const getRecoveredCasesTimelineDataSelector = createSelector(
+  getChronoSortedRecoveredCasesSelector,
+  (recoveredCases: RecoveredCase[]) => {
+    const timelineData = recoveredCases.map((recoveredCase) => {
+      return {
+        value: recoveredCase.recovered,
+        date: new Date(recoveredCase.dateCreated),
+      };
+    });
+
+    return timelineData;
   },
 );
 

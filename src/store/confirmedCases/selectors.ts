@@ -4,6 +4,7 @@ import moment from 'moment';
 import {ApplicationState} from '../reducers';
 
 import {sortArrayOfObjectsByKey} from '../../utils';
+import {ConfirmedCase} from './types';
 
 export const getConfirmedCasesSelector = (state: ApplicationState) =>
   state.confirmedCases.data;
@@ -67,7 +68,19 @@ export const getPreviousConfirmedCaseSelector = createSelector(
   },
 );
 
-const ONE_DAY_IN_MS = 1000 * 60 * 60 * 24;
+export const getConfirmedCasesTimelineDataSelector = createSelector(
+  getChronoSortedConfirmedCasesSelector,
+  (confirmedCases: ConfirmedCase[]) => {
+    const timelineData = confirmedCases.map((confirmedCase) => {
+      return {
+        value: confirmedCase.confirmedCases,
+        date: new Date(confirmedCase.dateCreated),
+      };
+    });
+
+    return timelineData;
+  },
+);
 
 export const getAvgDailyChangeInLastWeekSelector = createSelector(
   getChronoSortedConfirmedCasesSelector,
@@ -88,12 +101,13 @@ export const getAvgDailyChangeInLastWeekSelector = createSelector(
      * Compute the average daily change
      */
     const averages: number[] = [];
+    const oneDayInMs = 1000 * 60 * 60 * 24;
     lastWeeksCases.forEach((item, index) => {
       if (index !== 0) {
         const date = new Date(item.dateAdded).getTime();
         const previousCase = lastWeeksCases[index - 1];
         const previousDate = new Date(previousCase.dateAdded).getTime();
-        const diffDays = (date - previousDate) / ONE_DAY_IN_MS;
+        const diffDays = (date - previousDate) / oneDayInMs;
         const value = item.confirmedCases;
         const previousValue = previousCase.confirmedCases;
         const diffCases = value - previousValue;

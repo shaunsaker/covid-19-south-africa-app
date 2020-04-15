@@ -2,21 +2,10 @@ import React from 'react';
 
 import Timeline from '../../../components/Timeline';
 import {useSelector} from 'react-redux';
-import {getChronoSortedRecoveredCasesSelector} from '../../../store/selectors';
-import {RecoveredCase} from '../../../store/types';
+import {getRecoveredCasesTimelineDataSelector} from '../../../store/selectors';
 
 const TimelineContainer = () => {
-  const recoveredCases: RecoveredCase[] = useSelector(
-    getChronoSortedRecoveredCasesSelector,
-  );
-  const data = recoveredCases.map((recoverdCase) => {
-    const {dateCreated} = recoverdCase;
-
-    return {
-      value: recoverdCase.recovered,
-      date: new Date(dateCreated),
-    };
-  });
+  const data = useSelector(getRecoveredCasesTimelineDataSelector);
 
   return <Timeline data={data} />;
 };

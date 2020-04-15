@@ -3,6 +3,7 @@ import {createSelector} from 'reselect';
 import {ApplicationState} from '../reducers';
 
 import {sortArrayOfObjectsByKey} from '../../utils';
+import {TestCase} from './types';
 
 export const getTestCasesSelector = (state: ApplicationState) =>
   state.testCases.data;
@@ -60,5 +61,19 @@ export const getPreviousTestCaseSelector = createSelector(
     const previousTestCase = testCases[1];
 
     return previousTestCase;
+  },
+);
+
+export const getTestCasesTimelineDataSelector = createSelector(
+  getChronoSortedTestCasesSelector,
+  (testCases: TestCase[]) => {
+    const timelineData = testCases.map((testCase) => {
+      return {
+        value: testCase.tests,
+        date: new Date(testCase.dateCreated),
+      };
+    });
+
+    return timelineData;
   },
 );

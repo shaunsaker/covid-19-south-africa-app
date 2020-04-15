@@ -3,10 +3,8 @@ import {createSelector} from 'reselect';
 import {ApplicationState} from '../reducers';
 
 import {sortArrayOfObjectsByKey} from '../../utils';
-import {
-  getLatestConfirmedCaseSelector,
-  getLatestRecoveredCaseSelector,
-} from '../../store/selectors';
+import {getLatestRecoveredCaseSelector} from '../../store/selectors';
+import {DeathCase} from './types';
 
 export const getDeathCasesSelector = (state: ApplicationState) =>
   state.deathCases.data;
@@ -64,6 +62,20 @@ export const getPreviousDeathCaseSelector = createSelector(
     const previousDeathCase = deathCases[1];
 
     return previousDeathCase;
+  },
+);
+
+export const getDeathCasesTimelineDataSelector = createSelector(
+  getChronoSortedDeathCasesSelector,
+  (deathCases: DeathCase[]) => {
+    const timelineData = deathCases.map((deathCase) => {
+      return {
+        value: deathCase.deaths,
+        date: new Date(deathCase.dateCreated),
+      };
+    });
+
+    return timelineData;
   },
 );
 
