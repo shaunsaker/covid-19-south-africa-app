@@ -6,17 +6,17 @@ import styles, {Container, TabContainer, TabText} from './styles';
 import {colors} from '../../styleConstants';
 import {TabProps as TabContainerProps} from '../../config';
 
-export interface TabProps extends TabContainerProps {
+export interface TabUIProps extends TabContainerProps {
   isActive: boolean;
-  handlePress: () => void;
+  handlePress?: () => void;
 }
 
 export interface TabBarProps {
-  tabs: TabProps[];
-  handleTabPress: (tab: TabContainerProps) => void;
+  tabs: TabUIProps[];
+  handleTabPress: (tab: TabUIProps) => void;
 }
 
-const Tab = ({label, isActive, handlePress}: TabProps) => {
+const Tab = ({label, isActive, handlePress}: TabUIProps) => {
   return (
     <TabContainer isActive={isActive} onPress={handlePress}>
       <TabText isActive={isActive} numberOfLines={1}>
