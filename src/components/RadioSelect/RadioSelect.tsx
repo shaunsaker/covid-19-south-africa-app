@@ -22,6 +22,7 @@ const RadioSelect = ({options, handleSelectOption}: RadioSelectProps) => {
           <OptionContainer
             key={label}
             isSelected={isSelected}
+            disabled={isSelected}
             onPress={() => handleSelectOption(option)}>
             <OptionText isSelected={isSelected}>{label}</OptionText>
           </OptionContainer>

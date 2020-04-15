@@ -18,7 +18,7 @@ export interface TabBarProps {
 
 const Tab = ({label, isActive, handlePress}: TabUIProps) => {
   return (
-    <TabContainer isActive={isActive} onPress={handlePress}>
+    <TabContainer isActive={isActive} disabled={isActive} onPress={handlePress}>
       <TabText isActive={isActive} numberOfLines={1}>
         {label}
       </TabText>
