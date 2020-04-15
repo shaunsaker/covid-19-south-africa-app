@@ -17,11 +17,11 @@ export const getTrendlineData = (data: Data) => {
     };
   });
 
-  const model = PolynomialRegression.read(mappedData, 2);
+  const model = PolynomialRegression.read(mappedData, 3);
   const terms = model.getTerms();
   const startTime = data[0].date.getTime();
   const endTime = data[data.length - 1].date.getTime();
-  const dataPoints = 20; // as low as possible but still creates a nice curve
+  const dataPoints = 100; // as low as possible but still creates a nice curve
   const interval = (endTime - startTime) / dataPoints;
   const trendlineData = [...Array(dataPoints).keys()].map((_, index) => {
     const time = startTime + interval * index;
