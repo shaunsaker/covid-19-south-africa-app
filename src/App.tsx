@@ -8,6 +8,7 @@ import Router from './Router';
 import SideMenu from './components/SideMenu';
 import NotificationsHandler from './components/NotificationsHandler';
 import CodePushHandler from './components/CodePushHandler';
+import AndroidBackHandler from './components/AndroidBackHandler';
 
 // Helper to clear local storage during development
 // if (__DEV__) {
@@ -26,6 +27,7 @@ const App = () => {
 
         <NotificationsHandler />
         <CodePushHandler />
+        <AndroidBackHandler />
       </PersistGate>
     </Provider>
   );
