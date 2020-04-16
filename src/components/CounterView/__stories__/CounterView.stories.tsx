@@ -1,14 +1,14 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react-native';
-import {View} from 'react-native';
 
 import CounterView from '..';
-import {colors} from '../../../styleConstants';
+import Background from '../../Background/Background';
+import CenterView from '../../CenterView';
 
 const title = 'Confirmed Cases';
 const start = 0;
 const end = 1170;
-const subtitle = '9%';
+const subtitle = '99% of closed cases';
 const lastUpdated = '27 March 2020, 20h14';
 const handleSourcePress = () => console.log('Source pressed');
 const handleCountComplete = () => console.log('Count complete');
@@ -24,9 +24,14 @@ const defaultProps = {
 
 storiesOf('Components|CounterView', module)
   .addDecorator((storyFn: any) => (
-    <View style={{backgroundColor: colors.primaryLight}}>{storyFn()}</View>
+    <Background>
+      <CenterView>{storyFn()}</CenterView>
+    </Background>
   ))
   .add('default', () => <CounterView {...defaultProps} />)
+  .add('no subtitle', () => (
+    <CounterView {...defaultProps} subtitle={undefined} />
+  ))
   .add('loading', () => (
     <CounterView {...defaultProps} start={0} end={0} lastUpdated="" loading />
   ));

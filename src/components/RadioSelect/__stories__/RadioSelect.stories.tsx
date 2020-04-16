@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {storiesOf} from '@storybook/react-native';
 
 import RadioSelect, {RadioSelectOption} from '../RadioSelect';
+import Background from '../../Background';
+import CenterView from '../../CenterView';
 
 const options: RadioSelectOption[] = [
   {
@@ -20,6 +22,10 @@ const defaultProps = {
   handleSelectOption,
 };
 
-storiesOf('Component|RadioSelect', module).add('default', () => (
-  <RadioSelect {...defaultProps} />
-));
+storiesOf('Component|RadioSelect', module)
+  .addDecorator((story: () => ReactNode) => (
+    <Background>
+      <CenterView>{story()}</CenterView>
+    </Background>
+  ))
+  .add('default', () => <RadioSelect {...defaultProps} />);

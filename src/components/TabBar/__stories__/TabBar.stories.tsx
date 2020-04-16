@@ -1,35 +1,29 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react-native';
-import {View} from 'react-native';
 
-import TabBar, {Tab} from '../TabBar';
-import {colors} from '../../../styleConstants';
+import TabBar, {TabUIProps} from '../TabBar';
+import {tabs} from '../../../config';
+import Background from '../../Background/Background';
+import CenterView from '../../CenterView';
 
-const tabs: Tab[] = [
-  {
-    label: 'Confirmed Cases',
-    isActive: true,
-  },
-  {
-    label: 'Deaths',
-    isActive: false,
-  },
-];
-const handleTabPress = (tab: Tab) => console.log(`${tab.label} pressed.`);
+const TABS = tabs.map((item, index) => {
+  return {
+    ...item,
+    isActive: Boolean(index === 0),
+  };
+});
+
+const handleTabPress = (tab: TabUIProps) =>
+  console.log(`${tab.label} pressed.`);
 const defaultProps = {
-  tabs,
+  tabs: TABS,
   handleTabPress,
 };
 
 storiesOf('Components|TabBar', module)
   .addDecorator((storyFn: any) => (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'flex-end',
-        backgroundColor: colors.primary,
-      }}>
-      {storyFn()}
-    </View>
+    <Background>
+      <CenterView>{storyFn()}</CenterView>
+    </Background>
   ))
   .add('default', () => <TabBar {...defaultProps} />);
