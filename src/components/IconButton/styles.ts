@@ -30,4 +30,11 @@ export default {
     color: colors.secondaryText,
     ...getMobileTextShadow('dark'),
   },
+  image: {
+    width: 24,
+    height: 12,
+    resizeMode: 'contain',
+    marginBottom: 2,
+    marginRight: 2,
+  },
 };

@@ -2,16 +2,18 @@ import React from 'react';
 import {NeomorphBox} from 'react-native-neomorph-shadows';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {Image} from 'react-native';
 
 import styles, {Button} from './styles';
 import {colors} from '../../styleConstants';
 
 export interface Props {
-  iconName: string;
+  iconName?: string;
+  imageUri?: string;
   handlePress: () => void;
 }
 
-const IconButton = ({iconName, handlePress}: Props) => {
+const IconButton = ({iconName, imageUri, handlePress}: Props) => {
   return (
     <NeomorphBox style={styles.iconButton}>
       <LinearGradient
@@ -20,7 +22,11 @@ const IconButton = ({iconName, handlePress}: Props) => {
         end={{x: 1, y: 1}}
         style={styles.iconContainer}>
         <Button onPress={handlePress}>
-          <Icon name={iconName} style={styles.icon} />
+          {iconName ? (
+            <Icon name={iconName} style={styles.icon} />
+          ) : imageUri ? (
+            <Image source={{uri: imageUri}} style={styles.image} />
+          ) : null}
         </Button>
       </LinearGradient>
     </NeomorphBox>
