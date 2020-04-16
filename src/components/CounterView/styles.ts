@@ -62,7 +62,7 @@ export const SourceText = styled.Text`
 
 export const LoadingContainer = styled.View`
   position: absolute;
-  top: 0;
+  top: ${Platform.OS === 'android' ? 4 : 0};
   bottom: 0;
   right: ${rhythm.hz * -2}px;
   justify-content: flex-start;
