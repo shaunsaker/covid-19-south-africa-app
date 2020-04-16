@@ -12,6 +12,9 @@ export const getRecoveredCasesSelector = (state: ApplicationState) =>
 export const getRecoveredCasesLoadingSelector = (state: ApplicationState) =>
   state.recoveredCases.loading;
 
+export const getRecoveredCasesSyncedSelector = (state: ApplicationState) =>
+  state.recoveredCases.synced;
+
 export const getChronoSortedRecoveredCasesSelector = createSelector(
   getRecoveredCasesSelector,
   (recoveredCases) => {

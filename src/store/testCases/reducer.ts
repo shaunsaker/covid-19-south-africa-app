@@ -4,6 +4,7 @@ import {TestCasesActionTypes, TestCasesState} from './types';
 export const initialState: TestCasesState = {
   data: [],
   loading: false,
+  synced: false,
 };
 
 const reducer: Reducer<TestCasesState> = (state = initialState, action) => {
@@ -13,6 +14,9 @@ const reducer: Reducer<TestCasesState> = (state = initialState, action) => {
     }
     case TestCasesActionTypes.SET_TEST_CASES_LOADING: {
       return {...state, loading: action.payload.loading};
+    }
+    case TestCasesActionTypes.SET_TEST_CASES_SYNCED: {
+      return {...state, synced: action.payload.synced};
     }
     default: {
       return state;

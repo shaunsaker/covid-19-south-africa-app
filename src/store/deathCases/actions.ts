@@ -10,3 +10,6 @@ export const setDeathCases = (deathCases: DeathCase[]) =>
 
 export const setDeathCasesLoading = (loading: boolean) =>
   action(DeathCasesActionTypes.SET_DEATH_CASES_LOADING, {loading});
+
+export const setDeathCasesSynced = (synced: boolean) =>
+  action(DeathCasesActionTypes.SET_DEATH_CASES_SYNCED, {synced});

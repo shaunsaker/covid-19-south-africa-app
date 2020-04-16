@@ -10,3 +10,6 @@ export const setRecoveredCases = (recoveredCases: RecoveredCase[]) =>
 
 export const setRecoveredCasesLoading = (loading: boolean) =>
   action(RecoveredCasesActionTypes.SET_RECOVERED_CASES_LOADING, {loading});
+
+export const setRecoveredCasesSynced = (synced: boolean) =>
+  action(RecoveredCasesActionTypes.SET_RECOVERED_CASES_SYNCED, {synced});

@@ -11,6 +11,9 @@ export const getTestCasesSelector = (state: ApplicationState) =>
 export const getTestCasesLoadingSelector = (state: ApplicationState) =>
   state.testCases.loading;
 
+export const getTestCasesSyncedSelector = (state: ApplicationState) =>
+  state.testCases.synced;
+
 export const getChronoSortedTestCasesSelector = createSelector(
   getTestCasesSelector,
   (testCases) => {

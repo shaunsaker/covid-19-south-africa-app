@@ -1,7 +1,8 @@
 export enum DeathCasesActionTypes {
-  GET_DEATH_CASES = '@@confirmedCases/GET_DEATH_CASES',
-  SET_DEATH_CASES = '@@confirmedCases/SET_DEATH_CASES',
-  SET_DEATH_CASES_LOADING = '@@confirmedCases/SET_DEATH_CASES_LOADING',
+  GET_DEATH_CASES = '@@deathCases/GET_DEATH_CASES',
+  SET_DEATH_CASES = '@@deathCases/SET_DEATH_CASES',
+  SET_DEATH_CASES_LOADING = '@@deathCases/SET_DEATH_CASES_LOADING',
+  SET_DEATH_CASES_SYNCED = '@@deathCases/SET_DEATH_CASES_SYNCED',
 }
 
 export interface DeathCase {
@@ -15,4 +16,5 @@ export interface DeathCase {
 export type DeathCasesState = {
   data: DeathCase[];
   loading: boolean;
+  synced: boolean;
 };

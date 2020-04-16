@@ -3,7 +3,11 @@ import {eventChannel} from 'redux-saga';
 
 import {DeathCasesActionTypes, DeathCase} from './types';
 import {sync} from '../../services/firestore';
-import {setDeathCases, setDeathCasesLoading} from './actions';
+import {
+  setDeathCases,
+  setDeathCasesLoading,
+  setDeathCasesSynced,
+} from './actions';
 
 const createChannel = (collection: string) => {
   return eventChannel((emit) => {
@@ -20,6 +24,7 @@ function* onGetDeathCases() {
   yield takeEvery(channel, function* listen(deathCases: DeathCase[]) {
     yield put(setDeathCases(deathCases));
     yield put(setDeathCasesLoading(false));
+    yield put(setDeathCasesSynced(true));
   });
 }
 

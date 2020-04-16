@@ -4,6 +4,7 @@ import {RecoveredCasesActionTypes, RecoveredCasesState} from './types';
 export const initialState: RecoveredCasesState = {
   data: [],
   loading: false,
+  synced: false,
 };
 
 const reducer: Reducer<RecoveredCasesState> = (
@@ -16,6 +17,9 @@ const reducer: Reducer<RecoveredCasesState> = (
     }
     case RecoveredCasesActionTypes.SET_RECOVERED_CASES_LOADING: {
       return {...state, loading: action.payload.loading};
+    }
+    case RecoveredCasesActionTypes.SET_RECOVERED_CASES_SYNCED: {
+      return {...state, synced: action.payload.synced};
     }
     default: {
       return state;

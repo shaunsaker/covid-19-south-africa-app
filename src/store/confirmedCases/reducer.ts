@@ -4,6 +4,7 @@ import {ConfirmedCasesActionTypes, ConfirmedCasesState} from './types';
 export const initialState: ConfirmedCasesState = {
   data: [],
   loading: false,
+  synced: false,
 };
 
 const reducer: Reducer<ConfirmedCasesState> = (
@@ -16,6 +17,9 @@ const reducer: Reducer<ConfirmedCasesState> = (
     }
     case ConfirmedCasesActionTypes.SET_CONFIRMED_CASES_LOADING: {
       return {...state, loading: action.payload.loading};
+    }
+    case ConfirmedCasesActionTypes.SET_CONFIRMED_CASES_SYNCED: {
+      return {...state, synced: action.payload.synced};
     }
     default: {
       return state;

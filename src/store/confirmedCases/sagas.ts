@@ -3,7 +3,11 @@ import {eventChannel} from 'redux-saga';
 
 import {ConfirmedCasesActionTypes, ConfirmedCase} from './types';
 import {sync} from '../../services/firestore';
-import {setConfirmedCases, setConfirmedCasesLoading} from './actions';
+import {
+  setConfirmedCases,
+  setConfirmedCasesLoading,
+  setConfirmedCasesSynced,
+} from './actions';
 
 const createChannel = (collection: string) => {
   return eventChannel((emit) => {
@@ -20,6 +24,7 @@ function* onGetConfirmedCases() {
   yield takeEvery(channel, function* listen(confirmedCases: ConfirmedCase[]) {
     yield put(setConfirmedCases(confirmedCases));
     yield put(setConfirmedCasesLoading(false));
+    yield put(setConfirmedCasesSynced(true));
   });
 }
 

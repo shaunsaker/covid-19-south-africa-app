@@ -4,6 +4,7 @@ import {DeathCasesActionTypes, DeathCasesState} from './types';
 export const initialState: DeathCasesState = {
   data: [],
   loading: false,
+  synced: false,
 };
 
 const reducer: Reducer<DeathCasesState> = (state = initialState, action) => {
@@ -13,6 +14,9 @@ const reducer: Reducer<DeathCasesState> = (state = initialState, action) => {
     }
     case DeathCasesActionTypes.SET_DEATH_CASES_LOADING: {
       return {...state, loading: action.payload.loading};
+    }
+    case DeathCasesActionTypes.SET_DEATH_CASES_SYNCED: {
+      return {...state, synced: action.payload.synced};
     }
     default: {
       return state;

@@ -12,6 +12,9 @@ export const getDeathCasesSelector = (state: ApplicationState) =>
 export const getDeathCasesLoadingSelector = (state: ApplicationState) =>
   state.deathCases.loading;
 
+export const getDeathCasesSyncedSelector = (state: ApplicationState) =>
+  state.deathCases.synced;
+
 export const getChronoSortedDeathCasesSelector = createSelector(
   getDeathCasesSelector,
   (deathCases) => {

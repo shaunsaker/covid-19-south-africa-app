@@ -3,7 +3,11 @@ import {eventChannel} from 'redux-saga';
 
 import {RecoveredCasesActionTypes, RecoveredCase} from './types';
 import {sync} from '../../services/firestore';
-import {setRecoveredCases, setRecoveredCasesLoading} from './actions';
+import {
+  setRecoveredCases,
+  setRecoveredCasesLoading,
+  setRecoveredCasesSynced,
+} from './actions';
 
 const createChannel = (collection: string) => {
   return eventChannel((emit) => {
@@ -20,6 +24,7 @@ function* onGetRecoveredCases() {
   yield takeEvery(channel, function* listen(recoveredCases: RecoveredCase[]) {
     yield put(setRecoveredCases(recoveredCases));
     yield put(setRecoveredCasesLoading(false));
+    yield put(setRecoveredCasesSynced(true));
   });
 }
 

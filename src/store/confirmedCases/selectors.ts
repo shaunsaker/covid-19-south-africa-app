@@ -12,6 +12,9 @@ export const getConfirmedCasesSelector = (state: ApplicationState) =>
 export const getConfirmedCasesLoadingSelector = (state: ApplicationState) =>
   state.confirmedCases.loading;
 
+export const getConfirmedCasesSyncedSelector = (state: ApplicationState) =>
+  state.confirmedCases.synced;
+
 export const getChronoSortedConfirmedCasesSelector = createSelector(
   getConfirmedCasesSelector,
   (confirmedCases) => {

@@ -9,3 +9,6 @@ export const setTestCases = (testCases: TestCase[]) =>
 
 export const setTestCasesLoading = (loading: boolean) =>
   action(TestCasesActionTypes.SET_TEST_CASES_LOADING, {loading});
+
+export const setTestCasesSynced = (synced: boolean) =>
+  action(TestCasesActionTypes.SET_TEST_CASES_SYNCED, {synced});
