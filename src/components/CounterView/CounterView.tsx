@@ -7,8 +7,8 @@ import Animator from 'react-native-simple-animators';
 import styles, {
   Container,
   CounterContainer,
+  SubtitleWrapper,
   SubtitleContainer,
-  SubtitlePlaceholder,
   SubtitleText,
   FooterText,
   SourceText,
@@ -46,13 +46,13 @@ const CounterView = ({
         duration={500}
         style={styles.animator}>
         <CounterContainer subtitle={subtitle}>
-          {subtitle ? (
-            <SubtitleContainer>
-              <SubtitleText>{subtitle}</SubtitleText>
-            </SubtitleContainer>
-          ) : (
-            <SubtitlePlaceholder />
-          )}
+          <SubtitleWrapper>
+            {subtitle ? (
+              <SubtitleContainer>
+                <SubtitleText>{subtitle}</SubtitleText>
+              </SubtitleContainer>
+            ) : null}
+          </SubtitleWrapper>
 
           <Counter
             key={end} // mount new if end changes

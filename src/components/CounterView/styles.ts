@@ -22,22 +22,21 @@ export const CounterContainer = styled.View<CounterContainerProps>`
   align-items: center;
 `;
 
-const SUBTITLE_HEIGHT = 26;
+/*
+ * Controls layout so that empty state does not affect page layout
+ */
+export const SubtitleWrapper = styled.View`
+  height: 26px;
+  margin-bottom: ${Platform.OS === 'android'
+    ? 4
+    : rhythm.vt}px; /* compensate for line height of title text on android */
+`;
 
 export const SubtitleContainer = styled.View<CounterContainerProps>`
   background-color: ${colors.primaryMedium};
   border-radius: 10px;
   padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
   justify-content: center;
-  height: ${SUBTITLE_HEIGHT}px;
-  margin-bottom: ${Platform.OS === 'android'
-    ? 4
-    : rhythm.vt}px; // compensate for line height of title text on android
-`;
-
-export const SubtitlePlaceholder = styled.View<CounterContainerProps>`
-  height: ${SUBTITLE_HEIGHT}px;
-  margin-bottom: ${rhythm.vt}px;
 `;
 
 export const SubtitleText = styled.Text`
