@@ -1,7 +1,7 @@
 import React from 'react';
 import Counter from 'react-native-counter';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {View} from 'react-native';
+import {View, ActivityIndicator} from 'react-native';
 import Animator from 'react-native-simple-animators';
 
 import styles, {
@@ -13,7 +13,9 @@ import styles, {
   FooterText,
   SourceText,
   SourceButton,
+  LoadingContainer,
 } from './styles';
+import {colors} from '../../styleConstants';
 
 export interface Props {
   title: string;
@@ -37,6 +39,14 @@ const CounterView = ({
 }: Props) => {
   return (
     <Container>
+      <SubtitleWrapper>
+        {subtitle ? (
+          <SubtitleContainer>
+            <SubtitleText>{subtitle}</SubtitleText>
+          </SubtitleContainer>
+        ) : null}
+      </SubtitleWrapper>
+
       <Animator
         type="opacity"
         initialValue={1}
@@ -45,15 +55,7 @@ const CounterView = ({
         shouldRepeat
         duration={500}
         style={styles.animator}>
-        <CounterContainer subtitle={subtitle}>
-          <SubtitleWrapper>
-            {subtitle ? (
-              <SubtitleContainer>
-                <SubtitleText>{subtitle}</SubtitleText>
-              </SubtitleContainer>
-            ) : null}
-          </SubtitleWrapper>
-
+        <CounterContainer>
           <Counter
             key={end} // mount new if end changes
             start={start}
@@ -63,24 +65,36 @@ const CounterView = ({
             style={styles.counter}
             onComplete={handleCountComplete}
           />
+          {loading ? (
+            <LoadingContainer>
+              <Animator
+                type="opacity"
+                initialValue={0}
+                finalValue={1}
+                shouldAnimateIn
+                duration={1000}>
+                <ActivityIndicator size="small" color={colors.primaryText} />
+              </Animator>
+            </LoadingContainer>
+          ) : null}
         </CounterContainer>
-
-        <FooterText>
-          {loading && start === 0
-            ? 'Fetching the latest data...'
-            : `Last Updated: ${lastUpdated}`}
-        </FooterText>
-
-        {loading && start === 0 ? (
-          <View style={styles.sourceButtonPlaceholder} />
-        ) : (
-          <SourceButton disabled={loading} onPress={handleSourcePress}>
-            <SourceText>
-              Source <Icon name="open-in-new" />
-            </SourceText>
-          </SourceButton>
-        )}
       </Animator>
+
+      <FooterText>
+        {loading && start === 0
+          ? 'Fetching the latest data...'
+          : `Last Updated: ${lastUpdated}`}
+      </FooterText>
+
+      {loading && start === 0 ? (
+        <View style={styles.sourceButtonPlaceholder} />
+      ) : (
+        <SourceButton disabled={loading} onPress={handleSourcePress}>
+          <SourceText>
+            Source <Icon name="open-in-new" />
+          </SourceText>
+        </SourceButton>
+      )}
     </Container>
   );
 };

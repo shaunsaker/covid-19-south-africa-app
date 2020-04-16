@@ -14,12 +14,9 @@ export const Container = styled.View`
   align-items: center;
 `;
 
-interface CounterContainerProps {
-  subtitle?: string;
-}
-
-export const CounterContainer = styled.View<CounterContainerProps>`
+export const CounterContainer = styled.View`
   align-items: center;
+  margin-bottom: ${rhythm.vt / 2}px;
 `;
 
 /*
@@ -32,7 +29,7 @@ export const SubtitleWrapper = styled.View`
     : rhythm.vt}px; /* compensate for line height of title text on android */
 `;
 
-export const SubtitleContainer = styled.View<CounterContainerProps>`
+export const SubtitleContainer = styled.View`
   background-color: ${colors.primaryMedium};
   border-radius: 10px;
   padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
@@ -64,11 +61,11 @@ export const SourceText = styled.Text`
 `;
 
 export const LoadingContainer = styled.View`
-  width: 148px;
-  height: 75.5px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  margin-bottom: ${rhythm.vt}px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: ${rhythm.hz * -2}px;
+  justify-content: flex-start;
 `;
 
 export default {
@@ -79,7 +76,6 @@ export default {
     fontFamily: 'Roboto-Bold',
     fontSize: 64,
     color: colors.primaryText,
-    marginBottom: rhythm.vt / 2,
     ...getMobileTextShadow('dark'),
   },
   sourceButtonPlaceholder: {

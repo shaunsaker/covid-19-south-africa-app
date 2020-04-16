@@ -33,5 +33,5 @@ storiesOf('Components|CounterView', module)
     <CounterView {...defaultProps} subtitle={undefined} />
   ))
   .add('loading', () => (
-    <CounterView {...defaultProps} start={0} end={0} lastUpdated="" loading />
+    <CounterView {...defaultProps} start={1234} end={1234} loading />
   ));
