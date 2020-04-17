@@ -1,8 +1,18 @@
 import styled from 'styled-components/native';
 
-import {colors, getTextShadow} from '../../styleConstants';
+import {colors, getTextShadow, rhythm} from '../../styleConstants';
 
-export const Button = styled.TouchableOpacity``;
+const WIDTH = 240;
+const HEIGHT = 48;
+const BORDER_RADIUS = 10;
+
+export const Button = styled.TouchableOpacity`
+  width: ${WIDTH - 2}px;
+  height: ${HEIGHT - 2}px;
+  justify-content: center;
+  align-items: center;
+  padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
+`;
 
 export const Text = styled.Text`
   font-family: 'Roboto-Bold';
@@ -11,10 +21,6 @@ export const Text = styled.Text`
   text-shadow: ${getTextShadow('dark')};
   padding: 4px; /* for shadow to show through */
 `;
-
-const WIDTH = 240;
-const HEIGHT = 48;
-const BORDER_RADIUS = 10;
 
 export default {
   buttonWrapper: {
@@ -29,11 +35,5 @@ export default {
   buttonContainer: {
     borderRadius: BORDER_RADIUS,
     backgroundColor: colors.secondary,
-  },
-  button: {
-    width: WIDTH - 2,
-    height: HEIGHT - 2,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 };

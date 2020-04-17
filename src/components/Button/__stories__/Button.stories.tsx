@@ -19,4 +19,5 @@ storiesOf('Components|Button', module)
       <CenterView>{story()}</CenterView>
     </Background>
   ))
-  .add('default', () => <Button {...defaultProps} />);
+  .add('default', () => <Button {...defaultProps} />)
+  .add('secondary', () => <Button {...defaultProps} secondary />);
