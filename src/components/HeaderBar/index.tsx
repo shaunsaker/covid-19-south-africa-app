@@ -4,9 +4,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import {setSideMenu} from '../../store/actions';
 import {getCurrentScene} from '../../store/selectors';
 import {tabs} from '../../config';
-import HeaderBar, {ContainerProps} from './HeaderBar';
+import HeaderBar from './HeaderBar';
 
-const HeaderBarContainer = ({...props}: ContainerProps) => {
+const HeaderBarContainer = () => {
   const dispatch = useDispatch();
   const currentScene = useSelector(getCurrentScene);
   const currentTab = tabs.filter(({sceneKey}) => sceneKey === currentScene)[0];
@@ -20,12 +20,16 @@ const HeaderBarContainer = ({...props}: ContainerProps) => {
     dispatch(setSideMenu(false));
   }, [dispatch]);
 
+  const onCountryPress = useCallback(() => {
+    // TODO:
+  });
+
   return (
     <HeaderBar
       title={title}
       handleMenuPress={onMenuPress}
       handleClosePress={onClosePress}
-      {...props}
+      handleCountryPress={onCountryPress}
     />
   );
 };

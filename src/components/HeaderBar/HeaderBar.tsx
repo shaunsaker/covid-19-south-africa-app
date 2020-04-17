@@ -6,15 +6,12 @@ import {colors} from '../../styleConstants';
 
 import IconButton from '../../components/IconButton/IconButton';
 
-export interface ContainerProps {
+interface HeaderBarProps {
   title: string;
   children?: ReactNode;
   showMenuIcon?: boolean;
   showCloseIcon?: boolean;
   showCountryIcon?: string; // the uri of the country image
-}
-
-interface Props extends ContainerProps {
   handleMenuPress: () => void;
   handleClosePress: () => void;
   handleCountryPress: () => void;
@@ -29,7 +26,7 @@ const HeaderBar = ({
   handleMenuPress,
   handleClosePress,
   handleCountryPress,
-}: Props) => {
+}: HeaderBarProps) => {
   return (
     <Container>
       <StatusBar
