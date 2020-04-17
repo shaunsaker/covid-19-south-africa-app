@@ -22,6 +22,14 @@ export const Text = styled.Text`
   padding: 4px; /* for shadow to show through */
 `;
 
+export const LeftComponentContainer = styled.View`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: ${rhythm.hz / 2}px;
+  justify-content: center;
+`;
+
 export default {
   buttonWrapper: {
     width: WIDTH,
