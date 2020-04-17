@@ -6,11 +6,11 @@ import Background from '../Background/Background';
 import HeaderBar from '../HeaderBar';
 import TabBar from '../TabBar';
 
-export interface PageProps {
+export interface TabPageProps {
   children: ReactNode;
 }
 
-const Page = ({children}: PageProps) => {
+const TabPage = ({children}: TabPageProps) => {
   return (
     <Background>
       <HeaderBar />
@@ -22,4 +22,4 @@ const Page = ({children}: PageProps) => {
   );
 };
 
-export default Page;
+export default TabPage;

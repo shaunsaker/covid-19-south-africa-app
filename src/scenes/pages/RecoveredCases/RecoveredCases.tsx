@@ -1,16 +1,16 @@
 import React from 'react';
 
-import Page from '../../../components/Page';
+import TabPage from '../../../components/TabPage';
 import CounterView from './CounterView';
 import Timeline from './Timeline';
 
 const RecoveredCases = () => {
   return (
-    <Page>
+    <TabPage>
       <CounterView />
 
       <Timeline />
-    </Page>
+    </TabPage>
   );
 };
 
