@@ -8,7 +8,7 @@ export const StyledTextInput = styled.TextInput`
   font-family: 'Roboto-Bold';
   font-size: 16px;
   color: ${colors.primaryText};
-  padding: ${rhythm.vt}px 0;
+  padding: ${rhythm.vt}px 0 ${rhythm.vt + 2}px;
   padding-right: ${rhythm.hz / 2}px;
 `;
 
