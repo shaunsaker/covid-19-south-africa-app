@@ -1,9 +1,9 @@
 import styled from 'styled-components/native';
 
-import {colors, getTextShadow, rhythm} from '../../styleConstants';
+import {colors, getTextShadow, rhythm, sizes} from '../../styleConstants';
 
-const WIDTH = 240;
-const HEIGHT = 48;
+const WIDTH = sizes.elementWidth;
+const HEIGHT = sizes.elementHeight;
 const BORDER_RADIUS = 10;
 
 export const Button = styled.TouchableOpacity`
