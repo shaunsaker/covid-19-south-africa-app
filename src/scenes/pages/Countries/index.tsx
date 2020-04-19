@@ -21,6 +21,7 @@ import {
   setLatestViewedDeathCase,
   setLatestViewedTestCase,
 } from '../../../store/actions';
+import {sortArrayOfObjectsByKey} from '../../../utils';
 
 interface CountriesContainerProps {}
 
@@ -71,7 +72,6 @@ const CountriesContainer = ({}: CountriesContainerProps) => {
 
   if (searchCountriesValue && searchCountriesValue.length > 1) {
     const searchOptions = {
-      shouldSort: true,
       threshold: 0.4, // % non-match is useful for handling spelling errors and word order
       minMatchCharLength: 2, // at least 2 characters
       keys: ['name'],
@@ -88,6 +88,15 @@ const CountriesContainer = ({}: CountriesContainerProps) => {
       .search(searchCountriesValue)
       .map((fuseItem) => fuseItem.item);
   }
+
+  // Sort the countries by name
+  filteredCountries = sortArrayOfObjectsByKey(countries, 'name');
+
+  // Reverse sort the recently selected countries by date
+  filteredRecentlySelectedCountries = sortArrayOfObjectsByKey(
+    recentlySelectedCountries,
+    'date',
+  );
 
   return (
     <Countries
