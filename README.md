@@ -1,10 +1,11 @@
 # covid-19-south-africa-app
 
 <div>
-<img src="./screenshots/cases.png" width="200">
-<img src="./screenshots/recoveries.png" width="200">
-<img src="./screenshots/deaths.png" width="200">
-<img src="./screenshots/tests.png" width="200">
+<img src="./screenshots/cases.png" width="160">
+<img src="./screenshots/select-country.png" width="160">
+<img src="./screenshots/recoveries.png" width="160">
+<img src="./screenshots/deaths.png" width="160">
+<img src="./screenshots/tests.png" width="160">
 </div>
 
 ## Development
