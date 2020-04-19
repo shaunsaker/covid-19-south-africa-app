@@ -1,5 +1,6 @@
 import React from 'react';
 import {Actions, Scene, Tabs} from 'react-native-router-flux';
+import StackViewTransitionConfigs from 'react-navigation-stack/src/views/StackView/StackViewTransitionConfigs';
 
 import ConfirmedCases from './pages/ConfirmedCases';
 import DeathCases from './pages/DeathCases';
@@ -8,7 +9,11 @@ import TestCases from './pages/TestCases';
 import Countries from './pages/Countries';
 
 const scenes = Actions.create(
-  <Scene key="root" hideNavBar panHandlers={null}>
+  <Scene
+    key="root"
+    hideNavBar
+    panHandlers={null}
+    transitionConfig={() => StackViewTransitionConfigs.SlideFromRightIOS}>
     <Tabs
       key="tabs"
       headerMode="none"
