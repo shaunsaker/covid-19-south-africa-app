@@ -6,6 +6,8 @@ import styles, {
   CountryImage,
   RecentlySelectedContainer,
   RecentlySelectedText,
+  RecentlySelectedIconButton,
+  RecentlySelectedIcon,
 } from './styles';
 import Background from '../../../components/Background';
 import HeaderBar from '../../../components/HeaderBar';
@@ -20,6 +22,7 @@ export interface CountriesProps {
   countries: Country[];
   handleSearchCountries: (text: string) => void;
   handleCountryPress: (country: Country) => void;
+  handleRecentlySelectedCountryPress: (country: Country) => void;
   // handleWorldPress: () => void;
 }
 
@@ -29,6 +32,7 @@ const Countries = ({
   countries,
   handleSearchCountries,
   handleCountryPress,
+  handleRecentlySelectedCountryPress,
 }: // handleWorldPress,
 CountriesProps) => {
   return (
@@ -61,6 +65,15 @@ CountriesProps) => {
                           source={{uri: country.imageUri}}
                           resizeMode="contain"
                         />
+                      }
+                      rightComponent={
+                        <RecentlySelectedIconButton
+                          hitSlop={{top: 20, right: 20, bottom: 20, left: 0}}
+                          onPress={() =>
+                            handleRecentlySelectedCountryPress(country)
+                          }>
+                          <RecentlySelectedIcon name="close" />
+                        </RecentlySelectedIconButton>
                       }
                       handlePress={() => handleCountryPress(country)}>
                       {country.name}

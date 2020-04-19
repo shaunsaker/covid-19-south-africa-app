@@ -12,6 +12,8 @@ const recentlySelectedCountries = countries.filter(
 const searchCountriesValue = '';
 const handleSearchCountries = (text: string) => console.log(text);
 const handleCountryPress = (country: Country) => console.log(country.name);
+const handleRecentlySelectedCountryPress = (country: Country) =>
+  console.log(country.name);
 const handleWorldPress = () => console.log('World pressed.');
 const defaultProps = {
   searchCountriesValue,
@@ -19,6 +21,7 @@ const defaultProps = {
   recentlySelectedCountries,
   countries,
   handleCountryPress,
+  handleRecentlySelectedCountryPress,
   handleWorldPress,
 };
 

@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 
 import {rhythm, colors, sizes} from '../../../styleConstants';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export const InputContainer = styled.View`
   align-items: center;
@@ -12,8 +13,8 @@ export const CountryButtonContainer = styled.View`
 `;
 
 export const CountryImage = styled.Image`
-  width: 20;
-  height: 30; /* any value greater than 20 fixes width to 20 with resizeMode='contain' */
+  width: 20px;
+  height: 30px; /* any value greater than 20 fixes width to 20 with resizeMode='contain' */
   margin-bottom: 3px;
 `;
 
@@ -23,7 +24,7 @@ export const RecentlySelectedContainer = styled.View`
   border-color: ${colors.primaryLight};
   padding-bottom: ${rhythm.vt / 2}px;
   margin-bottom: ${rhythm.vt}px;
-  width: ${sizes.elementWidth};
+  width: ${sizes.elementWidth}px;
   align-self: center;
 `;
 
@@ -32,6 +33,13 @@ export const RecentlySelectedText = styled.Text`
   font-size: 14px;
   color: ${colors.secondaryText};
   margin-bottom: ${rhythm.vt / 2}px;
+`;
+
+export const RecentlySelectedIconButton = styled.TouchableOpacity``;
+
+export const RecentlySelectedIcon = styled(Icon)`
+  font-size: 24px;
+  color: ${colors.primaryText};
 `;
 
 export default {

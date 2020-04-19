@@ -45,6 +45,16 @@ const reducer: Reducer<CountriesState> = (state = initialState, action) => {
         selectedCountries: newSelectedCountries,
       };
     }
+    case CountriesActionTypes.REMOVE_RECENTLY_SELECTED_COUNTRY: {
+      const newSelectedCountries = state.selectedCountries.filter(
+        (item) => item.country.code !== action.payload.country.code,
+      );
+
+      return {
+        ...state,
+        selectedCountries: newSelectedCountries,
+      };
+    }
     default: {
       return state;
     }

@@ -11,6 +11,7 @@ export interface SelectedCountry {
 
 export enum CountriesActionTypes {
   SET_SELECTED_COUNTRY = '@@countries/SET_SELECTED_COUNTRY',
+  REMOVE_RECENTLY_SELECTED_COUNTRY = '@@countries/REMOVE_RECENTLY_SELECTED_COUNTRY',
 }
 
 export interface CountriesState {

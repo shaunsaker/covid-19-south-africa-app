@@ -20,6 +20,7 @@ import {
   setLatestViewedRecoveredCase,
   setLatestViewedDeathCase,
   setLatestViewedTestCase,
+  removeRecentlySelectedCountry,
 } from '../../../store/actions';
 import {sortArrayOfObjectsByKey} from '../../../utils';
 import {InteractionManager} from 'react-native';
@@ -65,6 +66,13 @@ const CountriesContainer = ({}: CountriesContainerProps) => {
     [dispatch, selectedCountry],
   );
 
+  const onRecentlySelectedCountryPress = useCallback(
+    (country: Country) => {
+      dispatch(removeRecentlySelectedCountry(country));
+    },
+    [dispatch],
+  );
+
   // const onWorldPress = useCallback(() => {
   //   // TODO:
   // }, [dispatch]);
@@ -95,12 +103,6 @@ const CountriesContainer = ({}: CountriesContainerProps) => {
   // Sort the countries by name
   filteredCountries = sortArrayOfObjectsByKey(countries, 'name');
 
-  // Reverse sort the recently selected countries by date
-  filteredRecentlySelectedCountries = sortArrayOfObjectsByKey(
-    recentlySelectedCountries,
-    'date',
-  );
-
   return (
     <Countries
       searchCountriesValue={searchCountriesValue}
@@ -108,6 +110,7 @@ const CountriesContainer = ({}: CountriesContainerProps) => {
       countries={filteredCountries}
       handleSearchCountries={onSearchCountries}
       handleCountryPress={onCountryPress}
+      handleRecentlySelectedCountryPress={onRecentlySelectedCountryPress}
       // handleWorldPress={onWorldPress}
     />
   );
