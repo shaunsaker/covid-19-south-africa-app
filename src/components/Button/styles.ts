@@ -6,12 +6,18 @@ const WIDTH = sizes.elementWidth;
 const HEIGHT = sizes.elementHeight;
 const BORDER_RADIUS = 10;
 
-export const Button = styled.TouchableOpacity`
+interface ButtonProps {
+  withLeftComponent: boolean;
+}
+
+export const Button = styled.TouchableOpacity<ButtonProps>`
   width: ${WIDTH - 2}px;
   height: ${HEIGHT - 2}px;
   justify-content: center;
   align-items: center;
-  padding: ${rhythm.vt / 2}px ${rhythm.hz / 2}px;
+  padding: ${rhythm.vt / 2}px
+    ${({withLeftComponent}) =>
+      withLeftComponent ? 20 + rhythm.hz / 2 : rhythm.hz / 2}px;
 `;
 
 export const Text = styled.Text`
