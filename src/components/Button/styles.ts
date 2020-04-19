@@ -7,7 +7,7 @@ const HEIGHT = sizes.elementHeight;
 const BORDER_RADIUS = 10;
 
 interface ButtonProps {
-  withLeftComponent: boolean;
+  withAdditionalComponent: boolean;
 }
 
 export const Button = styled.TouchableOpacity<ButtonProps>`
@@ -16,8 +16,8 @@ export const Button = styled.TouchableOpacity<ButtonProps>`
   justify-content: center;
   align-items: center;
   padding: ${rhythm.vt / 2}px
-    ${({withLeftComponent}) =>
-      withLeftComponent ? 20 + rhythm.hz / 2 : rhythm.hz / 2}px;
+    ${({withAdditionalComponent}) =>
+      withAdditionalComponent ? 20 + rhythm.hz / 2 : rhythm.hz / 2}px;
 `;
 
 export const Text = styled.Text`
@@ -33,6 +33,14 @@ export const LeftComponentContainer = styled.View`
   top: 0;
   bottom: 0;
   left: ${rhythm.hz / 2}px;
+  justify-content: center;
+`;
+
+export const RightComponentContainer = styled.View`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: ${rhythm.hz / 2}px;
   justify-content: center;
 `;
 

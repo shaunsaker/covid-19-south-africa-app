@@ -5,6 +5,7 @@ import styles, {
   Button as StyledButton,
   Text,
   LeftComponentContainer,
+  RightComponentContainer,
 } from './styles';
 import {colors} from '../../styleConstants';
 
@@ -12,10 +13,17 @@ export interface Props {
   secondary?: boolean;
   children: ReactNode;
   leftComponent?: ReactNode;
+  rightComponent?: ReactNode;
   handlePress: () => void;
 }
 
-const Button = ({secondary, children, leftComponent, handlePress}: Props) => {
+const Button = ({
+  secondary,
+  children,
+  leftComponent,
+  rightComponent,
+  handlePress,
+}: Props) => {
   return (
     <View
       style={{
@@ -28,7 +36,7 @@ const Button = ({secondary, children, leftComponent, handlePress}: Props) => {
           ...(secondary && {backgroundColor: colors.primaryLight}),
         }}>
         <StyledButton
-          withLeftComponent={Boolean(leftComponent)}
+          withAdditionalComponent={Boolean(leftComponent || rightComponent)}
           onPress={handlePress}>
           <Text numberOfLines={1}>{children}</Text>
         </StyledButton>
@@ -36,6 +44,10 @@ const Button = ({secondary, children, leftComponent, handlePress}: Props) => {
 
       {leftComponent ? (
         <LeftComponentContainer>{leftComponent}</LeftComponentContainer>
+      ) : null}
+
+      {rightComponent ? (
+        <RightComponentContainer>{rightComponent}</RightComponentContainer>
       ) : null}
     </View>
   );
