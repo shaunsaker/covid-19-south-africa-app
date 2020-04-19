@@ -24,6 +24,7 @@ export interface Props {
   subtitle?: string;
   lastUpdated: string;
   loading?: boolean;
+  noData?: boolean;
   handleCountComplete: () => void;
   handleSourcePress: () => void;
 }
@@ -34,6 +35,7 @@ const CounterView = ({
   subtitle,
   lastUpdated,
   loading,
+  noData,
   handleCountComplete,
   handleSourcePress,
 }: Props) => {
@@ -81,12 +83,14 @@ const CounterView = ({
       </Animator>
 
       <FooterText>
-        {loading && start === 0
+        {noData
+          ? "We couldn't find any data on this."
+          : loading && start === 0
           ? 'Fetching the latest data...'
           : `Last Updated: ${lastUpdated}`}
       </FooterText>
 
-      {loading && start === 0 ? (
+      {(loading && start === 0) || noData ? (
         <View style={styles.sourceButtonPlaceholder} />
       ) : (
         <SourceButton disabled={loading} onPress={handleSourcePress}>
