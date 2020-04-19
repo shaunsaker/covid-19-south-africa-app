@@ -101,7 +101,7 @@ const CountriesContainer = ({}: CountriesContainerProps) => {
   }
 
   // Sort the countries by name
-  filteredCountries = sortArrayOfObjectsByKey(countries, 'name');
+  filteredCountries = sortArrayOfObjectsByKey(filteredCountries, 'name');
 
   return (
     <Countries
