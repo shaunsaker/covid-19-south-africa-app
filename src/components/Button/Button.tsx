@@ -1,5 +1,4 @@
 import React, {ReactNode} from 'react';
-import {NeomorphBox} from 'react-native-neomorph-shadows';
 import {View} from 'react-native';
 
 import styles, {
@@ -18,7 +17,7 @@ export interface Props {
 
 const Button = ({secondary, children, leftComponent, handlePress}: Props) => {
   return (
-    <NeomorphBox
+    <View
       style={{
         ...styles.buttonWrapper,
         ...(secondary && {backgroundColor: colors.primaryMedium}),
@@ -36,7 +35,7 @@ const Button = ({secondary, children, leftComponent, handlePress}: Props) => {
       {leftComponent ? (
         <LeftComponentContainer>{leftComponent}</LeftComponentContainer>
       ) : null}
-    </NeomorphBox>
+    </View>
   );
 };
 
