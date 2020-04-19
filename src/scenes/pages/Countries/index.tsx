@@ -67,6 +67,7 @@ const CountriesContainer = ({}: CountriesContainerProps) => {
 
   // Filter countries by searchCountriesValue
   let filteredCountries = countries;
+  let filteredRecentlySelectedCountries = recentlySelectedCountries;
 
   if (searchCountriesValue && searchCountriesValue.length > 1) {
     const searchOptions = {
@@ -75,8 +76,15 @@ const CountriesContainer = ({}: CountriesContainerProps) => {
       minMatchCharLength: 2, // at least 2 characters
       keys: ['name'],
     };
-    const fuse = new Fuse(countries, searchOptions);
-    filteredCountries = fuse
+    const fuseCountries = new Fuse(countries, searchOptions);
+    filteredCountries = fuseCountries
+      .search(searchCountriesValue)
+      .map((fuseItem) => fuseItem.item);
+    const fuseRecentCountries = new Fuse(
+      recentlySelectedCountries,
+      searchOptions,
+    );
+    filteredRecentlySelectedCountries = fuseRecentCountries
       .search(searchCountriesValue)
       .map((fuseItem) => fuseItem.item);
   }
@@ -84,7 +92,7 @@ const CountriesContainer = ({}: CountriesContainerProps) => {
   return (
     <Countries
       searchCountriesValue={searchCountriesValue}
-      recentlySelectedCountries={recentlySelectedCountries}
+      recentlySelectedCountries={filteredRecentlySelectedCountries}
       countries={filteredCountries}
       handleSearchCountries={onSearchCountries}
       handleCountryPress={onCountryPress}
