@@ -1,4 +1,4 @@
 export const sizes = {
-  elementWidth: 240,
+  elementWidth: 260,
   elementHeight: 48,
 };

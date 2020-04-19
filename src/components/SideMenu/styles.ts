@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-import {rhythm, colors, getTextShadow} from '../../styleConstants';
+import {rhythm, colors, getTextShadow, sizes} from '../../styleConstants';
 
 export const Container = styled.View`
   flex: 1;
@@ -26,8 +26,8 @@ export default {
   versionWrapper: {},
   versionContainer: {
     borderRadius: 10,
-    width: 240,
-    height: 48,
+    width: sizes.elementWidth,
+    height: sizes.elementHeight,
     backgroundColor: 'transparent',
     shadowOffset: {width: 4, height: 4},
     shadowOpacity: 0.4,
