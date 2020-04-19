@@ -100,6 +100,14 @@ export const getAvgDailyChangeInLastWeekSelector = createSelector(
       (confirmedCase) => new Date(confirmedCase.dateAdded) >= aWeekAgo,
     );
 
+    if (!lastWeeksCases.length) {
+      return 0;
+    }
+
+    if (lastWeeksCases.length === 1) {
+      return lastWeeksCases[0].confirmedCases;
+    }
+
     /*
      * Compute the average daily change
      */
@@ -119,8 +127,9 @@ export const getAvgDailyChangeInLastWeekSelector = createSelector(
         averages.push(averageDailyChange);
       }
     });
+    console.log({averages, confirmedCases});
     const avgDailyChangeInLastWeek = Math.round(
-      averages.reduce((total, nextValue) => (total += nextValue)) /
+      averages.reduce((total, nextValue) => (total += nextValue), 0) /
         averages.length,
     );
 
