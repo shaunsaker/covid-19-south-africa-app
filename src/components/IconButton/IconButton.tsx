@@ -21,7 +21,9 @@ const IconButton = ({iconName, imageUri, handlePress}: Props) => {
         start={{x: 0.2, y: 0.2}}
         end={{x: 1, y: 1}}
         style={styles.iconContainer}>
-        <Button onPress={handlePress}>
+        <Button
+          hitSlop={{top: 20, right: 20, bottom: 20, left: 20}}
+          onPress={handlePress}>
           {iconName ? (
             <Icon name={iconName} style={styles.icon} />
           ) : imageUri ? (
