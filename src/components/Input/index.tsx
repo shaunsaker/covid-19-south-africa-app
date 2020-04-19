@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, TextInputProperties} from 'react-native';
+import {TextInputProperties} from 'react-native';
+import {NeomorphBox} from 'react-native-neomorph-shadows';
 
 import styles, {StyledTextInput, StyledIcon} from './styles';
 import {colors} from '../../styleConstants';
@@ -16,7 +17,7 @@ const Input = ({
   handleChange,
 }: InputProps) => {
   return (
-    <View style={styles.container}>
+    <NeomorphBox inner style={styles.container}>
       {iconName ? <StyledIcon name={iconName} /> : null}
 
       <StyledTextInput
@@ -25,7 +26,7 @@ const Input = ({
         value={value}
         onChangeText={handleChange}
       />
-    </View>
+    </NeomorphBox>
   );
 };
 
