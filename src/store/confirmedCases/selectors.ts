@@ -127,7 +127,6 @@ export const getAvgDailyChangeInLastWeekSelector = createSelector(
         averages.push(averageDailyChange);
       }
     });
-    console.log({averages, confirmedCases});
     const avgDailyChangeInLastWeek = Math.round(
       averages.reduce((total, nextValue) => (total += nextValue), 0) /
         averages.length,
