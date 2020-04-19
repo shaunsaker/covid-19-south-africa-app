@@ -28,5 +28,8 @@ export default {
     borderRadius: 10,
     width: sizes.elementWidth,
     height: sizes.elementHeight,
+    shadowOffset: {width: 4, height: 4},
+    shadowOpacity: 0.4,
+    shadowRadius: 2,
   },
 };
