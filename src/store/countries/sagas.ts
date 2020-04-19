@@ -16,6 +16,7 @@ import {
   setConfirmedCases,
 } from '../confirmedCases/actions';
 import {ConfirmedCase} from '../confirmedCases/types';
+import {setTestCases} from '../testCases/actions';
 
 interface CountriesApiLocation {
   id: number;
@@ -51,37 +52,48 @@ export function* getCountryData() {
     countriesApi,
   );
   const selectedCountry = yield select(getSelectedCountrySelector);
-  const selectedCountryId = countriesApiLocationsResponse.locations.filter(
+  const selectedCountryApi = countriesApiLocationsResponse.locations.filter(
     (location) => location.country_code === selectedCountry.code,
-  )[0].id;
-  const countriesApiCountryResponse: CountriesApiCountryResponse = yield call(
-    fetch,
-    `${countriesApi}/${selectedCountryId}`,
-  );
-  const confirmedCasesTimeline =
-    countriesApiCountryResponse.location.timelines.confirmed.timeline;
-  const confirmedCases: ConfirmedCase[] = processCountryData(
-    confirmedCasesTimeline,
-    'confirmedCases',
-  );
-  yield put(setConfirmedCases(confirmedCases));
-  yield put(setConfirmedCasesLoading(false));
+  )[0];
 
-  const recoveredCasesTimeline =
-    countriesApiCountryResponse.location.timelines.recovered.timeline;
-  const recoveredCases: RecoveredCase[] = processCountryData(
-    recoveredCasesTimeline,
-    'recovered',
-  );
-  yield put(setRecoveredCases(recoveredCases));
-  yield put(setRecoveredCasesLoading(false));
+  if (!selectedCountryApi) {
+    yield put(setConfirmedCases([]));
+    yield put(setConfirmedCasesLoading(false));
+    yield put(setRecoveredCases([]));
+    yield put(setRecoveredCasesLoading(false));
+    yield put(setDeathCases([]));
+    yield put(setDeathCasesLoading(false));
+  } else {
+    const selectedCountryId = selectedCountryApi.id;
+    const countriesApiCountryResponse: CountriesApiCountryResponse = yield call(
+      fetch,
+      `${countriesApi}/${selectedCountryId}`,
+    );
+    const confirmedCasesTimeline =
+      countriesApiCountryResponse.location.timelines.confirmed.timeline;
+    const confirmedCases: ConfirmedCase[] = processCountryData(
+      confirmedCasesTimeline,
+      'confirmedCases',
+    );
+    yield put(setConfirmedCases(confirmedCases));
+    yield put(setConfirmedCasesLoading(false));
 
-  const deathCasesTimeline =
-    countriesApiCountryResponse.location.timelines.deaths.timeline;
-  const deathCases: DeathCase[] = processCountryData(
-    deathCasesTimeline,
-    'deaths',
-  );
-  yield put(setDeathCases(deathCases));
-  yield put(setDeathCasesLoading(false));
+    const recoveredCasesTimeline =
+      countriesApiCountryResponse.location.timelines.recovered.timeline;
+    const recoveredCases: RecoveredCase[] = processCountryData(
+      recoveredCasesTimeline,
+      'recovered',
+    );
+    yield put(setRecoveredCases(recoveredCases));
+    yield put(setRecoveredCasesLoading(false));
+
+    const deathCasesTimeline =
+      countriesApiCountryResponse.location.timelines.deaths.timeline;
+    const deathCases: DeathCase[] = processCountryData(
+      deathCasesTimeline,
+      'deaths',
+    );
+    yield put(setDeathCases(deathCases));
+    yield put(setDeathCasesLoading(false));
+  }
 }
