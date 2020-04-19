@@ -1,8 +1,9 @@
 export enum TestCasesActionTypes {
-  GET_TEST_CASES = '@@confirmedCases/GET_TEST_CASES',
-  SET_TEST_CASES = '@@confirmedCases/SET_TEST_CASES',
-  SET_TEST_CASES_LOADING = '@@confirmedCases/SET_TEST_CASES_LOADING',
-  SET_TEST_CASES_SYNCED = '@@confirmedCases/SET_TEST_CASES_SYNCED',
+  GET_TEST_CASES = '@@testCases/GET_TEST_CASES',
+  SET_TEST_CASES = '@@testCases/SET_TEST_CASES',
+  SET_TEST_CASES_LOADING = '@@testCases/SET_TEST_CASES_LOADING',
+  SET_TEST_CASES_SYNCED = '@@testCases/SET_TEST_CASES_SYNCED',
+  RESET_TEST_CASES = '@@testCases/RESET_TEST_CASES',
 }
 
 export interface TestCase {

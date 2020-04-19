@@ -18,6 +18,9 @@ const reducer: Reducer<DeathCasesState> = (state = initialState, action) => {
     case DeathCasesActionTypes.SET_DEATH_CASES_SYNCED: {
       return {...state, synced: action.payload.synced};
     }
+    case DeathCasesActionTypes.RESET_DEATH_CASES: {
+      return initialState;
+    }
     default: {
       return state;
     }

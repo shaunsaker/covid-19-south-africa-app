@@ -1,4 +1,4 @@
-import {all, fork, takeEvery, call, put} from 'redux-saga/effects';
+import {all, fork, takeEvery, call, put, select} from 'redux-saga/effects';
 import {eventChannel} from 'redux-saga';
 
 import {DeathCasesActionTypes, DeathCase} from './types';
@@ -8,6 +8,9 @@ import {
   setDeathCasesLoading,
   setDeathCasesSynced,
 } from './actions';
+import {getDeathCasesSyncedSelector} from './selectors';
+import {isSelectedCountrySouthAfricaSelector} from '../countries/selectors';
+import {getCountryData} from '../countries/sagas';
 
 const createChannel = (collection: string) => {
   return eventChannel((emit) => {
@@ -18,14 +21,23 @@ const createChannel = (collection: string) => {
 };
 
 function* onGetDeathCases() {
-  yield put(setDeathCasesLoading(true));
-  const channel = yield call(createChannel, 'deathCases');
+  const isSynced = yield select(getDeathCasesSyncedSelector);
+  const isSelectedCountrySouthAfrica = yield select(
+    isSelectedCountrySouthAfricaSelector,
+  );
 
-  yield takeEvery(channel, function* listen(deathCases: DeathCase[]) {
-    yield put(setDeathCases(deathCases));
-    yield put(setDeathCasesLoading(false));
-    yield put(setDeathCasesSynced(true));
-  });
+  if (isSelectedCountrySouthAfrica && !isSynced) {
+    yield put(setDeathCasesLoading(true));
+    const channel = yield call(createChannel, 'deathCases');
+
+    yield takeEvery(channel, function* listen(deathCases: DeathCase[]) {
+      yield put(setDeathCases(deathCases));
+      yield put(setDeathCasesLoading(false));
+      yield put(setDeathCasesSynced(true));
+    });
+  } else if (!isSelectedCountrySouthAfrica) {
+    yield call(getCountryData);
+  }
 }
 
 function* watchGetDeathCases() {

@@ -22,6 +22,8 @@ import testCases from './testCases/reducer';
 import {TestCasesState} from './testCases/types';
 import latestViewedTestCase from './latestViewedTestCase/reducer';
 import {LatestViewedTestCaseState} from './latestViewedTestCase/types';
+import countries from './countries/reducer';
+import {CountriesState} from './countries/types';
 
 export interface ApplicationState {
   confirmedCases: ConfirmedCasesState;
@@ -35,6 +37,7 @@ export interface ApplicationState {
   latestViewedRecoveredCase: LatestViewedRecoveredCaseState;
   testCases: TestCasesState;
   latestViewedTestCase: LatestViewedTestCaseState;
+  countries: CountriesState;
 }
 
 const rootReducer = combineReducers({
@@ -49,6 +52,7 @@ const rootReducer = combineReducers({
   latestViewedRecoveredCase,
   testCases,
   latestViewedTestCase,
+  countries,
 });
 
 export default rootReducer;

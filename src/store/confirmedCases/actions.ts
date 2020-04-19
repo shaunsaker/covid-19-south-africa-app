@@ -13,3 +13,6 @@ export const setConfirmedCasesLoading = (loading: boolean) =>
 
 export const setConfirmedCasesSynced = (synced: boolean) =>
   action(ConfirmedCasesActionTypes.SET_CONFIRMED_CASES_SYNCED, {synced});
+
+export const resetConfirmedCases = () =>
+  action(ConfirmedCasesActionTypes.RESET_CONFIRMED_CASES);

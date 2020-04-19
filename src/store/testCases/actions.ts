@@ -12,3 +12,6 @@ export const setTestCasesLoading = (loading: boolean) =>
 
 export const setTestCasesSynced = (synced: boolean) =>
   action(TestCasesActionTypes.SET_TEST_CASES_SYNCED, {synced});
+
+export const resetTestCases = () =>
+  action(TestCasesActionTypes.RESET_TEST_CASES);

@@ -13,3 +13,6 @@ export const setDeathCasesLoading = (loading: boolean) =>
 
 export const setDeathCasesSynced = (synced: boolean) =>
   action(DeathCasesActionTypes.SET_DEATH_CASES_SYNCED, {synced});
+
+export const resetDeathCases = () =>
+  action(DeathCasesActionTypes.RESET_DEATH_CASES);

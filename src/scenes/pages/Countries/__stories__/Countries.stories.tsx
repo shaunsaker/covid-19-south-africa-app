@@ -1,8 +1,9 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react-native';
 
-import Countries, {Country} from '../Countries';
+import Countries from '../Countries';
 import {getCountriesList} from '../getCountriesList';
+import {Country} from '../../../../store/countries/types';
 
 const countries = getCountriesList();
 const recentlySelectedCountries = countries.filter(

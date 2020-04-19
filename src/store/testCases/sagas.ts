@@ -1,9 +1,12 @@
-import {all, fork, takeEvery, call, put} from 'redux-saga/effects';
+import {all, fork, takeEvery, call, put, select} from 'redux-saga/effects';
 import {eventChannel} from 'redux-saga';
 
 import {TestCasesActionTypes, TestCase} from './types';
 import {sync} from '../../services/firestore';
 import {setTestCases, setTestCasesLoading, setTestCasesSynced} from './actions';
+import {getTestCasesSyncedSelector} from './selectors';
+import {getCountryData} from '../countries/sagas';
+import {isSelectedCountrySouthAfricaSelector} from '../countries/selectors';
 
 const createChannel = (collection: string) => {
   return eventChannel((emit) => {
@@ -14,14 +17,23 @@ const createChannel = (collection: string) => {
 };
 
 function* onGetTestCases() {
-  yield put(setTestCasesLoading(true));
-  const channel = yield call(createChannel, 'testCases');
+  const isSynced = yield select(getTestCasesSyncedSelector);
+  const isSelectedCountrySouthAfrica = yield select(
+    isSelectedCountrySouthAfricaSelector,
+  );
 
-  yield takeEvery(channel, function* listen(testCases: TestCase[]) {
-    yield put(setTestCases(testCases));
-    yield put(setTestCasesLoading(false));
-    yield put(setTestCasesSynced(true));
-  });
+  if (isSelectedCountrySouthAfrica && !isSynced) {
+    yield put(setTestCasesLoading(true));
+    const channel = yield call(createChannel, 'testCases');
+
+    yield takeEvery(channel, function* listen(testCases: TestCase[]) {
+      yield put(setTestCases(testCases));
+      yield put(setTestCasesLoading(false));
+      yield put(setTestCasesSynced(true));
+    });
+  } else if (!isSelectedCountrySouthAfrica) {
+    yield call(getCountryData);
+  }
 }
 
 function* watchGetTestCases() {

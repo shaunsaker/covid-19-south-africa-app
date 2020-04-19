@@ -18,6 +18,9 @@ const reducer: Reducer<TestCasesState> = (state = initialState, action) => {
     case TestCasesActionTypes.SET_TEST_CASES_SYNCED: {
       return {...state, synced: action.payload.synced};
     }
+    case TestCasesActionTypes.RESET_TEST_CASES: {
+      return initialState;
+    }
     default: {
       return state;
     }

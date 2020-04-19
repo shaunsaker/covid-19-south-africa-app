@@ -21,6 +21,9 @@ const reducer: Reducer<ConfirmedCasesState> = (
     case ConfirmedCasesActionTypes.SET_CONFIRMED_CASES_SYNCED: {
       return {...state, synced: action.payload.synced};
     }
+    case ConfirmedCasesActionTypes.RESET_CONFIRMED_CASES: {
+      return initialState;
+    }
     default: {
       return state;
     }

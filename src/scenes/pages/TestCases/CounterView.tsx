@@ -26,6 +26,7 @@ const ConfirmedCasesContainer = () => {
   const lastUpdated = latestTestCase
     ? moment(latestTestCase.dateAdded).calendar()
     : '';
+  const noData = Boolean(!start && !end && !loading);
 
   const onCountComplete = useCallback(() => {
     if (latestTestCase && latestTestCase.tests) {
@@ -55,6 +56,7 @@ const ConfirmedCasesContainer = () => {
       end={end}
       lastUpdated={lastUpdated}
       loading={loading}
+      noData={noData}
       handleCountComplete={onCountComplete}
       handleSourcePress={onSourcePress}
     />

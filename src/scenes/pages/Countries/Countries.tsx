@@ -12,12 +12,7 @@ import HeaderBar from '../../../components/HeaderBar';
 import {FlatList} from 'react-native';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
-
-export interface Country {
-  code: string;
-  name: string;
-  imageUri: string;
-}
+import {Country} from '../../../store/countries/types';
 
 export interface CountriesProps {
   searchCountriesValue: string;
@@ -25,7 +20,7 @@ export interface CountriesProps {
   countries: Country[];
   handleSearchCountries: (text: string) => void;
   handleCountryPress: (country: Country) => void;
-  handleWorldPress: () => void;
+  // handleWorldPress: () => void;
 }
 
 const Countries = ({
@@ -34,8 +29,8 @@ const Countries = ({
   countries,
   handleSearchCountries,
   handleCountryPress,
-  handleWorldPress,
-}: CountriesProps) => {
+}: // handleWorldPress,
+CountriesProps) => {
   return (
     <Background>
       <HeaderBar title="Select a Country" showMenuIcon={false} showCloseIcon />
@@ -54,12 +49,12 @@ const Countries = ({
         contentContainerStyle={styles.contentContainer}
         ListHeaderComponent={
           <>
-            {recentlySelectedCountries.length ? (
+            {recentlySelectedCountries && recentlySelectedCountries.length ? (
               <RecentlySelectedContainer>
                 <RecentlySelectedText>Recently Selected</RecentlySelectedText>
 
                 {recentlySelectedCountries.map((country) => (
-                  <CountryButtonContainer>
+                  <CountryButtonContainer key={country.code}>
                     <Button
                       leftComponent={
                         <CountryImage
@@ -75,11 +70,11 @@ const Countries = ({
               </RecentlySelectedContainer>
             ) : null}
 
-            <CountryButtonContainer>
+            {/* <CountryButtonContainer>
               <Button secondary handlePress={handleWorldPress}>
                 World
               </Button>
-            </CountryButtonContainer>
+            </CountryButtonContainer> */}
           </>
         }
         data={countries}

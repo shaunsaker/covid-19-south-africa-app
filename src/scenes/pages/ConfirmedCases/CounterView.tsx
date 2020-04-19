@@ -35,6 +35,7 @@ const ConfirmedCasesContainer = () => {
     getAvgDailyChangeInLastWeekSelector,
   );
   const subtitle = `${avgDailyChangeInLastWeek} average daily cases in last 7 days`;
+  const noData = Boolean(!start && !end && !loading);
 
   const onCountComplete = useCallback(() => {
     if (latestConfirmedCase && latestConfirmedCase.confirmedCases) {
@@ -65,6 +66,7 @@ const ConfirmedCasesContainer = () => {
       lastUpdated={lastUpdated}
       subtitle={subtitle}
       loading={loading}
+      noData={noData}
       handleCountComplete={onCountComplete}
       handleSourcePress={onSourcePress}
     />

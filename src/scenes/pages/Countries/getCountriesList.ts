@@ -1,11 +1,11 @@
 import countryList from 'country-list';
 
-import {Country} from './Countries';
-import {countriesImagesUrl} from '../../../config';
+import {getCountryImageUri} from '../../../utils';
+import {Country} from '../../../store/countries/types';
 
 export const getCountriesList = (): Country[] => {
   const countries: Country[] = countryList.getData().map((country) => {
-    const imageUri = `${countriesImagesUrl}${country.code.toLowerCase()}.png`;
+    const imageUri = getCountryImageUri(country.code);
 
     return {
       ...country,

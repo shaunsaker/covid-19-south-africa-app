@@ -3,13 +3,13 @@ export enum ConfirmedCasesActionTypes {
   SET_CONFIRMED_CASES = '@@confirmedCases/SET_CONFIRMED_CASES',
   SET_CONFIRMED_CASES_LOADING = '@@confirmedCases/SET_CONFIRMED_CASES_LOADING',
   SET_CONFIRMED_CASES_SYNCED = '@@confirmedCases/SET_CONFIRMED_CASES_SYNCED',
+  RESET_CONFIRMED_CASES = '@@confirmedCases/RESET_CONFIRMED_CASES',
 }
 
 export interface ConfirmedCase {
   dateAdded: string;
   confirmedCases: number;
   dateCreated: string;
-  title: string;
   href: string;
   id: string;
 }

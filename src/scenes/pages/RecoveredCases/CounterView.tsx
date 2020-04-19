@@ -37,6 +37,7 @@ const RecoveredCasesContainer = () => {
   const lastUpdated = latestRecoveredCase
     ? moment(latestRecoveredCase.dateAdded).calendar()
     : '';
+  const noData = Boolean(!start && !end && !loading);
 
   const onCountComplete = useCallback(() => {
     if (latestRecoveredCase && latestRecoveredCase.recovered) {
@@ -67,6 +68,7 @@ const RecoveredCasesContainer = () => {
       subtitle={subtitle}
       lastUpdated={lastUpdated}
       loading={loading}
+      noData={noData}
       handleCountComplete={onCountComplete}
       handleSourcePress={onSourcePress}
     />

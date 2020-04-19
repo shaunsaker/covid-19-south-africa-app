@@ -33,6 +33,7 @@ const ConfirmedCasesContainer = () => {
   const lastUpdated = latestDeathCase
     ? moment(latestDeathCase.dateAdded).calendar()
     : '';
+  const noData = Boolean(!start && !end && !loading);
 
   const onCountComplete = useCallback(() => {
     if (latestDeathCase && latestDeathCase.deaths) {
@@ -63,6 +64,7 @@ const ConfirmedCasesContainer = () => {
       subtitle={subtitle}
       lastUpdated={lastUpdated}
       loading={loading}
+      noData={noData}
       handleCountComplete={onCountComplete}
       handleSourcePress={onSourcePress}
     />

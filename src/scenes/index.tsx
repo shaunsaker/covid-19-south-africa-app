@@ -5,6 +5,7 @@ import ConfirmedCases from './pages/ConfirmedCases';
 import DeathCases from './pages/DeathCases';
 import RecoveredCases from './pages/RecoveredCases';
 import TestCases from './pages/TestCases';
+import Countries from './pages/Countries';
 
 const scenes = Actions.create(
   <Scene key="root" hideNavBar panHandlers={null}>
@@ -36,6 +37,7 @@ const scenes = Actions.create(
       />
       <Scene key="testCases" component={TestCases} type="reset" duration={0} />
     </Tabs>
+    <Scene key="countries" component={Countries} />
   </Scene>,
 );
 

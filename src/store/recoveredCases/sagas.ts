@@ -1,4 +1,4 @@
-import {all, fork, takeEvery, call, put} from 'redux-saga/effects';
+import {all, fork, takeEvery, call, put, select} from 'redux-saga/effects';
 import {eventChannel} from 'redux-saga';
 
 import {RecoveredCasesActionTypes, RecoveredCase} from './types';
@@ -8,6 +8,9 @@ import {
   setRecoveredCasesLoading,
   setRecoveredCasesSynced,
 } from './actions';
+import {getRecoveredCasesSyncedSelector} from './selectors';
+import {isSelectedCountrySouthAfricaSelector} from '../countries/selectors';
+import {getCountryData} from '../countries/sagas';
 
 const createChannel = (collection: string) => {
   return eventChannel((emit) => {
@@ -18,14 +21,23 @@ const createChannel = (collection: string) => {
 };
 
 function* onGetRecoveredCases() {
-  yield put(setRecoveredCasesLoading(true));
-  const channel = yield call(createChannel, 'recoveryCases');
+  const isSynced = yield select(getRecoveredCasesSyncedSelector);
+  const isSelectedCountrySouthAfrica = yield select(
+    isSelectedCountrySouthAfricaSelector,
+  );
 
-  yield takeEvery(channel, function* listen(recoveredCases: RecoveredCase[]) {
-    yield put(setRecoveredCases(recoveredCases));
-    yield put(setRecoveredCasesLoading(false));
-    yield put(setRecoveredCasesSynced(true));
-  });
+  if (isSelectedCountrySouthAfrica && !isSynced) {
+    yield put(setRecoveredCasesLoading(true));
+    const channel = yield call(createChannel, 'recoveryCases');
+
+    yield takeEvery(channel, function* listen(recoveredCases: RecoveredCase[]) {
+      yield put(setRecoveredCases(recoveredCases));
+      yield put(setRecoveredCasesLoading(false));
+      yield put(setRecoveredCasesSynced(true));
+    });
+  } else if (!isSelectedCountrySouthAfrica) {
+    yield call(getCountryData);
+  }
 }
 
 function* watchGetRecoveredCases() {

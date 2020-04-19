@@ -21,6 +21,9 @@ const reducer: Reducer<RecoveredCasesState> = (
     case RecoveredCasesActionTypes.SET_RECOVERED_CASES_SYNCED: {
       return {...state, synced: action.payload.synced};
     }
+    case RecoveredCasesActionTypes.RESET_RECOVERED_CASES: {
+      return initialState;
+    }
     default: {
       return state;
     }
