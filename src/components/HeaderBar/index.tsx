@@ -10,6 +10,7 @@ import {tabs} from '../../config';
 import HeaderBar, {ContainerProps} from './HeaderBar';
 import {Actions} from 'react-native-router-flux';
 import {getCountryImageUri} from '../../utils';
+import {InteractionManager} from 'react-native';
 
 const HeaderBarContainer = ({...props}: ContainerProps) => {
   const dispatch = useDispatch();
@@ -23,12 +24,17 @@ const HeaderBarContainer = ({...props}: ContainerProps) => {
   }, [dispatch]);
 
   const onClosePress = useCallback(() => {
-    Actions.pop();
     dispatch(setSideMenu(false));
+
+    InteractionManager.runAfterInteractions(() => {
+      Actions.pop();
+    });
   }, [dispatch]);
 
   const onCountryPress = useCallback(() => {
-    Actions.push('countries');
+    InteractionManager.runAfterInteractions(() => {
+      Actions.push('countries');
+    });
   }, []);
 
   return (

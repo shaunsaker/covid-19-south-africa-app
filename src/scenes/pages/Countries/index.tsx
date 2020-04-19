@@ -22,6 +22,7 @@ import {
   setLatestViewedTestCase,
 } from '../../../store/actions';
 import {sortArrayOfObjectsByKey} from '../../../utils';
+import {InteractionManager} from 'react-native';
 
 interface CountriesContainerProps {}
 
@@ -57,7 +58,9 @@ const CountriesContainer = ({}: CountriesContainerProps) => {
         dispatch(setLatestViewedTestCase(null));
       }
 
-      Actions.pop();
+      InteractionManager.runAfterInteractions(() => {
+        Actions.pop();
+      });
     },
     [dispatch, selectedCountry],
   );
