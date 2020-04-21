@@ -100,3 +100,24 @@ export const getDeathCasesAsPercentageOfClosedCasesSelector = (
 
   return deathCasesAsPercentageOfClosedCases;
 };
+
+export const getLatestChangeInDeathCasesSelector = createSelector(
+  getSortedDeathCasesSelector,
+  (cases: DeathCase[]) => {
+    const latestCase = cases[0];
+
+    if (!latestCase) {
+      return;
+    }
+
+    const secondLatestCase = cases[1];
+
+    if (!secondLatestCase) {
+      return;
+    }
+
+    const latestChange = latestCase.deaths - secondLatestCase.deaths;
+
+    return latestChange;
+  },
+);

@@ -8,19 +8,20 @@ import styles, {
   Container,
   CounterContainer,
   SubtitleWrapper,
-  SubtitleContainer,
-  SubtitleText,
   FooterText,
   SourceText,
   SourceButton,
   LoadingContainer,
+  LabelContainer,
 } from './styles';
 import {colors} from '../../styleConstants';
+import {Label} from '../Label';
 
 export interface Props {
   title: string;
   start: Number;
   end: Number;
+  latestChange?: number;
   subtitle?: string;
   lastUpdated: string;
   loading?: boolean;
@@ -32,6 +33,7 @@ export interface Props {
 const CounterView = ({
   start,
   end,
+  latestChange,
   subtitle,
   lastUpdated,
   loading,
@@ -42,11 +44,7 @@ const CounterView = ({
   return (
     <Container>
       <SubtitleWrapper>
-        {subtitle ? (
-          <SubtitleContainer>
-            <SubtitleText>{subtitle}</SubtitleText>
-          </SubtitleContainer>
-        ) : null}
+        {subtitle ? <Label>{subtitle}</Label> : null}
       </SubtitleWrapper>
 
       <Animator
@@ -78,6 +76,12 @@ const CounterView = ({
                 <ActivityIndicator size="small" color={colors.primaryText} />
               </Animator>
             </LoadingContainer>
+          ) : null}
+
+          {!noData && !loading && latestChange ? (
+            <LabelContainer>
+              <Label iconName="arrow-upward">{latestChange}</Label>
+            </LabelContainer>
           ) : null}
         </CounterContainer>
       </Animator>

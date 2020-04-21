@@ -10,12 +10,13 @@ import {
   getLatestViewedConfirmedCase,
   getConfirmedCasesLoadingSelector,
   getAvgDailyChangeInLastWeekSelector,
+  getLatestChangeInConfirmedCasesSelector,
 } from '../../../store/selectors';
 import {ConfirmedCase} from '../../../store/types';
 import {setLatestViewedConfirmedCase} from '../../../store/actions';
 import {snackbar} from '../../../config';
 
-const ConfirmedCasesContainer = () => {
+const CounterViewContainer = () => {
   const dispatch = useDispatch();
   const loading: boolean = useSelector(getConfirmedCasesLoadingSelector);
   const latestConfirmedCase: ConfirmedCase = useSelector(
@@ -28,6 +29,7 @@ const ConfirmedCasesContainer = () => {
     ? latestViewedConfirmedCase.confirmedCases
     : 0;
   const end = latestConfirmedCase ? latestConfirmedCase.confirmedCases : 0;
+  const latestChange = useSelector(getLatestChangeInConfirmedCasesSelector);
   const lastUpdated = latestConfirmedCase
     ? moment(latestConfirmedCase.dateAdded).calendar()
     : '';
@@ -63,6 +65,7 @@ const ConfirmedCasesContainer = () => {
       title="Confirmed Cases"
       start={start}
       end={end}
+      latestChange={latestChange}
       lastUpdated={lastUpdated}
       subtitle={subtitle}
       loading={loading}
@@ -73,4 +76,4 @@ const ConfirmedCasesContainer = () => {
   );
 };
 
-export default ConfirmedCasesContainer;
+export default CounterViewContainer;

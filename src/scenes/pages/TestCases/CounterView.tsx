@@ -9,12 +9,13 @@ import {
   getLatestTestCaseSelector,
   getLatestViewedTestCase,
   getTestCasesLoadingSelector,
+  getLatestChangeInTestCasesSelector,
 } from '../../../store/selectors';
 import {TestCase} from '../../../store/types';
 import {setLatestViewedTestCase} from '../../../store/actions';
 import {snackbar} from '../../../config';
 
-const ConfirmedCasesContainer = () => {
+const CounterViewContainer = () => {
   const dispatch = useDispatch();
   const loading: boolean = useSelector(getTestCasesLoadingSelector);
   const latestTestCase: TestCase = useSelector(getLatestTestCaseSelector);
@@ -23,6 +24,7 @@ const ConfirmedCasesContainer = () => {
   );
   const start = latestViewedTestCase ? latestViewedTestCase.tests : 0;
   const end = latestTestCase ? latestTestCase.tests : 0;
+  const latestChange = useSelector(getLatestChangeInTestCasesSelector);
   const lastUpdated = latestTestCase
     ? moment(latestTestCase.dateAdded).calendar()
     : '';
@@ -54,6 +56,7 @@ const ConfirmedCasesContainer = () => {
       title="Tests Conducted"
       start={start}
       end={end}
+      latestChange={latestChange}
       lastUpdated={lastUpdated}
       loading={loading}
       noData={noData}
@@ -63,4 +66,4 @@ const ConfirmedCasesContainer = () => {
   );
 };
 
-export default ConfirmedCasesContainer;
+export default CounterViewContainer;

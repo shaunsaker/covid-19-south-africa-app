@@ -80,3 +80,24 @@ export const getTestCasesTimelineDataSelector = createSelector(
     return timelineData;
   },
 );
+
+export const getLatestChangeInTestCasesSelector = createSelector(
+  getSortedTestCasesSelector,
+  (cases: TestCase[]) => {
+    const latestCase = cases[0];
+
+    if (!latestCase) {
+      return;
+    }
+
+    const secondLatestCase = cases[1];
+
+    if (!secondLatestCase) {
+      return;
+    }
+
+    const latestChange = latestCase.tests - secondLatestCase.tests;
+
+    return latestChange;
+  },
+);

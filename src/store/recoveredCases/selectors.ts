@@ -104,3 +104,24 @@ export const getRecoveredCasesAsPercentageOfClosedCasesSelector = (
 
   return recoveredCasesAsPercentageOfClosedCases;
 };
+
+export const getLatestChangeInRecoveredCasesSelector = createSelector(
+  getSortedRecoveredCasesSelector,
+  (cases: RecoveredCase[]) => {
+    const latestCase = cases[0];
+
+    if (!latestCase) {
+      return;
+    }
+
+    const secondLatestCase = cases[1];
+
+    if (!secondLatestCase) {
+      return;
+    }
+
+    const latestChange = latestCase.recovered - secondLatestCase.recovered;
+
+    return latestChange;
+  },
+);

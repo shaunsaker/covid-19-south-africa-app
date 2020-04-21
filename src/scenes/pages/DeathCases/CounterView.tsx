@@ -10,12 +10,13 @@ import {
   getLatestViewedDeathCase,
   getDeathCasesLoadingSelector,
   getDeathCasesAsPercentageOfClosedCasesSelector,
+  getLatestChangeInDeathCasesSelector,
 } from '../../../store/selectors';
 import {DeathCase} from '../../../store/types';
 import {setLatestViewedDeathCase} from '../../../store/actions';
 import {snackbar} from '../../../config';
 
-const ConfirmedCasesContainer = () => {
+const CounterViewContainer = () => {
   const dispatch = useDispatch();
   const loading: boolean = useSelector(getDeathCasesLoadingSelector);
   const latestDeathCase: DeathCase = useSelector(getLatestDeathCaseSelector);
@@ -24,6 +25,7 @@ const ConfirmedCasesContainer = () => {
   );
   const start = latestViewedDeathCase ? latestViewedDeathCase.deaths : 0;
   const end = latestDeathCase ? latestDeathCase.deaths : 0;
+  const latestChange = useSelector(getLatestChangeInDeathCasesSelector);
   const deathCasesAsPercentageOfClosedCases = useSelector(
     getDeathCasesAsPercentageOfClosedCasesSelector,
   );
@@ -61,6 +63,7 @@ const ConfirmedCasesContainer = () => {
       title="Deaths"
       start={start}
       end={end}
+      latestChange={latestChange}
       subtitle={subtitle}
       lastUpdated={lastUpdated}
       loading={loading}
@@ -71,4 +74,4 @@ const ConfirmedCasesContainer = () => {
   );
 };
 
-export default ConfirmedCasesContainer;
+export default CounterViewContainer;

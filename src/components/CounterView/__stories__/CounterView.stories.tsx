@@ -7,7 +7,8 @@ import CenterView from '../../CenterView';
 
 const title = 'Confirmed Cases';
 const start = 0;
-const end = 1170;
+const end = 9999999;
+const latestChange = 9999;
 const subtitle = '99% of closed cases';
 const lastUpdated = '27 March 2020, 20h14';
 const handleSourcePress = () => console.log('Source pressed');
@@ -16,6 +17,7 @@ const defaultProps = {
   title,
   start,
   end,
+  latestChange,
   subtitle,
   lastUpdated,
   handleSourcePress,

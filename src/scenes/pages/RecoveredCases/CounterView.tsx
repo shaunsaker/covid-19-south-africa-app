@@ -10,12 +10,13 @@ import {
   getLatestViewedRecoveredCase,
   getRecoveredCasesLoadingSelector,
   getRecoveredCasesAsPercentageOfClosedCasesSelector,
+  getLatestChangeInRecoveredCasesSelector,
 } from '../../../store/selectors';
 import {RecoveredCase} from '../../../store/types';
 import {setLatestViewedRecoveredCase} from '../../../store/actions';
 import {snackbar} from '../../../config';
 
-const RecoveredCasesContainer = () => {
+const CounterViewContainer = () => {
   const dispatch = useDispatch();
   const loading: boolean = useSelector(getRecoveredCasesLoadingSelector);
   const latestRecoveredCase: RecoveredCase = useSelector(
@@ -28,6 +29,7 @@ const RecoveredCasesContainer = () => {
     ? latestViewedRecoveredCase.recovered
     : 0;
   const end = latestRecoveredCase ? latestRecoveredCase.recovered : 0;
+  const latestChange = useSelector(getLatestChangeInRecoveredCasesSelector);
   const recoveredCasesAsPercentageOfClosedCases = useSelector(
     getRecoveredCasesAsPercentageOfClosedCasesSelector,
   );
@@ -65,6 +67,7 @@ const RecoveredCasesContainer = () => {
       title="Recoveries"
       start={start}
       end={end}
+      latestChange={latestChange}
       subtitle={subtitle}
       lastUpdated={lastUpdated}
       loading={loading}
@@ -75,4 +78,4 @@ const RecoveredCasesContainer = () => {
   );
 };
 
-export default RecoveredCasesContainer;
+export default CounterViewContainer;

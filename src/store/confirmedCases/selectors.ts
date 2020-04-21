@@ -17,7 +17,7 @@ export const getConfirmedCasesSyncedSelector = (state: ApplicationState) =>
 
 export const getChronoSortedConfirmedCasesSelector = createSelector(
   getConfirmedCasesSelector,
-  (confirmedCases) => {
+  (confirmedCases: ConfirmedCase[]) => {
     /*
      * Sort by oldest to latest
      */
@@ -32,7 +32,7 @@ export const getChronoSortedConfirmedCasesSelector = createSelector(
 
 export const getSortedConfirmedCasesSelector = createSelector(
   getConfirmedCasesSelector,
-  (confirmedCases) => {
+  (confirmedCases: ConfirmedCase[]) => {
     /*
      * Sort by latest to oldest
      */
@@ -49,7 +49,7 @@ export const getSortedConfirmedCasesSelector = createSelector(
 export const getLatestConfirmedCaseSelector = createSelector(
   getConfirmedCasesSelector,
   getSortedConfirmedCasesSelector,
-  (confirmedCases) => {
+  (confirmedCases: ConfirmedCase[]) => {
     /*
      * Grab the latest
      */
@@ -61,7 +61,7 @@ export const getLatestConfirmedCaseSelector = createSelector(
 
 export const getPreviousConfirmedCaseSelector = createSelector(
   getSortedConfirmedCasesSelector,
-  (confirmedCases) => {
+  (confirmedCases: ConfirmedCase[]) => {
     /*
      * Grab the second one
      */
@@ -87,7 +87,7 @@ export const getConfirmedCasesTimelineDataSelector = createSelector(
 
 export const getAvgDailyChangeInLastWeekSelector = createSelector(
   getChronoSortedConfirmedCasesSelector,
-  (confirmedCases) => {
+  (confirmedCases: ConfirmedCase[]) => {
     if (!confirmedCases.length) {
       return 0;
     }
@@ -133,5 +133,27 @@ export const getAvgDailyChangeInLastWeekSelector = createSelector(
     );
 
     return avgDailyChangeInLastWeek;
+  },
+);
+
+export const getLatestChangeInConfirmedCasesSelector = createSelector(
+  getSortedConfirmedCasesSelector,
+  (cases: ConfirmedCase[]) => {
+    const latestCase = cases[0];
+
+    if (!latestCase) {
+      return;
+    }
+
+    const secondLatestCase = cases[1];
+
+    if (!secondLatestCase) {
+      return;
+    }
+
+    const latestChange =
+      latestCase.confirmedCases - secondLatestCase.confirmedCases;
+
+    return latestChange;
   },
 );
