@@ -80,7 +80,16 @@ const CounterView = ({
 
           {!noData && !loading && latestChange ? (
             <LabelContainer>
-              <Label iconName="arrow-upward">{latestChange}</Label>
+              <Label
+                iconName={
+                  latestChange === 0
+                    ? 'arrow-forward'
+                    : latestChange > 0
+                    ? 'arrow-upward'
+                    : 'arrow-downward'
+                }>
+                {Math.abs(latestChange)}
+              </Label>
             </LabelContainer>
           ) : null}
         </CounterContainer>
