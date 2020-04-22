@@ -1,7 +1,6 @@
 import React, {useState, useCallback} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {Actions} from 'react-native-router-flux';
-import Fuse from 'fuse.js';
 
 import Countries from './Countries';
 import {getCountriesList} from './getCountriesList';
@@ -28,6 +27,12 @@ import {InteractionManager} from 'react-native';
 interface CountriesContainerProps {}
 
 const countries = getCountriesList();
+
+const filterCountries = (countriesArr: Country[], value: string) => {
+  return countriesArr.filter(
+    (country) => country.name.toLowerCase().indexOf(value.toLowerCase()) > -1,
+  );
+};
 
 const CountriesContainer = ({}: CountriesContainerProps) => {
   const dispatch = useDispatch();
@@ -78,30 +83,19 @@ const CountriesContainer = ({}: CountriesContainerProps) => {
   // }, [dispatch]);
 
   // Filter countries by searchCountriesValue
-  let filteredCountries = countries;
+  let filteredCountries = sortArrayOfObjectsByKey(countries, 'name');
   let filteredRecentlySelectedCountries = recentlySelectedCountries;
 
   if (searchCountriesValue && searchCountriesValue.length > 1) {
-    const searchOptions = {
-      threshold: 0.4, // % non-match is useful for handling spelling errors and word order
-      minMatchCharLength: 2, // at least 2 characters
-      keys: ['name'],
-    };
-    const fuseCountries = new Fuse(countries, searchOptions);
-    filteredCountries = fuseCountries
-      .search(searchCountriesValue)
-      .map((fuseItem) => fuseItem.item);
-    const fuseRecentCountries = new Fuse(
-      recentlySelectedCountries,
-      searchOptions,
+    filteredCountries = filterCountries(
+      filteredCountries,
+      searchCountriesValue,
     );
-    filteredRecentlySelectedCountries = fuseRecentCountries
-      .search(searchCountriesValue)
-      .map((fuseItem) => fuseItem.item);
+    filteredRecentlySelectedCountries = filterCountries(
+      recentlySelectedCountries,
+      searchCountriesValue,
+    );
   }
-
-  // Sort the countries by name
-  filteredCountries = sortArrayOfObjectsByKey(filteredCountries, 'name');
 
   return (
     <Countries
