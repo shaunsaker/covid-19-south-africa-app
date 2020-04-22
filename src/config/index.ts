@@ -1,5 +1,5 @@
 export const build = 7;
-export const code = 31;
+export const code = 32;
 export const email = 'sakershaun@gmail.com';
 export const countriesApi =
   'https://coronavirus-tracker-api.herokuapp.com/v2/locations';
