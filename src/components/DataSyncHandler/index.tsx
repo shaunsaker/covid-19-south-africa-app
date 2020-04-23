@@ -1,5 +1,6 @@
-import {useEffect} from 'react';
+import {useEffect, useCallback} from 'react';
 import {useDispatch} from 'react-redux';
+import {AppState, AppStateStatus} from 'react-native';
 
 import {
   setConfirmedCasesSynced,
@@ -11,14 +12,30 @@ import {
 const DataSyncHandler = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    /*
-     * Toggle sync on all db sync actions to false so we can fetch the data (again)
-     */
+  const resetDataSynced = useCallback(() => {
     dispatch(setConfirmedCasesSynced(false));
     dispatch(setDeathCasesSynced(false));
     dispatch(setRecoveredCasesSynced(false));
     dispatch(setTestCasesSynced(false));
+  }, [dispatch]);
+
+  const onAppStateChange = useCallback(
+    (appState: AppStateStatus) => {
+      if (appState === 'background') {
+        resetDataSynced();
+      }
+    },
+    [resetDataSynced],
+  );
+
+  useEffect(() => {
+    resetDataSynced();
+
+    AppState.addEventListener('change', onAppStateChange);
+
+    return () => {
+      AppState.removeEventListener('change', onAppStateChange);
+    };
   });
 
   return null;
