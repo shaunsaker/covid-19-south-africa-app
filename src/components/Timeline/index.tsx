@@ -81,7 +81,7 @@ const TimelineContainer = ({...props}: Props) => {
     newData = data;
   }
 
-  const trendlineData = getTrendlineData(newData);
+  const trendlineData = data.length > 1 ? getTrendlineData(newData) : [];
 
   return (
     <Timeline

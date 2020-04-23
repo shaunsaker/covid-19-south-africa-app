@@ -1,4 +1,5 @@
 import {call, put, select} from 'redux-saga/effects';
+import moment from 'moment';
 
 import {getSelectedCountrySelector} from '../countries/selectors';
 import {fetch} from '../../services/fetch';
@@ -16,84 +17,71 @@ import {
   setConfirmedCases,
 } from '../confirmedCases/actions';
 import {ConfirmedCase} from '../confirmedCases/types';
-import {setTestCases} from '../testCases/actions';
-
-interface CountriesApiLocation {
-  id: number;
-  country_code: string;
-}
-
-interface CountriesApiLocationsResponse {
-  locations: CountriesApiLocation[];
-}
-
-type CountriesApiTimelinesTypes = 'confirmed' | 'recovered' | 'deaths';
-
-interface CountriesApiTimeline {
-  [key: string]: number;
-}
-
-type CountriesApiCountryResponse = {
-  location: {
-    timelines: {
-      [key in CountriesApiTimelinesTypes]: {
-        timeline: CountriesApiTimeline;
-      };
-    };
-  };
-};
+import {setTestCasesLoading, setTestCases} from '../testCases/actions';
+import {ApiHistoricalData, ApiLatestData} from './types';
+import {TestCase} from '../testCases/types';
 
 export function* getCountryData() {
   yield put(setConfirmedCasesLoading(true));
   yield put(setRecoveredCasesLoading(true));
   yield put(setDeathCasesLoading(true));
-  const countriesApiLocationsResponse: CountriesApiLocationsResponse = yield call(
-    fetch,
-    countriesApi,
-  );
+  yield put(setTestCasesLoading(true));
+
   const selectedCountry = yield select(getSelectedCountrySelector);
-  const selectedCountryApi = countriesApiLocationsResponse.locations.filter(
-    (location) => location.country_code === selectedCountry.code,
-  )[0];
 
-  if (!selectedCountryApi) {
-    yield put(setConfirmedCases([]));
-    yield put(setConfirmedCasesLoading(false));
-    yield put(setRecoveredCases([]));
-    yield put(setRecoveredCasesLoading(false));
-    yield put(setDeathCases([]));
-    yield put(setDeathCasesLoading(false));
-  } else {
-    const selectedCountryId = selectedCountryApi.id;
-    const countriesApiCountryResponse: CountriesApiCountryResponse = yield call(
-      fetch,
-      `${countriesApi}/${selectedCountryId}`,
-    );
-    const confirmedCasesTimeline =
-      countriesApiCountryResponse.location.timelines.confirmed.timeline;
-    const confirmedCases: ConfirmedCase[] = processCountryData(
-      confirmedCasesTimeline,
-      'confirmedCases',
-    );
-    yield put(setConfirmedCases(confirmedCases));
-    yield put(setConfirmedCasesLoading(false));
+  /*
+   * 1. Get the historical data for the selected country
+   * 2. Get the latest data for the selected country
+   * 3. Collate the historical and latest data
+   * 4. Set the data to the store
+   */
+  const historicalData: ApiHistoricalData = yield call(
+    fetch,
+    `${countriesApi}/historical/${selectedCountry.code}`,
+  );
+  const latestData: ApiLatestData = yield call(
+    fetch,
+    `${countriesApi}/countries/${selectedCountry.code}`,
+  );
+  const todayKey = moment().format('MM/DD/YY');
 
-    const recoveredCasesTimeline =
-      countriesApiCountryResponse.location.timelines.recovered.timeline;
-    const recoveredCases: RecoveredCase[] = processCountryData(
-      recoveredCasesTimeline,
-      'recovered',
-    );
-    yield put(setRecoveredCases(recoveredCases));
-    yield put(setRecoveredCasesLoading(false));
+  const confirmedCasesTimeline = {
+    ...historicalData.timeline.cases,
+    [todayKey]: latestData.cases,
+  };
+  const confirmedCases: ConfirmedCase[] = processCountryData(
+    confirmedCasesTimeline,
+    'confirmedCases',
+  );
+  yield put(setConfirmedCases(confirmedCases));
+  yield put(setConfirmedCasesLoading(false));
 
-    const deathCasesTimeline =
-      countriesApiCountryResponse.location.timelines.deaths.timeline;
-    const deathCases: DeathCase[] = processCountryData(
-      deathCasesTimeline,
-      'deaths',
-    );
-    yield put(setDeathCases(deathCases));
-    yield put(setDeathCasesLoading(false));
-  }
+  const recoveredCasesTimeline = {
+    ...historicalData.timeline.recovered,
+    [todayKey]: latestData.recovered,
+  };
+  const recoveredCases: RecoveredCase[] = processCountryData(
+    recoveredCasesTimeline,
+    'recovered',
+  );
+  yield put(setRecoveredCases(recoveredCases));
+  yield put(setRecoveredCasesLoading(false));
+
+  const deathCasesTimeline = {
+    ...historicalData.timeline.deaths,
+    [todayKey]: latestData.deaths,
+  };
+  const deathCases: DeathCase[] = processCountryData(
+    deathCasesTimeline,
+    'deaths',
+  );
+  yield put(setDeathCases(deathCases));
+  yield put(setDeathCasesLoading(false));
+
+  const testCasesTimeline = {
+    [todayKey]: latestData.tests,
+  };
+  const testCases: TestCase[] = processCountryData(testCasesTimeline, 'tests');
+  yield put(setTestCases(testCases));
+  yield put(setTestCasesLoading(false));
 }

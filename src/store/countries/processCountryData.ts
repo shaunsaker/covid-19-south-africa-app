@@ -1,3 +1,4 @@
+import moment from 'moment';
 import {filterDupesFromArray, sortArrayOfObjectsByKey} from '../../utils';
 import {countriesApiSource} from '../../config';
 
@@ -14,25 +15,28 @@ export const processCountryData = <
     sortArrayOfObjectsByKey(
       Object.keys(data)
         .map((key) => {
-          const dateCreated = key;
-          const value = data[key];
-          const dateAdded = key;
+          /*
+           * The key is in American date format, MM/DD/YY
+           */
+          const formattedDate = moment(key).toISOString();
+          const dateCreated = formattedDate;
+          const dateAdded = formattedDate;
           const href = countriesApiSource;
           const id = key;
           const object = {
             dateAdded,
-            confirmedCases: value,
             dateCreated,
             href,
             id,
           };
+          const value = data[key];
 
           // @ts-ignore
           object[targetKey] = value;
 
           return object;
         })
-        .filter((confirmedCase) => confirmedCase.confirmedCases),
+        .filter((item) => item),
       targetKey,
       true,
     ),
