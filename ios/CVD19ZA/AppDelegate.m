@@ -6,6 +6,9 @@
 #import <React/RCTRootView.h>
 
 #import <CodePush/CodePush.h>
+#import <AppCenter/AppCenter.h>
+#import <AppCenterReactNative.h>
+#import <AppCenterDistribute/AppCenterDistribute.h>
 
 #if DEBUG
 #import <FlipperKit/FlipperClient.h>
@@ -34,9 +37,12 @@ static void InitializeFlipper(UIApplication *application) {
   InitializeFlipper(application);
 #endif
 
-if ([FIRApp defaultApp] == nil) {
-  [FIRApp configure];
-}
+  if ([FIRApp defaultApp] == nil) {
+    [FIRApp configure];
+  }
+
+  [AppCenterReactNative register];
+  [MSAppCenter startService:[MSDistribute class]];
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
