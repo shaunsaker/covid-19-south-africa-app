@@ -1,6 +1,7 @@
 
 
 apply plugin: "com.android.application"
+apply plugin: 'io.fabric'
 
 import com.android.build.OutputFile
 
@@ -213,6 +214,10 @@ android {
 
     lintOptions {
         abortOnError false
+    }
+
+    crashlytics {
+        enableNdk true
     }
 }
 
