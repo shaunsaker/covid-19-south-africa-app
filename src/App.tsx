@@ -10,6 +10,7 @@ import NotificationsHandler from './components/NotificationsHandler';
 import CodePushHandler from './components/CodePushHandler';
 import AndroidBackHandler from './components/AndroidBackHandler';
 import DataSyncHandler from './components/DataSyncHandler';
+import RequestUpdateHandler from './components/RequestUpdateHandler';
 
 // Helper to clear local storage during development
 // if (__DEV__) {
@@ -30,6 +31,7 @@ const App = () => {
         <CodePushHandler />
         <AndroidBackHandler />
         <DataSyncHandler />
+        <RequestUpdateHandler />
       </PersistGate>
     </Provider>
   );

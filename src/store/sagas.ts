@@ -4,6 +4,7 @@ import confirmedCases from './confirmedCases/sagas';
 import deathCases from './deathCases/sagas';
 import recoveredCases from './recoveredCases/sagas';
 import testCases from './testCases/sagas';
+import versionUpdate from './versionUpdate/sagas';
 
 function* rootSaga() {
   yield all([
@@ -11,6 +12,7 @@ function* rootSaga() {
     fork(deathCases),
     fork(recoveredCases),
     fork(testCases),
+    fork(versionUpdate),
   ]);
 }
 

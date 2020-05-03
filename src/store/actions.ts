@@ -9,3 +9,4 @@ export * from './latestViewedRecoveredCase/actions';
 export * from './testCases/actions';
 export * from './latestViewedTestCase/actions';
 export * from './countries/actions';
+export * from './versionUpdate/actions';

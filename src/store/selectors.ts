@@ -10,3 +10,4 @@ export * from './latestViewedRecoveredCase/selectors';
 export * from './testCases/selectors';
 export * from './latestViewedTestCase/selectors';
 export * from './countries/selectors';
+export * from './versionUpdate/selectors';
