@@ -17,20 +17,20 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2.0</string>
+	<string>1.3.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
 	<array>
-	<dict>
-		<key>CFBundleURLSchemes</key>
-		<array>
-			<string>be53792c-3007-45c3-bc87-265a745bec97</string>
-		</array>
-	</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>be53792c-3007-45c3-bc87-265a745bec97</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<string>8</string>
 	<key>CodePushDeploymentKey</key>
 	<string>EaSDN5HY2dWJzp1Oo5Q3wX1CVlE5WTyMtlJHU2</string>
 	<key>LSRequiresIPhoneOS</key>
