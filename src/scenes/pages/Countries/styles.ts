@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import FastImage from 'react-native-fast-image';
 
 import {rhythm, colors, sizes} from '../../../styleConstants';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export const InputContainer = styled.View`
   align-items: center;
@@ -12,7 +13,7 @@ export const CountryButtonContainer = styled.View`
   margin: ${rhythm.vt}px ${rhythm.hz}px;
 `;
 
-export const CountryImage = styled.Image`
+export const CountryImage = styled(FastImage)`
   width: 20px;
   height: 30px; /* any value greater than 20 fixes width to 20 with resizeMode='contain' */
   margin-bottom: 3px;

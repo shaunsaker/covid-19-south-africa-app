@@ -2,7 +2,7 @@ import React from 'react';
 import {NeomorphBox} from 'react-native-neomorph-shadows';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {Image} from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import styles, {Button} from './styles';
 import {colors} from '../../styleConstants';
@@ -27,7 +27,7 @@ const IconButton = ({iconName, imageUri, handlePress}: Props) => {
           {iconName ? (
             <Icon name={iconName} style={styles.icon} />
           ) : imageUri ? (
-            <Image source={{uri: imageUri}} style={styles.image} />
+            <FastImage source={{uri: imageUri}} style={styles.image} />
           ) : null}
         </Button>
       </LinearGradient>

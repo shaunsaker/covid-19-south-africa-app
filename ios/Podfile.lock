@@ -370,6 +370,15 @@ PODS:
   - JWT (3.0.0-beta.12):
     - Base64 (~> 1.1.2)
   - leveldb-library (1.22)
+  - libwebp (1.1.0):
+    - libwebp/demux (= 1.1.0)
+    - libwebp/mux (= 1.1.0)
+    - libwebp/webp (= 1.1.0)
+  - libwebp/demux (1.1.0):
+    - libwebp/webp
+  - libwebp/mux (1.1.0):
+    - libwebp/demux
+  - libwebp/webp (1.1.0)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
@@ -607,6 +616,10 @@ PODS:
     - React
   - RNCMaskedView (0.1.7):
     - React
+  - RNFastImage (8.1.5):
+    - React
+    - SDWebImage (~> 5.0)
+    - SDWebImageWebPCoder (~> 0.4.1)
   - RNFBAnalytics (6.7.1):
     - Firebase/Analytics (~> 6.13.0)
     - Firebase/Core (~> 6.13.0)
@@ -645,6 +658,12 @@ PODS:
     - React
   - RNSVG (12.0.3):
     - React
+  - SDWebImage (5.7.3):
+    - SDWebImage/Core (= 5.7.3)
+  - SDWebImage/Core (5.7.3)
+  - SDWebImageWebPCoder (0.4.1):
+    - libwebp (~> 1.0)
+    - SDWebImage/Core (~> 5.5)
   - SSZipArchive (2.2.2)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -690,6 +709,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
+  - RNFastImage (from `../node_modules/react-native-fast-image`)
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
@@ -742,9 +762,12 @@ SPEC REPOS:
     - GTMSessionFetcher
     - JWT
     - leveldb-library
+    - libwebp
     - nanopb
     - OpenSSL-Universal
     - Protobuf
+    - SDWebImage
+    - SDWebImageWebPCoder
     - SSZipArchive
     - YogaKit
 
@@ -809,6 +832,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/async-storage"
   RNCMaskedView:
     :path: "../node_modules/@react-native-community/masked-view"
+  RNFastImage:
+    :path: "../node_modules/react-native-fast-image"
   RNFBAnalytics:
     :path: "../node_modules/@react-native-firebase/analytics"
   RNFBApp:
@@ -880,6 +905,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
   JWT: 9b5c05abbcc1a0e69c3c91e1655b3387fc7e581d
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
@@ -905,6 +931,7 @@ SPEC CHECKSUMS:
   ReactCommon: d22162ab8f1358c53dfcd0f9c4d82d38facdbc48
   RNCAsyncStorage: 453cd7c335ec9ba3b877e27d02238956b76f3268
   RNCMaskedView: 76c40a1d41c3e2535df09246a2b5487f04de0814
+  RNFastImage: 35ae972d6727c84ee3f5c6897e07f84d0a3445e9
   RNFBAnalytics: 7d56f7af0a1147e649df33e64372aea8923fdd01
   RNFBApp: 7d4006751de8bb5cafa2e8d2e7d94ee250df81db
   RNFBAuth: ed8b865db45f7ded9dbf535e390cba2ba672aede
@@ -916,6 +943,8 @@ SPEC CHECKSUMS:
   RNScreens: b5c0e1b2b04512919e78bd3898e144a157ce2363
   RNSnackbar: 160077964866262ed08cfd33ab4760219ea2aef6
   RNSVG: 7e16ddfc6e00d5aa69c9eb83e699bcce5dcb85d4
+  SDWebImage: 97351f6582ceca541ea294ba66a1fcb342a331c2
+  SDWebImageWebPCoder: 36f8f47bd9879a8aea6044765c1351120fd8e3a8
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
   Yoga: 9db9ff2025ad21d1ac0a8b3c85d5ac4e7c29d525
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
