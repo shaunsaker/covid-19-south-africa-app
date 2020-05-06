@@ -161,13 +161,18 @@ export const getLatestChangeInConfirmedCasesSelector = createSelector(
 );
 
 export const getPredictedConfirmedCasesSelector = (state: ApplicationState) => {
+  const latestConfirmedCase = getLatestConfirmedCaseSelector(state);
+
+  if (!latestConfirmedCase) {
+    return 0;
+  }
+
   const data = getConfirmedCasesTimelineDataSelector(state);
   const {model, terms} = getTimelineDataSelector(
     state,
     data,
     TimelineDataOptions.Cumulative,
   );
-  const latestConfirmedCase = getLatestConfirmedCaseSelector(state);
   const futureDate = moment(latestConfirmedCase.dateAdded)
     .add('7', 'days')
     .valueOf();
