@@ -11,7 +11,7 @@ export const timelineDataOptionSelector = (state: ApplicationState) =>
 export const getTimelineDataSelector = (
   state: ApplicationState,
   inputData: TimelineData,
-  providedDataOption: TimelineDataOptions,
+  providedDataOption?: TimelineDataOptions,
 ) => {
   const selectedDataOption =
     providedDataOption || timelineDataOptionSelector(state);

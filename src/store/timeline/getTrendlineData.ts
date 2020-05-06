@@ -4,7 +4,7 @@ import {TimelineData} from './types';
 export const getTrendlineData = (
   data: TimelineData,
 ): {data: TimelineData; model?: any; terms?: any} => {
-  if (!data || !data.length) {
+  if (!data || !data.length || (data && data.length === 1)) {
     return {data: []};
   }
 
