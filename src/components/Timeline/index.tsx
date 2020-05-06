@@ -24,7 +24,6 @@ export interface Props {
   data: Data;
 }
 
-// FIXME: Data options needs work
 const TimelineContainer = ({...props}: Props) => {
   const dispatch = useDispatch();
   const {width, height} = useSelector(timelineLayoutSelector);
@@ -41,28 +40,26 @@ const TimelineContainer = ({...props}: Props) => {
 
   const onSelectDataOption = useCallback(
     (option: RadioSelectOption) => {
-      let dataOption;
-
-      if (option.label === 'Cumulative') {
-        dataOption = TimelineDataOptions.Cumulative;
-      } else {
-        dataOption = TimelineDataOptions.PerDay;
-      }
-
-      dispatch(setTimelineDataOption(dataOption));
+      dispatch(setTimelineDataOption(option.label as TimelineDataOptions));
     },
     [dispatch],
   );
 
   const dataOptions = [
-    {label: 'Cumulative', isSelected: selectedDataOption === 0},
-    {label: 'Per Day', isSelected: selectedDataOption === 1},
+    {
+      label: TimelineDataOptions.Cumulative,
+      isSelected: selectedDataOption === TimelineDataOptions.Cumulative,
+    },
+    {
+      label: TimelineDataOptions.PerDay,
+      isSelected: selectedDataOption === TimelineDataOptions.PerDay,
+    },
   ];
 
   const {data} = props;
   let newData;
 
-  if (selectedDataOption === 1) {
+  if (selectedDataOption === TimelineDataOptions.PerDay) {
     newData = data.map((item, index) => {
       const {value} = item;
       let newValue = value;

@@ -1,8 +1,8 @@
 import {LayoutRectangle} from 'react-native';
 
 export enum TimelineDataOptions {
-  Cumulative,
-  PerDay,
+  Cumulative = 'Cumulative',
+  PerDay = 'Per Day',
 }
 
 export enum TimelineActionTypes {
