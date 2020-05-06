@@ -9,8 +9,8 @@ import {
   getLatestConfirmedCaseSelector,
   getLatestViewedConfirmedCase,
   getConfirmedCasesLoadingSelector,
-  getAvgDailyChangeInLastWeekSelector,
   getLatestChangeInConfirmedCasesSelector,
+  getPredictedConfirmedCasesSelector,
 } from '../../../store/selectors';
 import {ConfirmedCase} from '../../../store/types';
 import {setLatestViewedConfirmedCase} from '../../../store/actions';
@@ -33,10 +33,8 @@ const CounterViewContainer = () => {
   const lastUpdated = latestConfirmedCase
     ? moment(latestConfirmedCase.dateAdded).calendar()
     : '';
-  const avgDailyChangeInLastWeek = useSelector(
-    getAvgDailyChangeInLastWeekSelector,
-  );
-  const subtitle = `${avgDailyChangeInLastWeek} average daily cases in last 7 days`;
+  const predicted = useSelector(getPredictedConfirmedCasesSelector);
+  const subtitle = `Next week's prediction: ${predicted} cases`;
   const noData = Boolean(!start && !end && !loading);
 
   const onCountComplete = useCallback(() => {

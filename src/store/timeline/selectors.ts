@@ -11,8 +11,10 @@ export const timelineDataOptionSelector = (state: ApplicationState) =>
 export const getTimelineDataSelector = (
   state: ApplicationState,
   inputData: TimelineData,
+  providedDataOption: TimelineDataOptions,
 ) => {
-  const selectedDataOption = timelineDataOptionSelector(state);
+  const selectedDataOption =
+    providedDataOption || timelineDataOptionSelector(state);
   let data = inputData;
 
   if (selectedDataOption === TimelineDataOptions.PerDay) {
@@ -32,7 +34,7 @@ export const getTimelineDataSelector = (
     });
   }
 
-  const {data: trendlineData, model} = getTrendlineData(data);
+  const {data: trendlineData, model, terms} = getTrendlineData(data);
 
-  return {data, trendlineData, model};
+  return {data, trendlineData, model, terms};
 };

@@ -3,7 +3,7 @@ import {TimelineData} from './types';
 
 export const getTrendlineData = (
   data: TimelineData,
-): {data: TimelineData; model?: any} => {
+): {data: TimelineData; model?: any; terms?: any} => {
   if (!data || !data.length) {
     return {data: []};
   }
@@ -32,5 +32,5 @@ export const getTrendlineData = (
     };
   });
 
-  return {data: trendlineData, model};
+  return {data: trendlineData, model, terms};
 };

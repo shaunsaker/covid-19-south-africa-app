@@ -5,6 +5,8 @@ import {ApplicationState} from '../reducers';
 
 import {sortArrayOfObjectsByKey} from '../../utils';
 import {ConfirmedCase} from './types';
+import {getTimelineDataSelector} from '../timeline/selectors';
+import {TimelineData, TimelineDataOptions} from '../timeline/types';
 
 export const getConfirmedCasesSelector = (state: ApplicationState) =>
   state.confirmedCases.data;
@@ -157,3 +159,19 @@ export const getLatestChangeInConfirmedCasesSelector = createSelector(
     return latestChange;
   },
 );
+
+export const getPredictedConfirmedCasesSelector = (state: ApplicationState) => {
+  const data = getConfirmedCasesTimelineDataSelector(state);
+  const {model, terms} = getTimelineDataSelector(
+    state,
+    data,
+    TimelineDataOptions.Cumulative,
+  );
+  const latestConfirmedCase = getLatestConfirmedCaseSelector(state);
+  const futureDate = moment(latestConfirmedCase.dateAdded)
+    .add('7', 'days')
+    .valueOf();
+  const predicted = Math.round(model.predictY(terms, futureDate));
+
+  return predicted;
+};
