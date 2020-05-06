@@ -16,11 +16,12 @@ import styles, {
 } from './styles';
 import {colors} from '../../styleConstants';
 import {Label} from '../Label';
+import {getCounterFontSize} from './getCounterFontSize';
 
 export interface Props {
   title: string;
-  start: Number;
-  end: Number;
+  start: number;
+  end: number;
   latestChange?: number;
   subtitle?: string;
   lastUpdated: string;
@@ -62,7 +63,7 @@ const CounterView = ({
             end={end}
             time={2000}
             easing="linear"
-            style={styles.counter}
+            style={{...styles.counter, fontSize: getCounterFontSize(end)}}
             onComplete={handleCountComplete}
           />
           {loading ? (

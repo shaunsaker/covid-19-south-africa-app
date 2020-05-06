@@ -6,7 +6,7 @@ import {
   getTextShadow,
   getMobileTextShadow,
 } from '../../styleConstants';
-import {Platform, Dimensions} from 'react-native';
+import {Platform} from 'react-native';
 
 export const Container = styled.View`
   padding: 0 ${rhythm.vt}px;
@@ -84,7 +84,6 @@ export default {
   },
   counter: {
     fontFamily: 'Roboto-Bold',
-    fontSize: Dimensions.get('window').width < 360 ? 48 : 56,
     color: colors.primaryText,
     ...getMobileTextShadow('dark'),
   },

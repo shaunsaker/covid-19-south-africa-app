@@ -22,7 +22,8 @@ export const StyledIcon = styled(Icon)`
   font-size: 12px;
   color: ${colors.primaryText};
   text-shadow: ${getTextShadow('dark')};
-  margin-right: ${rhythm.hz / 4}px;
+  margin-left: -4px;
+  margin-right: 2px;
 `;
 
 export default {};
