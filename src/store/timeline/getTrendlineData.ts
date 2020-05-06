@@ -1,13 +1,11 @@
 import PolynomialRegression from 'js-polynomial-regression';
+import {TimelineData} from './types';
 
-import {Data} from '.';
-
-/*
- * FIXME: Memoize this function
- */
-export const getTrendlineData = (data: Data) => {
+export const getTrendlineData = (
+  data: TimelineData,
+): {data: TimelineData; model?: any} => {
   if (!data || !data.length) {
-    return [];
+    return {data: []};
   }
 
   const mappedData = data.map(({value, date}) => {
@@ -34,5 +32,5 @@ export const getTrendlineData = (data: Data) => {
     };
   });
 
-  return trendlineData;
+  return {data: trendlineData, model};
 };
