@@ -31,17 +31,13 @@ export const YAxisLabelText = styled.Text`
 `;
 
 export default {
-  contentContainerWrapper: {
+  contentContainer: {
     flex: 1,
     borderRadius: 10,
     overflow: 'hidden',
   },
-  contentContainer: {
+  contentContainerWrapper: {
     flex: 1,
-    backgroundColor: 'transparent',
-    shadowOffset: {width: 4, height: 4},
-    shadowOpacity: 0.4,
-    shadowRadius: 2,
   },
   lineChart: {},
   trendlineLineChart: {

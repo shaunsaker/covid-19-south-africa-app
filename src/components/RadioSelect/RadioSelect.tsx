@@ -1,5 +1,5 @@
 import React from 'react';
-import {NeomorphBox} from 'react-native-neomorph-shadows';
+import {View} from 'react-native';
 
 import styles, {Container, OptionContainer, OptionText} from './styles';
 
@@ -30,12 +30,9 @@ const RadioSelect = ({options, handleSelectOption}: RadioSelectProps) => {
 
         if (isSelected) {
           return (
-            <NeomorphBox
-              key={label}
-              inner
-              style={styles.selectedOptionContainer}>
+            <View key={label} style={styles.selectedOptionContainer}>
               {children}
-            </NeomorphBox>
+            </View>
           );
         }
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import {NeomorphBox} from 'react-native-neomorph-shadows';
 import LinearGradient from 'react-native-linear-gradient';
+import {View} from 'react-native';
 
 import styles, {Container, ContentContainer, VersionText} from './styles';
 import {colors} from '../../styleConstants';
@@ -26,9 +26,9 @@ const SideMenu = ({version, handleGetInTouchPress}: Props) => {
           <LinearGradient
             colors={[colors.primary, colors.primaryMedium]}
             style={styles.versionWrapper}>
-            <NeomorphBox inner style={styles.versionContainer}>
+            <View style={styles.versionContainer}>
               <VersionText>Version: {version}</VersionText>
-            </NeomorphBox>
+            </View>
           </LinearGradient>
         </ContentContainer>
       </Container>

@@ -1,6 +1,5 @@
 import React, {ReactNode} from 'react';
-import {NeomorphBox} from 'react-native-neomorph-shadows';
-import {LayoutChangeEvent} from 'react-native';
+import {LayoutChangeEvent, View} from 'react-native';
 import {LineChart, YAxis, XAxis, Grid} from 'react-native-svg-charts';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
@@ -17,13 +16,13 @@ import styles, {
   YAxisLabelText,
 } from './styles';
 import {rhythm, colors} from '../../styleConstants';
-import {Datum} from '.';
+import {TimelineData} from '../../store/types';
 
 interface Props {
   width: number;
   height: number;
-  data: Datum[];
-  trendlineData?: Datum[];
+  data: TimelineData;
+  trendlineData?: TimelineData;
   children?: ReactNode;
   handleLayout: (event: LayoutChangeEvent) => void;
 }
@@ -80,12 +79,11 @@ const Timeline = ({
           />
 
           <LinearGradient
-            onLayout={handleLayout}
             colors={[colors.primary, colors.primaryMedium]}
-            style={styles.contentContainerWrapper}>
-            <NeomorphBox
-              inner
-              style={{...styles.contentContainer, width, height}}>
+            style={styles.contentContainer}>
+            <View
+              onLayout={handleLayout}
+              style={styles.contentContainerWrapper}>
               <LineChart
                 data={data}
                 yAccessor={({item}) => item.value}
@@ -116,7 +114,7 @@ const Timeline = ({
                   svg={styles.trendlineSvg}
                 />
               ) : null}
-            </NeomorphBox>
+            </View>
           </LinearGradient>
         </LineChartRowContainer>
 

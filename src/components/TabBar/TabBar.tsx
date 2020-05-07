@@ -1,6 +1,6 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {NeomorphBox} from 'react-native-neomorph-shadows';
+import {View} from 'react-native';
 
 import styles, {Container, TabContainer, TabText} from './styles';
 import {colors} from '../../styleConstants';
@@ -28,7 +28,7 @@ const Tab = ({label, isActive, handlePress}: TabUIProps) => {
 
 const TabBar = ({tabs, handleTabPress}: TabBarProps) => {
   return (
-    <NeomorphBox style={styles.container}>
+    <View style={styles.container}>
       <LinearGradient
         start={{x: 0, y: 0.67}}
         end={{x: 0, y: 1}}
@@ -45,7 +45,7 @@ const TabBar = ({tabs, handleTabPress}: TabBarProps) => {
             ))}
         </Container>
       </LinearGradient>
-    </NeomorphBox>
+    </View>
   );
 };
 

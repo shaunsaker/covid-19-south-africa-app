@@ -41,8 +41,5 @@ export default {
     height: OPTION_HEIGHT,
     borderRadius: BORDER_RADIUS,
     backgroundColor: colors.primaryLight,
-    shadowOffset: {width: 2, height: 2},
-    shadowOpacity: 0.4,
-    shadowRadius: 2,
   },
 };
