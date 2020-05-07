@@ -86,6 +86,7 @@ export default {
     fontFamily: 'Roboto-Bold',
     color: colors.primaryText,
     ...getMobileTextShadow('dark'),
+    lineHeight: 66,
   },
   sourceButtonPlaceholder: {
     height: 19.5,
