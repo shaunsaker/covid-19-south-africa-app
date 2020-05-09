@@ -168,7 +168,7 @@ export const getPredictedConfirmedCasesSelector = (state: ApplicationState) => {
   }
 
   const data = getConfirmedCasesTimelineDataSelector(state);
-  const {model, terms} = getTimelineDataSelector(
+  const {model, terms, linearModel, linearTerms} = getTimelineDataSelector(
     state,
     data,
     TimelineDataOptions.Cumulative,
@@ -176,7 +176,11 @@ export const getPredictedConfirmedCasesSelector = (state: ApplicationState) => {
   const futureDate = moment(latestConfirmedCase.dateAdded)
     .add('7', 'days')
     .valueOf();
-  const predicted = Math.round(model.predictY(terms, futureDate));
+  let predicted = model.predictY(terms, futureDate);
 
-  return predicted;
+  if (predicted < latestConfirmedCase.confirmedCases) {
+    predicted = linearModel.predictY(linearTerms, futureDate);
+  }
+
+  return Math.round(predicted);
 };

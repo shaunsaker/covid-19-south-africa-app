@@ -3,7 +3,13 @@ import {TimelineData} from './types';
 
 export const getTrendlineData = (
   data: TimelineData,
-): {data: TimelineData; model?: any; terms?: any} => {
+): {
+  data: TimelineData;
+  model?: any;
+  terms?: any;
+  linearModel?: any;
+  linearTerms?: any;
+} => {
   if (!data || !data.length || (data && data.length === 1)) {
     return {data: []};
   }
@@ -32,5 +38,8 @@ export const getTrendlineData = (
     };
   });
 
-  return {data: trendlineData, model, terms};
+  const linearModel = PolynomialRegression.read(mappedData, 1);
+  const linearTerms = linearModel.getTerms();
+
+  return {data: trendlineData, model, terms, linearModel, linearTerms};
 };

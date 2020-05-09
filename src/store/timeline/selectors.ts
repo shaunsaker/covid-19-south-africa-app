@@ -34,7 +34,5 @@ export const getTimelineDataSelector = (
     });
   }
 
-  const {data: trendlineData, model, terms} = getTrendlineData(data);
-
-  return {data, trendlineData, model, terms};
+  return {data, ...getTrendlineData(data)};
 };
