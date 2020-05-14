@@ -15,6 +15,12 @@ export const ContentContainer = styled.View`
   align-items: center;
 `;
 
+export const ButtonsContainer = styled.View``;
+
+export const ButtonContainer = styled.View`
+  margin-bottom: ${rhythm.vt}px;
+`;
+
 export const VersionText = styled.Text`
   font-family: 'Roboto-Bold';
   font-size: 16px;

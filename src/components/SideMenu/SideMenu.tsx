@@ -2,7 +2,13 @@ import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {View} from 'react-native';
 
-import styles, {Container, ContentContainer, VersionText} from './styles';
+import styles, {
+  Container,
+  ContentContainer,
+  ButtonsContainer,
+  ButtonContainer,
+  VersionText,
+} from './styles';
 import {colors} from '../../styleConstants';
 
 import Background from '../Background';
@@ -11,17 +17,32 @@ import Button from '../Button';
 
 interface Props {
   version: string;
+  handleSharePress: () => void;
   handleGetInTouchPress: () => void;
 }
 
-const SideMenu = ({version, handleGetInTouchPress}: Props) => {
+const SideMenu = ({
+  version,
+  handleSharePress,
+  handleGetInTouchPress,
+}: Props) => {
   return (
     <Background>
       <Container>
         <HeaderBar title="CVD19ZA" showMenuIcon={false} showCloseIcon />
 
         <ContentContainer>
-          <Button handlePress={handleGetInTouchPress}>GET IN TOUCH</Button>
+          <ButtonsContainer>
+            <ButtonContainer>
+              <Button handlePress={handleSharePress}>SHARE</Button>
+            </ButtonContainer>
+
+            <ButtonContainer>
+              <Button secondary handlePress={handleGetInTouchPress}>
+                GET IN TOUCH
+              </Button>
+            </ButtonContainer>
+          </ButtonsContainer>
 
           <LinearGradient
             colors={[colors.primary, colors.primaryMedium]}
