@@ -22,7 +22,7 @@ const SideMenuContainer = ({children}: Props) => {
 
   const onSharePress = useCallback(() => {
     Share.share({
-      message: 'Download CVD19ZA for the latest COVID-19 stats!',
+      message: `Download CVD19ZA for the latest COVID-19 stats! ${apkDownloadUrl}`,
       url: apkDownloadUrl,
     })
       .then()

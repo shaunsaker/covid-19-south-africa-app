@@ -1,5 +1,5 @@
 export const build = 8;
-export const code = 41;
+export const code = 42;
 export const email = 'sakershaun@gmail.com';
 export const countriesApi = 'https://corona.lmao.ninja/v2';
 export const countriesApiSource = 'https://github.com/NovelCOVID/API';
