@@ -1,12 +1,22 @@
 import {useEffect, useCallback} from 'react';
 import {BackHandler} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
+import {sideMenuIsOpenSelector} from '../../store/selectors';
+import {setSideMenu} from '../../store/actions';
 
 const AndroidBackHandler = () => {
-  const onHardwareBackPress = useCallback(() => {
-    BackHandler.exitApp();
+  const sideMenuOpen = useSelector(sideMenuIsOpenSelector);
+  const dispatch = useDispatch();
 
-    return false;
-  }, []);
+  const onHardwareBackPress = useCallback(() => {
+    if (sideMenuOpen) {
+      dispatch(setSideMenu(false));
+      return true;
+    } else {
+      BackHandler.exitApp();
+      return false;
+    }
+  }, [dispatch, sideMenuOpen]);
 
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', onHardwareBackPress);
