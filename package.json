@@ -1,6 +1,8 @@
 {
   "name": "CVD19ZA",
   "version": "1.3.0",
+  "build": "8",
+  "code": 42,
   "private": true,
   "scripts": {
     "prestorybook": "rnstl",
@@ -10,7 +12,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "code-push": "code-push release-react CVD19ZA-ios ios -d Production && code-push release-react CVD19ZA-android android -d Production"
+    "increment-version-code": "node ./scripts/incrementVersionCode.js && yarn prettier ./package.json --write && git add . && git commit -m 'Update code version'",
+    "code-push": "yarn increment-version-code && code-push release-react CVD19ZA-ios ios -d Production && code-push release-react CVD19ZA-android android -d Production"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.8.1",

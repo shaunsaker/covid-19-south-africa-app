@@ -5,7 +5,7 @@ import SideMenu from 'react-native-side-menu';
 import {useSelector, useDispatch} from 'react-redux';
 
 import pkg from '../../../package.json';
-import {build, email, snackbar, code, apkDownloadUrl} from '../../config';
+import {email, snackbar, apkDownloadUrl} from '../../config';
 import {sideMenuIsOpenSelector} from '../../store/selectors';
 import {setSideMenu} from '../../store/actions';
 
@@ -17,7 +17,7 @@ interface Props {
 
 const SideMenuContainer = ({children}: Props) => {
   const isOpen = useSelector(sideMenuIsOpenSelector);
-  const version = `${pkg.version} (${build}) | ${code}`;
+  const version = `${pkg.version} (${pkg.build}) | ${pkg.code}`;
   const dispatch = useDispatch();
 
   const onSharePress = useCallback(() => {
