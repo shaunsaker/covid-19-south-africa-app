@@ -12,7 +12,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "increment-version-code": "node ./scripts/incrementVersionCode.js && yarn prettier ./package.json --write && git add . && git commit -m 'Update code version'",
+    "increment-version-code": "node ./scripts/incrementVersionCode.js && yarn prettier ./package.json --write && git add . && git commit -m 'Update code version' && git push",
     "code-push": "yarn increment-version-code && code-push release-react CVD19ZA-ios ios -d Production && code-push release-react CVD19ZA-android android -d Production"
   },
   "dependencies": {
