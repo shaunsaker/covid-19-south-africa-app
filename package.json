@@ -34,7 +34,7 @@
     "react-native": "0.62.0",
     "react-native-code-push": "^6.2.0",
     "react-native-counter": "git+https://github.com/Kerumen/react-native-counter#8d25ef92488b03e1276e102f81cf5a8051d34157",
-    "react-native-fast-image": "^8.1.5",
+    "react-native-fast-image": "^8.3.0",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-iphone-x-helper": "^1.2.1",
     "react-native-linear-gradient": "^2.5.6",
