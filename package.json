@@ -29,7 +29,7 @@
     "axios": "^0.19.2",
     "country-list": "^2.2.0",
     "js-polynomial-regression": "^0.9.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "react": "16.11.0",
     "react-native": "0.62.0",
     "react-native-code-push": "^6.2.0",
